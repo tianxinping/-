@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre><strong><h2>
+        2014由w3c完成标准制定
+        针对js添加很多接口，flash被h5替代,17年停止维护，更加侧重语义化，对seo友好，可移植性好-移动开发
+        新增布局标签
+            标签名       语义
+            header   部分区域的头部
+            footer   部分区域的脚部
+            nav      导航
+            article  文章，帖子，杂志，新闻，博客，评论等
+            section  页面中的 某段 文字，或 某段 文字，通常包含标题
+            aside    侧边栏
+
+
+        注意点
+            article 里面可以有多个section
+            section 强调的是分段或分块，如果想将一块内容分成几段可以使用section
+            srticle 比 section 更强调独立性，一块内容如果比较独立，比较完整，应该使用article元素
+
+        新增状态标签
+            meter   已知范围测量  用于电量或者磁盘用量  high高值 、low低值 、max最大值 、min最小值 、optimum最优值 、value当前值
+            progress 显示进度指示器   max规定目标值 value规定当前值
+        新增列表标签
+            datalist  给搜索框一个下拉选择框，后续会通过js实现动态加载
+            <form action="#">
+            <input type="text" list="mydata"><button>搜索</button></form>
+            <datalist id="mydata">
+                <option value="周杰伦">周杰伦</option>
+                <option value="周冬雨">周冬雨</option>
+                <option value="温兆伦">温兆伦</option>
+                <option value="马冬梅">马冬梅</option>
+            </datalist>
+            details  点开下拉的文本列表
+            <details>
+                <summary>如何暴富</summary>
+                <p>努力学习</p>
+            </details>
+        新增文本标签
+            ruby  给文字添加标注，拼音等，注意rt要写在下方
+            <ruby>
+                <span>魑魅魍魉</span>
+                <rt>chi mei wang liang</rt>
+            </ruby>
+            mark  用于标记搜索结果中的关键字  em兼容性更好
+        新增表单控件属性
+            placeholder  占位符
+            required     必选项，非键值对
+            autofocus    自动获取焦点，一般加在第一个上
+            autocomplete = "on" 开启自动匹配，历史输入
+            pattern= "\w{6}"   正则表达式,前提是必选项
+        input新增的type值
+            novalidate表示禁用表单所有规则
+            <form action="" novalidate> 
+                邮箱: <input type="email" name="email" required>
+                url: <input type="url" name="url" required>
+                数值: <input type="number" name="number" step="2" max="80" min="20" required>
+                搜索: <input type="search" name="keyword" required>
+                电话: <input type="tel" name="phone" required>
+                光照强度/进度条: <input type="range" name="range" max="80" min="20" value="22">
+                颜色: <input type="color" name="color">
+                日期: <input type="date" name="date" required>
+                月份: <input type="month" name="month" required>
+                周: <input type="week" name="week" required>
+                时间: <input type="time" name="time" required>
+                日期加时间: <input type="datetime-local" name="time2" required> 
+            </form>
+            appearance: none;  用于控制 UI 控件的基于操作系统主题的原生外观。
+            
+        新增多媒体标签
+            视频标签（单词属性）
+                controls  控制
+                muted     静音
+                autoplay  自动播放，前提是静音
+                loop      循环播放
+                poster="图片地址"  视频封面，默认第一帧
+                preload="none/metadata基本信息/auto下载整个视频"  预加载
+                <video src="" width="" height="宽高只给一个可以自适应" controls></video>
+            音频标签
+                controls  控制
+                muted     静音
+                loop      循环播放
+                reload="none/metadata基本信息/auto下载整个音频"  预加载
+                <audio src="../小曲.mp3" controls></audio>
+        新增全局属性（了解）
+             contenteditable="true/false"  表示元素可否被用户编辑
+             draggable="true/false"   表示元素可以被拖动，要配合js
+             hidden   隐藏元素
+             spellcheck="true/false"   对元素进行拼写和语法检查，要在浏览器打开此功能选项
+             contextmenu  鼠标右键显示的元素，要配合js
+            data-*   用于存储页面的私有定制数据
+
+        
+
+
+
+
+
+    </strong></pre></h2>
+</body>
+</html>

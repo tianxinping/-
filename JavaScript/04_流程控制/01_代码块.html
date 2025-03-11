@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        用{}来创建代码块对代码分组
+            同一个代码中的代码，就是同一组代码，一个代码块中的代码要么都执行要么都不执行
+
+        let和var区别
+            let声明的变量有块作用域（隔离 的作用）
+                无法在代码块外部访问
+            var声明的变量无块作用域
+     -->
+     <script>
+        {
+            let a = 10;
+            var b = 20;
+        }
+        console.log(a);// 不能获取到a
+        console.log(b);// 可以获取到b
+     </script>
+</body>
+</html>

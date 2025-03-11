@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+    <style>
+        div{
+            position: absolute;
+            width: 40%;
+            right: 0;
+            top: 0;
+        }
+        code{
+            font-size: 1.5em;
+        }
+        @media screen and (max-width:1260px){
+            div{position: relative;}
+            /* 媒体查询去掉绝对定位布局 */
+            table:nth-child(2){display: none;}
+            /* 媒体查询隐藏来访登记表 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 学生信息表 -->
+    <table border="1px">
+        <caption>学生信息</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>民族</th>
+                <th>政治面貌</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>男</td>
+                <td>18</td>
+                <td>汉族</td>
+                <td>团员</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>女</td>
+                <td>20</td>
+                <td>满族</td>
+                <td>群众</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>女</td>
+                <td>19</td>
+                <td>回族</td>
+                <td>党员</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>共计：3人</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- 来访登记表 -->
+    <table border="1px" cellspacing="0">
+        <caption>来访登记表</caption>
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>班别</th>
+                <th>房号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>住址</th>
+                <th>身份证号</th>
+                <th>电话</th>
+                <th>来访时间</th>
+                <th>值班人</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>6.14</td>
+                <td>夜</td>
+                <td>0000</td>
+                <td>田新平</td>
+                <td>男</td>
+                <td>成都</td>
+                <td>511111111111111111</td>
+                <td>19120451663</td>
+                <td>3.14</td>
+                <td>田新平</td>
+                <td>前台</td>
+            </tr>
+            <tr>
+                <td>6.14</td>
+                <td>夜</td>
+                <td>0000</td>
+                <td>田新平</td>
+                <td>男</td>
+                <td>成都</td>
+                <td>511111111111111111</td>
+                <td>19120451663</td>
+                <td>3.14</td>
+                <td>田新平</td>
+                <td>前台</td>
+            </tr>
+            <tr>
+                <td>6.14</td>
+                <td>夜</td>
+                <td>0000</td>
+                <td>田新平</td>
+                <td>男</td>
+                <td>成都</td>
+                <td>511111111111111111</td>
+                <td>19120451663</td>
+                <td>3.14</td>
+                <td>田新平</td>
+                <td>前台</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>第一页&nbsp;共一页</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- 外卖登记表 -->
+    <table border="1px" cellspacing="0">
+        <caption>外卖登记表</caption>
+        <thead>
+            <tr><th>日期</th></tr>
+            <tr>
+                <th>房号</th>
+                <th>时间</th>
+                <th>房号</th>
+                <th>时间</th>
+                <th>房号</th>
+                <th>时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1104</td>
+                <td>3.21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1609</td>
+                <td>11.50</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1104</td>
+                <td>3.21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1104</td>
+                <td>3.21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <!-- 课程表 -->
+    <table border="1" cellspacing="0">
+        <caption>课程表</caption>
+        <thead>
+            <tr>
+                <th>项目</th>
+                <th colspan="5">上课</th>
+                <th colspan="2">活动与休息</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>星期</td>
+                <td>星期一</td>
+                <td>星期二</td>
+                <td>星期三</td>
+                <td>星期四</td>
+                <td>星期五</td>
+                <td>星期六</td>
+                <td>星期日</td>
+            </tr>
+            <tr>
+                <td rowspan="4">rowspan<br>上午</td>
+                <td>语文</td>
+                <td>数学</td>
+                <td>英语</td>
+                <td>英语</td>
+                <td>物理</td>
+                <td>数学竞赛</td>
+                <td rowspan="4">休息</td>
+            </tr>
+            <tr>
+                <td>4-2</td>
+                <td>4-3</td>
+                <td>4-4</td>
+                <td>4-5</td>
+                <td>4-6</td>
+                <td>4-7</td>
+            </tr>
+            <tr>
+                <td>5-2</td>
+                <td>5-3</td>
+                <td>5-4</td>
+                <td>5-5</td>
+                <td>5-6</td>
+                <td>5-7</td>
+            </tr>
+            <tr>
+                <td>6-2</td>
+                <td>6-3</td>
+                <td>6-4</td>
+                <td>6-5</td>
+                <td>6-6</td>
+                <td>6-7</td>
+            </tr>
+            <tr>
+                <td rowspan="2">下午</td>
+                <td>7-2</td>
+                <td>7-3</td>
+                <td>7-4</td>
+                <td>7-5</td>
+                <td>7-6</td>
+                <td>7-7</td>
+                <td rowspan="2">休息</td>
+            </tr>
+            <tr>
+                <td>8-2</td>
+                <td>8-3</td>
+                <td>8-4</td>
+                <td>8-5</td>
+                <td>8-6</td>
+                <td>8-7</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+
+    <div>
+    <br>
+    <span>一个完整表格（<strong>table</strong>）由：</span>
+    <strong>
+        <ul>
+            <li>表格标题caption</li>
+            <li>表格头部thead</li>
+            <li>表格主体tbody</li>
+            <li>表格脚注tfoot</li>
+        </ul>
+    </strong>
+    <span>组成。</span>
+    <br><br>
+    <span>
+    tr：表示行（row）<br>
+    th：头部单元格（t head）用于表格头部
+    <br><br>
+    td：数据（t data）用于表格主题和脚注</span>
+    <span>
+        <h3>跨行与跨列</h3>
+        <code>colspan="n"</code>&nbsp;表示跨的列数 &nbsp;col意为列 span意为跨
+        <br>
+        <code>rowspan="n"</code>&nbsp;表示跨的行数
+    </span>
+    <br><br>
+    &lt;border="1px" cellspacing="0"&gt;加载table后面
+    <br>
+    <hr><br>pre标签按原文显示 :
+    <pre>
+        I      LOVE      YOU
+           I   LOVE   YOU
+               LOVE
+    </pre>
+    </div>
+</body>
+</html>

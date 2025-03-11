@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 560px;
+        }
+        .animation {
+            width: 1200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        /* 定义动画(定义一组关键帧)---第一种方式 */
+        @keyframes toright {
+            from {}
+
+            to {
+                transform: translate(1100px);
+                background-color: skyblue;
+            }
+        }
+
+        /* 定义动画(定义一组关键帧)---第二种方式 */
+        @keyframes toright1 {
+            0% {}
+
+            100% {
+                transform: translate(1100px);
+                background-color: skyblue;
+            }
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            /* 引入动画 */
+            animation-name: toright;
+            /* 动画持续时间 */
+            animation-duration: 4s;
+            /* 动画延迟播放 */
+            animation-delay: 0.2s;
+            /* 动画类型--线性过度 */
+            animation-timing-function: linear;
+            /* 动画播放次数--无限循环 */
+            animation-iteration-count: infinite;
+            /* 指定动画方向--反方向 */
+            animation-direction: reverse;
+            /* 动画之外的状态--结束时的状态 */
+            animation-fill-mode: forwards;
+            /* 动画播放状态--暂停，不用复合属性 */
+            /* animation-play-state: paused; */
+        }
+        @keyframes bike{
+            from{}
+            to{
+                background-position: 0px -4030px;
+            }
+        }
+        .bike {
+            width: 130px;
+            height: 130px;
+            border: 1px solid black;
+            margin-left: 1000px;
+            background-image: url(./images/bike.png);
+            animation: bike 1s steps(31) infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animation">
+        <div class="inner"></div>
+    </div>
+    <pre>
+    关键帧 @keyframes
+        指的是起关键性的两到三帧
+    动画样式类型见下图
+        <img src="./images/动画样式.png" alt="">
+    指定动画方向-
+        normal  正常方向---默认
+        reverse  反方向运行
+        alternate  先正常运行再反方向运行，并持续交替运行
+        alternate-reverse  先反方向再正方向，并持续交替运行
+    动画复合属性
+        animation: name duration delay 动画类型 播放次数 动画方向 停止状态;
+        <div class="bike">自行车小案例
+            
+        </div>
+    
+
+</pre>
+</body>
+
+</html>

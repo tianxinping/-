@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            箭头函数的返回值可以直接写在箭头后（只有一条语句的情况）,会自动成为函数的返回值.
+            如果直接在箭头后设置对象字面量为返回值时，对象字面量必须用（）括起来    
+        */
+
+        // const sum = (a,b) => {return a+b}
+        const sum = (a , b) => a + b
+        let result = sum(1, 2)
+        console.log(result); // 3
+
+
+        // const fn = () => {return {name:'孙悟空'}}
+        // result = fn()
+        // console.log(result); // {name:'孙悟空'}
+
+        const fn = () => ({name:'孙悟空'})
+        result = fn()
+        console.log(result); // {name:'孙悟空'}
+
+        
+    </script>
+</body>
+
+</html>

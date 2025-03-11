@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            switch语句
+                语句
+                    switch(表达式){
+                        case 值1:
+                            语句1;
+                            break;
+                        case 值2:
+                            语句2;
+                            break;
+                        default:
+                            语句3;
+                    }
+
+                    switch语句的执行流程
+                        1. 首先计算表达式的值
+                        2. 把表达式的值和case后面的值进行全等比较 
+                        3. 如果存在匹配的case，则执行该case后面的语句
+                        4. 如果没有匹配的case，则执行default后面的语句
+
+                    总结
+                        switch和if功能重复，switch在进行全等判断比较简洁，for用的比较多
+
+        */
+       let num = +prompt('请输入一个数字')
+       switch(num){
+           case 1:
+               alert('1')
+               break;   // 结束当前switch语句
+           case 2:
+               alert('2')
+               break;
+           default:
+               alert('default')
+       }
+    </script>
+</body>
+</html>

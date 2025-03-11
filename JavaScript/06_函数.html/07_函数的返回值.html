@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            1.在函数中，可以通过return关键字来指定函数的返回值
+              返回值就是函数的执行结果，函数调用完毕返回值就会作为结果返回
+
+            2.任何值都可以作为返回值（包括对象和函数之类）
+
+            3.return后不跟值，函数会返回undefined
+
+            4.return一执行函数立即结束
+        */
+
+        // 1.
+        /* function sum(a,b) {
+            return a + b;
+        }
+        let result = sum(1,2);
+        let result = sum(1,result);
+        
+        console.log(result);  */
+        
+        // 2.
+        function fn() {
+            console.log("fn函数是我");
+            
+            return () => console.log("我是return返回的箭头函数");   
+        }
+        let result = fn();
+        console.log("result =",result);
+        
+    </script>
+</body>
+</html>

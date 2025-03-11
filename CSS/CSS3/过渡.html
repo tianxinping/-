@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    transform变换  translate位移  transition过渡  
+    基本使用
+        transition-property: all; 定义哪个属性需要过渡
+        transition-duration: 1s/ms; 定义过渡时间
+    高级属性
+        transition-delay: ; 指定开始过渡额延迟时间, s/ms
+        transition--timing-function: ;设置过渡类型
+            ease: 平滑过渡---默认
+            linear: 线性过渡
+            cubic-bezier(.73,.19,.48,1.28) 特定的贝塞尔曲线类型，通过特定网站在线制作。https://cubic-bezier.com
+    复合属性
+    transition: 3s linear all 0.5s; 通常只写一个时间，表示过渡时间，而不写开始延迟。all也可以不写
+</body>
+</html>

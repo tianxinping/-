@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #d1{
+            height: 500px;
+            padding: 50px;
+            background-color: hsl(150, 100%, 50%);
+            /* 能继承的都是不影响布局的，和盒子模型没关系 */
+            font-size: 20px;
+            color: aliceblue;
+            font-weight: bold;
+        }
+        #d2{
+            padding: 50px;
+            height: 300px;
+            
+            background-color: #ff00ff;
+        }
+        #d3{
+            height: 200px;
+            background-color: rgb(138, 43, 226);
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="d1">
+        <div id="d2">
+            <div id="d3">你好啊</div>
+        </div>
+    </div>
+
+</body>
+</html>

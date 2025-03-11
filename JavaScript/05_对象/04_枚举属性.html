@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            枚举属性，将对象中的所有属性全部获取
+            for-in语句
+            语法：
+                for(let 变量 in 对象){
+                    //循环体
+                }
+            for-in会循环多次，有几个属性就循环几次
+                每次循环都会将对象中的一个属性名赋值给变量
+            注意：并不是所有的属性都能被枚举,比如Symbol属性
+        */
+       let obj = {
+           name: '田新平',
+           age: 22,
+           gender: '男',
+           [Symbol()]: '特殊的属性',
+        }
+        for(let proName in obj){
+            console.log(proName,obj[proName]);//proName是属性名，obj[proName]是属性值,属性值要用中括号获取
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+    <script>
+        /* 
+            运算符（操作符）
+                - 运算符可以用来对一个或多个值进行运算
+                - 算数运算符：
+                    + 加法运算符
+                    - 减法运算符
+                    * 乘法运算符
+                    / 除法运算符
+                    ** 幂运算
+                    % 取余运算符
+            - 注意：
+                - 在Js中，除了字符串的加法
+                    如果对非number类型的值进行运算，会先转换为number类型
+        */
+        let a = 1 + 1
+        a = 10 - 5
+        a = 2 * 3
+        a = 10 / 3
+        a = 10 / 0 //Infinity
+        a = 10 ** 2 //10的2次方
+        a = 9 ** .5 //9的0.5次方，开放运算。即3
+        a = 10 % 2
+        a = 10 % 3
+
+        /* 
+             Js是一门弱类型语言，运算时会通过自动的类型转换来计算
+             会把字符串5改为数值5
+        */
+        a = 10 - '5'//5
+        a = 10 + true //10 + 1
+        a = 10 + null //10 + 0
+        a = 10 + undefined //10 + NaN
+        /* 
+            包含字符串的加法会自动转换成字符串，做拼串处理 
+                原理：'hello'+'world'=helloworld   
+        */
+        a = 1 + '2'//'12'
+        a = 1 + 'world'
+
+        a = true + ''
+        /* 
+            可以用字符串加法加空串来直接转换成字符串，和String（）函数相同
+        */
+        console.log(typeof a , a);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

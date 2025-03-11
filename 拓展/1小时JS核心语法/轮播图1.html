@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        ul{
+            width: 90%;
+            height: 70%;
+            margin: 10px auto;
+            list-style: none;
+            border: 1px solid #000;
+            text-align: center;
+            position: relative;
+        }
+        ul li{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            line-height: 210px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        ul li:first-of-type{
+            background-color: aqua;
+        }
+        ul li:nth-of-type(2){
+            background-color: blueviolet;
+        }
+        ul li:nth-of-type(3){
+            background-color: brown;
+        }
+        ul li:last-of-type{
+            background-color: chartreuse;
+        }
+        .active{
+            opacity: 1;
+        }
+        button:first-of-type{
+            float: left;
+            margin-left: 25px;
+        }
+        button:last-of-type{
+            float: right;
+            margin-right: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+    </div>
+    <script>
+        let carousel = document.querySelector('.container ul');
+        let items = carousel.children
+        let next = document.querySelector('.next')
+        let prev = document.querySelector('.prev')
+
+        let index = 0
+        next.addEventListener('click', function(){
+            items[index].className = ''
+            if(index == items.length -1){
+                index = -1
+            }
+            index++
+            items[index].className = 'active'
+        })
+        prev.addEventListener('click', function(){
+            items[index].className = ''
+            if(index === 0){
+                index = items.length //数组长度
+            }
+            index--
+            items[index].className = 'active'
+        })
+        let timer = setInterval(function(){
+            console.log('计时器')
+            items[index].className = ''
+            if(index == items.length -1){
+                index = -1
+            }
+            index++
+            items[index].className = 'active'
+        },2000)
+        let pause = document.querySelector('.container')
+        pause.addEventListener('mouseover', function(){
+            console.log('鼠标移入暂停')
+            clearInterval(timer)
+            return
+        })
+        pause.addEventListener('mouseout', function(){
+            console.log('鼠标移出继续')     
+            timer = setInterval(function(){
+                items[index].className = ''
+            if(index == items.length -1){
+                index = -1
+            }
+            index++
+            items[index].className = 'active'   
+            },2000)  
+        })
+    </script>
+</body>
+</html>

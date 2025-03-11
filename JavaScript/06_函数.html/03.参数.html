@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            定义一个可以求任意两个数和的函数
+        */
+
+        /* 
+        参数
+            形式参数
+                在定义函数时，可以在函数名后面的括号中指定一些形式参数（形参）
+                在函数中定义形参，相当于在函数中声明了同名的变量，但是没有赋值，相当于let 变量名。
+            实际参数
+                在调用函数时，可以在函数的（）传递数量不等的实参
+                实参会赋值给对应的行参
+
+                1. 函数声明
+                    function 函数名(参数){
+                        语句...
+                    }
+                2. 函数表达式
+                    const 变量 = function(参数) {
+                        语句...
+                    }
+                3. 箭头函数
+                    (参数) => {
+                        语句...
+                    }
+            注意：
+                1.实参和形参数量相同，则互相对应获取
+                2.实参多于形参，多余的实参不会用
+                3.形参多于实参，多余的形参为undefined
+            参数的类型
+
+        */
+        function fn(a, b) {
+            console.log(a + b);
+        }
+        fn(1, 2);
+
+        function fn2(a, b) {
+            console.log('a=' , a , a.name);
+            console.log('b=' , b);
+        }
+        fn2(1, 2, 3, 4); //只拿前俩
+        fn2(1);//只拿一个,另一个为undefined
+        //什么类型都可以作为参数传递
+        fn2(1)
+        fn2(true, 'hello')
+        fn2({}, 'hello')
+        fn2({ name: '田新平' }, "hello")
+
+    </script>
+</body>
+
+</html>

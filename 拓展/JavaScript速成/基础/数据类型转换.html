@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    数据类型的转换
+        1.隐式类型转换
+            自动转换
+            
+        2.显式类型转换
+            通过parseInt()和parseFloat()进行转换
+        <script>
+            let xiaomeng = "180.5厘米";
+            xiaomeng=parseInt(xiaomeng); //将解析的字符串转换为整数
+            if(xiaomeng===180){ //对变量值进行判断
+                alert("小梦身高为："+xiaomeng+"cm");  //复合条件则输出解析后的身高
+            }
+            else{
+                alert("小梦身高不符合标准");
+            }
+        </script>
+</body>
+</html>

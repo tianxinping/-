@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .container{
+        width: 400px;
+        background-color: hsl(50, 100%, 50%);
+        border: 1px solid black;
+      }
+      .box{
+        margin: 10px;/*加margin会被父元素拿走，在父元素加border就不会*/
+        width: 70px;
+        height: 70px;
+        border: 1px solid black;
+        float: left;/*要不全浮动，要不都不浮动*/
+      }
+      /* 消除正常box4之前的浮动 只能是块元素，本身不能有浮动。*/
+      /* .box4{
+        clear: both;
+      }  */
+      /* 消除浮动塌陷，用after创建一个伪元素 */
+      .container::after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box1">盒子1</div>
+        <div class="box box2">盒子2</div>
+        <div class="box box3">盒子3</div>
+        <div class="box box4">盒子4</div>
+    </div>
+</body>
+</html>

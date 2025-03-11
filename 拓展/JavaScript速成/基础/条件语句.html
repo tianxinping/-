@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    (1) if语句
+        
+    <script>
+        单向判断语句
+            let num1=100;
+            let num2=200;
+            if(num1>num2){
+                alert('成立'); //成立弹出
+            }
+            alert('不成立');  //不成立弹出
+        双向判断语句
+            if(num1>num2){
+                alert('成立'); //成立弹出
+            }else{
+                alert('不成立');  //不成立弹出
+            }
+            alert('无论是否成立都弹出这句话')
+        多向判断语句
+            let car='房车';
+            if(car=='跑车')
+            {
+                alert('奖品：跑车');
+            }else if(car=='轿车')
+            {
+                alert('成立');
+            }else if(car=='奖品：轿车')
+            {
+                alert('成立');
+            }else if(car=='奖品：房车'){
+                alert('奖品：房车');
+            }
+    // (2) switch 语句
+    //         典型的多路分支语句，允许在找不到匹配项时执行默认操作
+    //             switch (表达式) {
+    //                 case 目标值1;
+    //                     执行语句1;
+    //                     break;
+    //                 case 目标值2;
+    //                     执行语句2;
+    //                     break;
+    //                 default:
+    //                     执行语句3;
+    //                     break;
+    //             }
+
+    </script>
+</body>
+</html>

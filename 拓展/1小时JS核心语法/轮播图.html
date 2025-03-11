@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, ini tial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            width: 500px;
+            height: 200px;
+            border: 1px solid #000;
+            position: relative;
+            margin-left: 50px;
+        }
+        ul li{
+            width: 500px;
+            position: absolute;
+            font-size: 30px;
+            text-align: center;
+            list-style: none;
+            line-height: 200px;
+            opacity: 0;
+        }
+        ul li:first-of-type{
+            background-color: violet;
+        }
+        ul li:nth-child(2){
+            background-color: red;
+        }
+        ul li:nth-child(3){
+            background-color: turquoise;
+        }
+        ul li:last-of-type{
+            background-color: blue;
+        }
+        button{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        ul button:first-of-type{
+            left: 10px;
+        }
+        ul button:last-of-type{
+            right: 10px;
+        }
+        ul li.active{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <button>&lt;</button>
+        <button>&gt;</button>
+    </ul>
+    <script>
+        var carousel = document.querySelector('ul');
+        var items = carousel.children;
+        console.log(items)
+        var nextBtn = document.querySelector('button:last-of-type');
+        var prevBtn = document.querySelector('button:first-of-type');
+
+        var index = 0
+        nextBtn.addEventListener('click', function (){
+            items[index].className = ''
+            if (index === items.length - 3) {
+                index = -1
+            }
+            index++
+            items[index].className = 'active'
+
+        })
+        prevBtn.addEventListener('click', function (){
+            items[index].className = ''
+            if (index === 0) {
+                index = items.length - 2
+            }
+            index--
+            items[index].className = 'active'
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            /* 位移两种语法，注意逗号和空格用法 */
+            transform: translateX(30px);
+            transform: translate(30px,40px);
+            transform: translate(30px) translate(40px);
+            /* 缩放 */
+            transform: scaleX(1.5);
+            transform: scale(1.5);
+            /* 旋转 */
+            transform: rotate(30deg);
+            transform: rotateZ(30deg);
+        }
+    </style>
+</head>
+<body>
+    2D
+        坐标轴在变化前的位置
+    位移
+        translate两个值分别代表水平和垂直。若写百分比代表自身的百分比
+        和相对定位相似，都不脱离文档流，不会影响其他元素
+        和相对定位不同的是相对定位百分比值参考的是父元素，定位参考自身
+        浏览器相对位移有优化，二选一优先位移
+        位移对行内元素无效
+        位移配合定位水平垂直居中
+            div {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);}
+    缩放
+        transform: scale(1.5);  可以用来缩小文字，不能用于行内元素。
+    旋转
+        transform: rotateZ(30deg);  
+        在网页中能看到的2D旋转是绕着Z轴旋转  
+        旋转之后坐标轴跟随变化    
+    扭曲--拉扯
+        transform: skewX(30deg)/skewY(30deg);  不用于行内元素
+    
+    多重变换
+        transform: translate(100px,100px) rotate(30deg);
+        坐标轴在变化前的位置
+        建议把旋转放在最后，因为会发生坐标轴变化,后续再移动旋转中心会很奇怪
+    变换原点---绕原点旋转
+        transform-origin: right bottom; 关键词
+        transform-origin: 50px 50px; 像素值
+        transform-origin: 25% 25%; 百分比，如果只写一个值，另一个值默认50%
+        修改原点对位移没有影响，对旋转和缩放有影响
+
+</body>
+</html>

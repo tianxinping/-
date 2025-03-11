@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        body {
+            height: 100vh;
+            background-image: url(./images/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .header {
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            padding-left: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-nav {
+            display: flex;
+            align-items: center;
+        }
+        .header-nav li {
+            margin-right: 20px;
+
+        }
+        .header-nav li a {
+            color: white;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .header-nav li a:last-child {
+            margin: 0;
+        }
+        .content {
+            display: flex;
+            /* 让导航区居中 */
+            height: calc(100vh - 70px);     
+        }
+        .content-nav {
+            width: 1000px;
+            height: 300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .content-nav div {
+            width: 180px;
+            height: 200px;
+            background-color: red;    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            transition: 0.2s linear;
+            cursor: pointer;
+        }
+        .content-nav div:hover {
+            box-shadow: 0 0 20px black;
+
+        }
+        .content-nav div span {
+            font-size: 20px;
+        }
+        .content-nav div:nth-child(1) {
+            background-color: #595CA8;
+        }
+        .content-nav div:nth-child(2) {
+            background-color: #FF9D2E;
+        }
+        .content-nav div:nth-child(3) {
+            background-color: #01A6DE;
+        }
+        .content-nav div:nth-child(4) {
+            background-color: #015E91;
+        }
+        .content-nav div:nth-child(5) {
+            background-color: #1DC128;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="#"><img src="./images/logo.png" alt=""></a>
+        <ul class="header-nav">
+            <li><a href="#">国内校区</a></li>
+            <li><a href="#">缅甸校区</a></li>
+            <li><a href="#">美国校区</a></li>
+            <li><a href="#">非洲校区</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-nav">
+            <div>
+                <img src="./images/item1.png" alt="">
+                <span>我的邮箱</span>
+            </div>
+            <div>
+                <img src="./images/item2.png" alt="">
+                <span>云服务</span>
+            </div>
+            <div>
+                <img src="./images/item3.png" alt="">
+                <span>手机课堂</span>
+            </div>
+            <div>
+                <img src="./images/item4.png" alt="">
+                <span>微信服务</span>
+            </div>
+            <div>
+                <img src="./images/item5.png" alt="">
+                <span>在线客服</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

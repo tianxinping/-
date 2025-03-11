@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body onload="showMessage()">
+    <button class="save">单击按钮</button>
+    
+</body>
+<script>
+    //页面加载完成事件
+    function showMessage(){
+        alert("页面加载完成");
+    }
+    // 鼠标点击事件
+    let btn=document.getElementsByClassName("save");
+    btn[0].onclick=function(){
+        alert("鼠标单击");
+    }
+    //使用onclick事件处理程序无法正确地绑定到按钮上。
+    //因为getElementsByClassName返回的是HTMLCollection对象而不是单独的元素，该对象类似于数组
+    //所以你需要使用btn[0].onclick来绑定事件。
+    //应该修改为btn[0].onclick = function(){alert("鼠标单击");}。
+    </script>
+</html>

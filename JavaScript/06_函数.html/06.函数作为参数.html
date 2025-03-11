@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+            在JS中，函数也是一个对象（一等函数）
+            别的对象能做到的事情，函数也可以
+        */
+        function fn(a) {
+            console.log("a =", a);
+        }
+
+        function fn2() {
+            console.log("我是fn2");
+        }
+
+        fn(fn2); // 1. 函数作为参数传递
+
+        fn(function (){
+            console.log("我是匿名函数"); //2.匿名函数的传递
+        })
+        
+        fn(()=>console.log("我是箭头函数")); //3.箭头函数的传递,箭头函数就比较适合作为参数传递了，比较简短？
+    </script>
+</body>
+
+</html>

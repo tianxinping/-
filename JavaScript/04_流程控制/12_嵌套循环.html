@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套循环</title>
+    <style>
+        span{
+            width: 100px;
+            display: inline-block;/* 使用display: inline-block;可以使元素既有行内元素的特性（如不独占一行），又可以设置宽度和高度 */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 
+            嵌套循环：在一个循环体内部再嵌套一个循环体
+                当外层循环执行一次时，内层循环会完整执行一次
+                    原理是外侧执行一次，内侧执行很多次
+            打印
+            *       j<1   i=0
+            **      j<2   i=1
+            ***     j<3   i=2
+            ****    j<4   i=3
+            *****   j<5   i=4
+        */
+        for (let i = 0; i < 5; i++) {//外层循环控制输出的行数
+            for (let j = 0; j < i + 1; j++) { //内层循环控制输出的列数
+                document.write('*')
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+        /* 
+            打印
+            *****   j<5   i=0
+            ****    j<4   i=1
+            ***     j<3   i=2
+            **      j<2   i=3
+            *       j<1   i=4
+        */
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5 - i; j++) {
+                document.write('*')
+            }
+            document.write("<br>")
+        }
+        document.write("<hr>")
+    
+        /* 
+        练习1
+            打印99乘法表
+            1x1=1
+            1x2=2 2x2=4
+            1x3=3 2x3=6 3x3=9
+            1x4=4 2x4=8 3x4=12 4x4=16
+            1x5=5 2x5=10 3x5=15 4x5=20 5x5=25
+        */
+        for (let a = 1; a <= 9; a++) { //外层循环控制图形高度
+            for (let b = 1; b <= a ; b++) { //内层循环控制图形宽度
+                document.write(`<span>${b} × ${a} = ${b * a} </span>`)
+            }
+            document.write('<br>')
+        }
+        //控制台输出99乘法表
+        for(let i = 1; i <= 9; i++){
+            let line = ''
+            for(let j = 1; j <= i; j++){
+                line += `${j}x${i}=${j*i} `
+            }
+            console.log(line);
+            // document.write(`${line}<br>`)
+            
+        }
+        /* 
+        练习2
+            打印100以内所有质数
+            质数：只能被1和自身整除的数
+        */
+        for (let i = 2; i < 100 ; i++){
+            //检查i是否是质数
+            //创建一个变量，用来标记i默认是质数
+            let flag = true
+            //获取i和j之间的所有数
+            for (let j=2; j<i; j++){
+                //判断i能不能被j整除
+                if(i % j === 0){
+                    //进入判断说明i不是质数，修改flag为false
+                    flag = false
+                }
+            }
+            //判断结果
+            if(flag){
+                document.write(`${i}是质数<br>`)
+            }
+        }
+    </script>
+</body>
+
+</html>

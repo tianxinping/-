@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 只有在打印机或打印预览才应用的样式 */
+        @media print {
+            h1 {
+                background: transparent;
+            }
+        }
+        /* 只有在屏幕上才应用的样式，除此之外还有个属性叫all，一直应用 */
+        @media screen {
+            /* 样式 */
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/媒体查询.png" alt="">
+    <p>
+        媒体查询运算符 
+            值          含义
+            and         并且
+            , 或 or     或
+            not         否定
+            only        肯定
+        @media (main-width: 700px) and (max-width: 800px)
+        @media screen and (main-width: 700px) or (max-width: 800px)
+    </p>
+    <p>媒体查询常用阈值
+        <img src="./images/媒体查询阈值.png" alt="">
+        使用方法1
+            可以为每一个阈值创建包含媒体查询的css样式,直接引入即可
+            方法2
+            为每一个阈值分别创建正常的css样式,不包含媒体查询，在引入时写判断
+            <link rel="stylesheet" media="screen and (min-width:1200px)" href="./css">
+    </p>
+</body>
+</html>

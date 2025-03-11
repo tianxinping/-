@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            对象字面量
+                可以直接用{}来创建一个对象
+                使用{}创建的对象，可以直接向对象中添加属性
+                语法：{
+                    属性名:属性值,
+                    属性名:属性值,
+                    ...
+                    }
+        */
+
+        let mySymbol = Symbol()
+        let obj = {
+            name: '田新平',
+            age: 22,
+            ['gender']: '男',//性别
+            [mySymbol]: '特殊的属性',
+            //hello对象
+            hello:{
+                a:1,
+                b:2
+            }
+            }
+        console.log(obj);
+            
+
+    </script>
+</body>
+</html>

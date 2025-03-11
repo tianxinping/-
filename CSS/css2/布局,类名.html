@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        版心: 固定网页宽度且水平居中的盒子，显示网页内容
+        版心宽度: 一般为960-1200之间
+            可以是多个版心,取名container
+        拓展：响应式布局/媒体查询/自适应
+
+        类名
+            顶部导航栏          topbar
+            页头                header , page-header
+            导航                nav , navigator , navbar
+            搜索框              search , search-box
+            横幅,广告,宣传图    banner
+            主要内容            ontent , main
+            侧边栏              aside , sidebar
+            页脚                footer , page-footer
+        
+        重置默认样式
+            方案一：全局选择器
+            *{
+                margin: 0;
+                paddjing: 0;
+            }  缺点，通配选择器会选择所有元素，有些元素需要特定样式
+            方案二: reset.css  较为主流
+                在外部link一个编写好的reset文件。
+                一张白纸
+            方案三: Normalize.css
+                保留有价值的样式,而不是像reset.css全部去掉,比较温和
+                重新规划了统一的默认样式
+
+    </pre>
+
+</body>
+
+</html>

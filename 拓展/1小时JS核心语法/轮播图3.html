@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .container{
+            width: 700px;
+            height: 400px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+        .carousel{
+            list-style: none;
+            position: relative;
+        }
+        li{
+            position: absolute;;
+            /* 动画过渡 */
+            transition: opacity 1s;
+            opacity: 0;
+        }
+        .active{
+            opacity: 1;
+        }
+        img{
+            width: 700px;
+        }
+        button{
+            position: absolute;
+            height: 50px;
+            width: 20px;
+            opacity: 0.7;
+        }
+        button:first-of-type{
+            margin-left: 15px;
+            left: 0;
+            top: calc(50% - 50px);
+        }
+        button:last-of-type{
+            margin-right: 15px;
+            right: 0;
+            top: calc(50% - 50px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="carousel">
+            <li class="active"><img src="https://img.alicdn.com/imgextra/i2/O1CN01jH9w4F1sEDtCgpH3r_!!6000000005734-0-tps-846-472.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/imgextra/i4/O1CN01LHWdyp1yvAidcNMDR_!!6000000006640-0-tps-846-472.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/imgextra/i4/O1CN01cmWoxh1S6H07yrmcM_!!6000000002197-0-tps-846-472.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/imgextra/i4/O1CN01GOlEEW1zidUliI8O7_!!6000000006748-2-tps-846-472.png" alt=""></li>
+        </ul> 
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+    </div>
+    <script>
+        let carousel = document.querySelector('.carousel');
+        let items = carousel.children;
+        let prev = document.querySelector('.prev')
+        let next = document.querySelector('.next')
+        let pause = document.querySelector('.container')
+
+        let index = 0
+        next.addEventListener('click', function(){
+            items[index].className = ''
+            if(index == items.length - 1)
+                index = -1;
+            index++
+            items[index].className = 'active'
+        })
+    </script>
+</body>
+</html>

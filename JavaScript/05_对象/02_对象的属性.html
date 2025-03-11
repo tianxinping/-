@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = Object()
+        /* 
+            一、属性名
+                1.通常属性名是一个字符串，所以可以是任何值，没有特殊要求
+                  但如果属性名太特殊了，要用[' ']包裹起来。
+
+                2.拓展（不常规）
+                  也可以用符号（Symbol）作为属性名
+                    获取这种属性也必须使用symbol
+                  使用symbol的属性通常是不希望被访问的
+
+                3.使用[]去操作属性时，可以使用变量
+            
+            二、属性值
+                可以是任意类型的始值，也可以是对象
+            三、
+                使用typeof检查对象时，返回的是object
+            四、
+                用in运算符检查对象中是否有某个属性时，返回的是true或false
+                    语法 属性名 in 对象名
+        */
+        obj.name = '田新平'
+        // 1.
+        // obj.jf = 22 //不建议
+        // obj['sd*$$*@1212'] = '123'//不建议
+
+        /* 2.// 使用symbol作为属性名
+        let mySymbol = Symbol()
+        let newSymbol = Symbol()
+        obj[mySymbol] = '通过symbol添加的属性'
+        console.log(obj[mySymbol]); */
+
+        // 3.
+        // let str = 'address'
+        // obj[str] = '北京市朝阳区' //等价于 obj['address'] = '北京市朝阳区'，这里的str是变量
+        // obj.str = '啊哈' //用.的形式添加属性时，不能使用变量
+        // console.log(obj.address);
+        // console.log(obj[str]);
+        // console.log(obj['address']);
+        
+        // 二、
+        // obj.a = 123
+        // obj.b = '123'
+        // obj.c = true
+        // obj.d = 123n
+        // obj.f = Object()
+        // obj.f.name = '田新平'
+        // console.log(obj.f.name);
+    </script>
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 练习1
+        求100以内所有3的倍速（求他们个数和） */
+        
+        let count = 0 //计数器
+        let result = 0 // 累加 
+        // for (let i = 0; i <= 100; i++) {
+        //     //获取3的倍数
+        //     if (i % 3 === 0) {
+        //         console.log(i);
+        //         count++
+        //         result += i
+        //     }
+        // }
+        // console.log(`一共有${count}个3的倍数`);
+        // console.log(`这些3的倍数的和为${result}`);
+
+        for(let i = 3 ; i <= 100 ; i += 3) {
+            count++
+            result += i
+        }
+        console.log(`一共有${count}个3的倍数,总和为${result}`);
+        
+    </script>
+</body>
+
+</html>

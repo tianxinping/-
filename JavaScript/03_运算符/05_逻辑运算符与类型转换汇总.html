@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逻辑运算符</title>
+</head>
+
+<body>
+    <pre>
+        ！逻辑非
+            ！可以对一个值进行非运算
+            它会对一个值进行布尔值转换，然后取反
+            可以用来将一个其他类型的值，转换为布尔值
+            可以用来取一个数的相反数
+    
+            类型转换
+                转换为字符串
+                    显式转换 String()
+                    隐式转换 + ''
+                转换为数值
+                    显式转换 Number()
+                    隐式转换 +   （一元运算符）
+                转换为布尔值
+                    显式转换 Boolean()
+                    隐式转换 !!
+    </pre>
+    <script>
+        let a = false
+        a = !a
+        console.log(a);
+
+        let b = '123'
+        b = !!b //转为布尔值
+        // console.log(typeof b, b);
+    </script>
+
+
+    <pre>
+        /* 
+            && 逻辑与
+                当左右都为true返回true，否则false
+                第一个值是false不用看结果，直接false，短路第二个值不执行。
+                与运算是找false的，找到false直接返回，没有才返回true
+                如果与非布尔值，先转为布尔值，再运算
+                    最终返回原值
+                        第一个值false，返回第一个值
+                        第一个值true，返回第二个值
+       */
+    </pre>
+    <script>
+        let result = true && true//true
+        result = false && true//false
+        result = false && false//false
+
+        result = 1 && 2 //2
+        result = 1 && 0 //0
+        result = 0 && 123//0
+        // console.log(result);
+    </script>
+    
+    <pre>
+        /* 
+            || 逻辑或
+                当左右有true时，返回true，否则返回false
+                有true就true。没true就false
+                第一个值是true不用看结果，直接true，短路第二个值不执行。
+                如果或非布尔值，先转为布尔值，再运算
+                    最终返回原值
+                        第一个值true，返回第一个值
+                        第一个值false，返回第二个值
+       */
+    </pre>
+    <script>
+        result = true || true//true
+        result = false || true//true
+        result = false || false//true
+        
+        true || console.log('hello')//第一个值为true，不执行第二个
+        result = 1 || 2 //1
+        result = 'hello' || NaN //hello
+        result = 0 || NaN //NaN
+        console.log(result);
+    </script>
+
+</body>
+
+</html>

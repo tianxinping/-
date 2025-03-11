@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    3D空间与景深
+        transform-style: preserve-3d; 父元素开启3D空间
+        perspective: 500px;  父元素开启景深---有了透视效果-近大远小, 景深指的是观察者与z=0平面的距离。
+    透视点---观察者位置
+        perspective-origin: 高度一半 宽度一半; ---默认，默认的透视点在元素中心
+    位移
+        先给元素添加转换属性transform
+        transform: translateZ(100px); 大于500px就看不见了, 可以写负值，不能写百分比。
+        transform: translate3d(100px,100px,100px); 这种写法必须写三个值. 分别是X、Y、Z
+    旋转
+        3D旋转在2D旋转基础上让元素沿x轴和y轴旋转
+        先给元素添加转换属性transform
+        transform: rotateX(315deg);
+        transform: rotateY(-15deg);
+        transform: rotate3d(1,1,1,30deg);---前三个参数表示x,y,z,第四个参数表示旋转角度，缺一不可。
+    3D缩放
+        z轴缩放需要旋转才能看出来，基本不用。
+    背部可见性
+        backface-visibility: hidden;  不显示背部
+</body>
+</html>

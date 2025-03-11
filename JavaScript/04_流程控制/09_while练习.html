@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            假设银行存款年利率为5%，1000元多少年变成5000块
+        */
+        let money = 1000;
+        let year = 0;
+        while (money < 5000){
+            money *= 1.05;
+            year++;
+            console.log(`需要存${year}年，最终的钱数为${money}元`);
+        }
+    </script>
+</body>
+</html>

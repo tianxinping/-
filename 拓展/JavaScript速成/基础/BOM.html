@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    浏览器对象模型
+        用来获取或设置浏览器的属性，行为。主要包括
+        window（窗口）、navigator（浏览器信息）、screen（屏幕信息）、history（历史记录）、location（地址栏）、document（文档）
+        window为核心
+        <script>
+            // 1.window对象基本使用方法
+                //输出文档显示区域的宽度和高度
+                    let width = window.innerWidth; // 获取浏览器窗口的宽度
+                    let height = window.innerHeight;  // 获取浏览器窗口的高度
+                    alert(width+"*"+height); // 浏览器弹窗
+                //打开和关闭窗口
+                    let newWin = window.open("https://www.baidu.com","_blank"); // 打开百度
+                    newWin.close();  //关闭百度
+                    //window.close();  关闭当前窗口
+                //setTimeout()定时器   
+                    function show(){  //定义show函数
+                        alert("温馨提示，已经过去5秒了")
+                    }
+                    setTimeout(show,5000); // 5秒后执行show方法
+                    let t1 = setTimeout(show,10000); // 10秒后执行show方法
+                    clearTimeout(t1); // 清除定时器
+
+                //setInterval()定时器
+                    function show1(){
+                        alert("温馨提示，已经过去3秒了")
+                    }
+                    let t2 = setInterval(show1,3000); // 3秒后执行show方法,一直循环直到浏览器关闭
+                    clearInterval(t2); // 清除定时器
+            //2.screen对象基本使用
+                //获取计算机的屏幕信息，如分辨率，颜色位数等
+                    let wid = screen.width; // 获取屏幕的宽度
+                    let hei = screen.height; // 获取屏幕的高度
+                    let colorDepth = screen.colorDepth; // 获取屏幕的色深
+                    let availWidth = screen.availWidth; // 获取屏幕可用宽度
+                    let availHeight = screen.availHeight; // 获取屏幕可用高度
+                    if(width<800 || height<600){
+                        alert("您的屏幕分辨率不足800x600，不适合本页面");
+                    }
+            //3.location对象基本使用
+                    用于获取和设置当前网页的url的地址
+            //4.history对象基本使用
+                    用于操作浏览器的会话历史,控制前进与后退
+            
+        </script>
+</body>
+</html>

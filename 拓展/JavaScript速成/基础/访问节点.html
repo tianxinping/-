@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    方法 说明
+    getElementById() 获取拥有指定id的节点
+    getElementsByName() 获取带有指定name属性名称的节点
+    getElementsByTagName() 获取带有指定标签名的节点
+    getElementsByClassName() 获取指定class的节点(不支持IE6~IE8浏览器)
+
+    querySelector() 获取指定选择器的节点
+    querySelectorAll() 获取指定选择器的节点查找多个元素
+
+    document.方法
+    let 变量=document.querySelector("节点名");
+
+    querySelector有哪些用法？ChatGPT
+
+        querySelector是JavaScript中常用的DOM操作方法，用于通过选择器来查找匹配的元素。它有以下几种用法：
+
+        通过标签名查找元素：可以传入一个  标签名  作为参数，querySelector会返回页面中第一个匹配该标签名的元素。
+        const element = document.querySelector('div');
+
+        通过类名查找元素：可以传入一个 类名  作为参数，querySelector会返回页面中第一个匹配该类名的元素。
+        const element = document.querySelector('.classname');
+
+        通过id查找元素：可以传入一个  id  作为参数，querySelector会返回页面中匹配该id的元素。
+        const element = document.querySelector('#myId');
+
+        通过选择器组合查找元素：可以通过  多个选择器 组合来查找元素，选择器之间用逗号分隔。
+        const element = document.querySelector('div, .classname');
+
+        通过属性选择器查找元素：可以传入一个带有属性和值的选择器来查找元素。
+        const element = document.querySelector('[name="myName"]');
+        
+        需要注意的是，querySelector只返回第一个匹配的元素，如果要查找多个元素，可以使用querySelectorAll方法。使用querySelector方法时，如果找不到匹配的元素，将返回null。
+
+
+
+</body>
+
+</html>

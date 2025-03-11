@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            赋值运算符用来将一个值赋值给一个变量
+                =  将右边的值赋给左边的变量
+                += 将左边的变量加上右边的值，再赋值给左边的变量
+                    a += n 等价于 a = a + n
+                -= 将左边的变量减去右边的值，再赋值给左边的变量
+                *= 将左边的变量乘以右边的值，再赋值给左边的变量
+                /= 将左边的变量除以右边的值，再赋值给左边的变量
+                %= 将左边的变量取模右边的值，再赋值给左边的变量
+                **= 将左边的变量取幂右边的值，再赋值给左边的变量
+                ??= 空赋值
+                    如果左边的变量是null或者undefined，则将右边的值赋给左边的变量
+         */
+        let b = 5 //让b 等于 5
+        a = b //a是变量，b是值，将b的值赋给a
+        console.log(a);
+        
+        a = 66
+        // a = a + 11 
+        a += 11//将a的值加11，再赋值给a,和 a = a + 11一样
+
+        a = null
+        a ??= 101//如果a的值是null或者undefined，则将101赋值给a
+
+        
+        console.log(a);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

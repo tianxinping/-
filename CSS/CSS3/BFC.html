@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    面试高频
+    BFC 是 Block Formatting Context (块级格式上下文) ， 可以理解为元素的一个特异功能，开启后可以解决
+        开启后可以解决margin塌陷问题
+        开启后自己不会被其他浮动元素覆盖
+        开启后就算其子元素浮动，自身元素高度也不会塌陷
+    开启方式有
+        html根元素--------------------------默认开启
+        浮动元素----------------------------float: left;
+        绝对定位，相对定位-------------------position: absolute;
+        行内块元素--------------------------display: inline-block;
+        表格单元格--------------------------display: table;
+        voerflow 的值不为 visible的块元素---overflow: auto;
+        伸缩项目----------------------------display: flex;要给其父亲
+        多列容器----------------------------column-count: 1;
+        column-span 为 all 的元素（即使该元素没有包裹在多列容器中）
+        display的值,设置为flow-root--------display: flow-root;
+    只记前四五个就可以
+    一般有副作用,不用特意使用,只有display: flow-root;副作用相对最小
+</body>
+</html>

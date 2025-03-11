@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            break和continue
+                break
+                    1.用来终止switch或者循环语句
+                    2.break执行后，当前的switch或者循环语句立即结束
+                    3.break会终止离他最近的循环
+                continue
+                    1.countinue用来跳过当前循环中的某些代码，直接进入下一次循环
+                    2.会终止离他最近的循环
+        */
+        /* for (let i = 0; i < 10; i++) {
+            if (i === 5) {
+                break;
+            }
+            console.log(i);
+        } */
+        /* for (let i=0; i<5; i++){
+         console.log(i);
+         for (let j=0; j<5; j++){
+             if (j === 3) {
+                 break;//3.break会终止离他最近的循环，所以只会终止内层循环
+             }
+             console.log('内层循环',j);
+         } 
+        }*/
+
+        /* for (let i = 0; i< 10; i++){
+         if (i === 5){
+             continue;//.continue会跳过当前循环中的某些代码，直接进入下一次循环
+         }
+         console.log(i);
+        } */
+
+        /* 练习 */
+        /* 
+            代码优化
+                优化前
+                    1.10000以内：232ms
+                    2.100000以内：21915ms
+                第一次优化(break)
+                    1.10000以内：35ms
+                    2.100000以内：2107ms
+                    3.1000000以内：160714
+                第二次优化(<=i的开方)
+                    1.10000以内：1.9ms
+                    2.100000以内：14ms
+                    3.1000000以内：297ms
+                
+        */
+        console.time('质数练习')//查看代码运行时间的计时器
+        for (let i = 2; i < 1000000; i++) {
+            let flag = true
+            // for (let j = 2; j < i; j++) {
+            for (let j = 2; j <= i ** .5 ; j++) { //<=i的开方，第二次优化
+                if (i % j === 0) {
+                    flag = false
+                    //进入判断说明i不是质数，结束内层循环的for，第一次优化
+                    break
+                }
+            }
+            if (flag) {
+                // document.write(`${i}是质数<br>`)//这个很影响代码运行时间
+            }
+        }
+        //停止计时器
+        console.timeEnd('质数练习')
+    </script>
+</body>
+
+</html>

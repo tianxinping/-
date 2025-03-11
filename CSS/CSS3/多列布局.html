@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            /* 直接指定列数 */
+            /* column-count: 5; */
+            /* 指定每一列宽度，会自动计算列数 */
+            /* column-width: 220px; */
+            /* 复合属性，能同时指定列宽和列数，不推荐 */
+            columns: 3;
+            /* 调整列间距 */
+            /* column-gap: 20px; */
+            /* 每一列边框样式，符合属性 */
+            column-rule: 2px dashed red;
+        }
+        h1 {
+            /* 为特定的元素实现横跨一整行 */
+            column-span: all;
+            text-align: center;
+            font-size: 50px;
+        }
+        img {
+            /* 避免图片过大 */
+            width: 100%;
+        }
+        pre {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <h1>---多列布局的实现---</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <img src="./images/img8.jpg" alt="">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad quo laborum sapiente sed, debitis ipsum magni recusandae doloribus quibusdam soluta incidunt veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.veniam sunt quos deserunt, praesentium, est error aperiam perspiciatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla natus nam animi alias quos repellat explicabo. Natus, eum recusandae!</p>
+        <pre>
+            .outer {
+                /* 直接指定列数 */
+                /* column-count: 5; */
+                /* 指定每一列宽度，会自动计算列数 */
+                /* column-width: 220px; */
+                /* 复合属性，能同时指定列宽和列数，不推荐 */
+                columns: 4;
+                /* 调整列间距 */
+                /* column-gap: 20px; */
+                /* 每一列边框样式，符合属性 */
+                column-rule: 2px dashed red;
+            }
+            h1 {
+                /* 为特定的元素实现横跨一整行 */
+                column-span: all;
+                text-align: center;
+                font-size: 50px;
+            }
+            img {
+                /* 避免图片过大 */
+                width: 100%;
+            }
+        </pre>
+    </div>
+</body>
+</html>

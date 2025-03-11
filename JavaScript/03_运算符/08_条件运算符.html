@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <h3>条件运算符</h3>
+        <h4>语法</h4>
+        <p>条件运算符也叫三元运算符</p>
+        <p>语法：条件表达式 ? 表达式1 : 表达式2</p>
+        <p>执行流程：</p>
+        <p>1. 先计算条件表达式的值</p>
+        <p>2. 如果条件表达式的值为真，则执行表达式1，并返回其结果</p>
+    </pre>
+    <script>
+        // true ? alert(1) : alert(2)
+        let a = 10
+        let b = 20
+        // a < b ? alert('b大') : alert('a大')
+        let max = a > b ? a : b
+        alert(max)
+    </script>
+</body>
+</html>

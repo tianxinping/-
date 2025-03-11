@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        body {
+            height: 100vh;
+            background-image: url(./images/bg.jpg);
+            background-size: cover;
+        }
+        .header {
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } 
+        .header a {
+            margin: 0 20px;
+        }
+        .header ul {
+            display: flex;
+            align-items: center;
+        }
+        .header ul li {
+            color: white;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-right: 20px;
+        }
+        .content {
+            display: flex;
+            /* 让导航区居中 */
+            height: calc(100vh - 70px);     
+        }
+        .content-nav {
+            width: 1000px;
+            height: 300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .content-nav ul {
+            width: 180px;
+            height: 200px;
+            background-color: red;    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            transition: 0.2s linear;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#"><img src="./images/logo.png" alt=""></a>
+        <ul>
+            <li>国内校区</li>
+            <li>缅甸校区</li>
+            <li>美国校区</li>
+            <li>非洲校区</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-nav">
+            <ul>
+                <li>
+                    <img src="./images/item1.png" alt="">
+                    <span>我的邮箱</span>
+                </li>
+                <li>
+                    <img src="./images/item2.png" alt="">
+                    <span>我的邮箱</span>
+                </li>
+                <li>
+                    <img src="./images/item3.png" alt="">
+                    <span>我的邮箱</span>
+                </li>
+                <li>
+                    <img src="./images/item4.png" alt="">
+                    <span>我的邮箱</span>
+                </li>
+                <li>
+                    <img src="./images/item5.png" alt="">
+                    <span>我的邮箱</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

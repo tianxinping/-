@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "情书字体";
+            src: url('./font1/方正手迹.ttf');
+        }
+
+        div p:first-child {
+            font-family: "情书字体";
+        }
+
+        @font-face {
+            font-family: 'webfont';
+            font-display: swap;
+            src: url('./font2/webfont.eot');
+            /* IE9 */
+            src: url('./font2/webfont.eot?#iefix') format('embedded-opentype'),
+                /* IE6-IE8 */
+                url('./font2/webfont.woff2') format('woff2'),
+                url('./font2/webfont.woff') format('woff'),
+                /* chrome、firefox */
+                url('./font2/webfont.ttf') format('truetype'),
+                /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+                url('./font2/webfont.svg#webfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+
+        div p:nth-child(2),div :nth-child(3){
+            font-size: 100px;
+            font-family: "webfont";
+        }
+        div p:last-child {font-size: 30px;}
+
+    </style>
+</head>
+
+<body>
+    <!-- web字体 -->
+    <div>
+        <p>落红不是无情物，化作春泥更护花</p>
+        <p>落红不是无情物，化作春泥更护花</p>
+        <span>www.iconfont.cn/webfont</span>
+        <p>本地文件引入文件太大，推荐iconfont字体引入</p>
+    </div>
+
+
+</body>
+
+</html>

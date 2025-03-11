@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        练习1：
+        编写一个程序，让用户输入整数。然后显示这个数是奇数还是偶数
+        */
+        //let a = parseInt(prompt("请输入一个整数："));
+        let a = +prompt("请输入一个整数：");
+        // 验证输入是否合法，只有数字才检查奇偶
+        // 不能用==或===来检查一个值是否是NaN，因为NaN与任何值不相等包括他自己
+        // 可以使用isNaN(a)来检查一个值是否是NaN
+
+        if (isNaN(a) || a % 1 !== 0) {     //是整数返回false进行下面的判断,或运算
+            alert("您输入的不是数字类型")
+        } else if(a % 1 == 0){ //返回true表示为整数
+           
+            if (a % 2 == 0) {
+                alert(`${a} 是偶数`)
+            } else {
+                alert(`${a} 是奇数`)
+            }
+        }else{
+            alert('您输入的不是整数')
+        }
+
+    </script>
+</body>
+
+</html>

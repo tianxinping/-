@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式处理</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 10px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .changeStyle{
+            width: 80px;
+            height: 80px;
+            background-color: tomato;
+        }
+        .bold-text{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        #carousel{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            text-align: center;
+            position: relative;
+        }
+        #carousel li{
+            width: 100px;
+            line-height: 100px;
+            position: absolute;
+            text-align: center;
+            text-shadow: 0 0 5px #000;
+            font-size: 20px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        #carousel li:nth-child(1){
+            background-color: aqua;
+        }
+        #carousel li:nth-child(2){
+            background-color: blueviolet;
+        }
+        #carousel li:nth-child(3){
+            background-color: brown;
+        }
+        #carousel li:nth-child(4){
+            background-color: chartreuse;
+        }
+        #carousel li.active{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="block">默认内容</div>
+    <!-- 轮播图 -->
+    <div class="container">
+    <ul id="carousel">
+        <li class="active">震山的虎</li>
+        <li>善战的狼</li>
+        <li>敏捷的豹</li>
+        <li>远见的鹰</li>
+    </ul>
+    <button id="prev">上一张</button>
+    <button id="next">下一张</button></div>
+    <script>
+        //2.样式处理
+            // var block = document.getElementById('block');
+            var block = document.querySelector('#block');
+            // block.style.width = '80px';
+            // block.style.height = '80px';
+            // block.style.backgroundColor = 'red'; 此方式不如css，有性能损耗
+            block.className = 'changeStyle'; // 此方式可以动态添加class，而style不行
+        // 3.文本处理
+            // block.textContent = '新的内容<span class="bold-text">加粗的文本</span>';用这种方式会把代码原封不动显示出来，而innerHTML会进行理解
+            block.innerHTML = '新的内容<span class="bold-text">加粗的文本</span>';//这种方式更加灵活，但会加大性能损耗，如果单纯文本可以用textContent
+        // 4.事件处理
+            //block.onclick = function(){
+            //    alert('你点击了div');
+            //} 这个方法会有覆盖问题
+
+            // 推荐使用addEventListener方法,不会覆盖
+            block.addEventListener('click',function(){
+                alert('suprise')
+            })
+            block.addEventListener('click',function(){
+                alert('suprise again!')
+            })
+        //轮播图
+        var carousel = document.querySelector('#carousel')
+        var items = carousel.children
+        var preBtn = document.querySelector('#prev')
+        var nextBtn = document.querySelector('#next')
+
+        var index = 0
+        nextBtn.addEventListener('click', function(){
+            items[index].className = ''
+            if(index === items.length - 1){
+                index = -1
+            }
+            index++
+            items[index].className = 'active'
+        })
+        preBtn.addEventListener('click', function(){
+            items[index].className = ''
+            if(index === 0){
+                index = items.length
+            }
+            index--
+            items[index].className = 'active'
+        })
+        //5.定时器
+        //延迟定时器
+        //setTimeout(function(){
+        //    console.log('suprise')
+        //}, 2000)
+        //间隔定时器
+        //setInterval(function(){
+        //    console.log('每隔两秒输出一次')
+        //},2000)
+        //两者结合
+        //为轮播图添加自动播放
+        var timer = setInterval(function(){
+            console.log('开始循环')
+            items[index].className = ''
+            if(index === items.length - 1){
+                index = -1
+            }
+            index++
+            items[index].className = 'active'
+        },2000)
+        //为轮播图添加鼠标移入停止
+        var pause = document.querySelector('.container')
+        pause.addEventListener('mouseover', function(){
+            clearInterval(timer)
+            console.log('鼠标移入')
+        })
+        //为轮播图添加鼠标移除继续
+        pause.addEventListener('mouseout', function(){
+            timer = setInterval(function(){
+                console.log('持续循环')
+                items[index].className = ''
+                if(index === items.length - 1){
+                    index = -1
+                }
+                index++
+                items[index].className = 'active'
+            },2000)
+            console.log('鼠标移除')
+        })
+    </script>
+</body>
+</html>

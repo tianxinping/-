@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- DOM(文档对象模型) BOM(浏览器对象模型) -->
+    <div id="block">默认内容</div>
+    <div class="container">
+        <p>默认内容</p>
+        <p class="text">默认内容</p>
+        <p class="text">默认内容</p>
+        <p class="text">默认内容</p>
+        <p class="text">默认内容</p>
+    </div>
+    <script>
+        // 1.元素获取
+            // 获取id标签
+            var block = document.getElementById('block')
+            console.log(block)
+            block.innerHTML = '修改文本内容'
+            // 获取p标签
+            // var contents = document.getElementsByTagName('p')
+            var contents = document.querySelectorAll('p') // 获取所有p标签,和上行一样效果，也可以选择器书写，
+                //如：document.querySelectorAll('.text')或者内容被包裹 document.querySelectorAll('#container p')
+            console.log(contents)// f12调试下显示为伪数组，可以遍历或索引
+            contents[0].textContent = '修改第一个p标签的文本内容'
+            contents[1].textContent = '修改第二个p标签的文本内容'
+                var textArr = [ // 创建一个数组内容替换p标签默认文本
+                    '善战的狼',
+                    '震山的虎',
+                    '花粥的墙',
+                    '许嵩的灰色头像',
+                    '周杰伦的青花瓷']
+                //遍历
+                for (var i = 0; i < contents.length; i++) {
+                    contents[i].textContent = '修改第' + (i + 1) + '个p标签的文本内容'// 修改第i个p标签的文本内容
+                    contents[i].textContent = textArr[i] // 数组内容
+                }
+            
+                // 获取匹配到的多个元素，获取多个元素
+                var contents = document.querySelectorAll('p')
+                // 获取匹配到的第一个元素，获取单个元素
+                var secondItem = document.querySelector('.text')
+                secondItem.textContent = '替罪的羊'
+                // 修改元素前后的同级元素
+                secondItem.previousElementSibling.textContent = '修改前者'
+                secondItem.nextElementSibling.textContent = '修改后者'
+
+                // 获取父元素
+                var container = secondItem.parentNode
+                console.log(container)
+                //container.textContent = '新内容'
+                // 获取子元素
+                var items = container.children
+                console.log(items)
+        
+    </script>
+</body>
+</html>

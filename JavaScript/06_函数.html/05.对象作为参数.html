@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(a) {
+            // console.log('a=', a);
+            
+            // 1.
+            // a = {}         // 修改变量时，只影响当前的变量
+            // 2.
+            a.name = '猪八戒' // 修改对象时，如果有其他变量指向该对象则所有指向对象的变量都会收到影响
+        }
+
+        // 对象可以作为参数传递
+        let obj = {name:'孙悟空'}
+
+        // 传递实参时，传递的不是变量本身，而是变量中存储的值
+        // fn(obj)
+
+        /* 2.函数的默认值 
+        这两种需要根据实际情况来选择，一种外部调用是指向同一个，在函数内部修改会影响后续调用；一种是
+        在函数体里传，就是写死，每次调用函数都会创建新的对象，在函数体修改不对后续调用有影响 */
+        let obj2 = {name:'沙僧'}   // 但是在外部创建的，就会每次调用函数都是同一个对象，在函数内部对对象的修改会让指向该对象的变量收到影响（修改）
+        
+        // function fn2(a = {name:'沙僧'}) {   // 沙僧 唐僧 。默认值写死的变量函数的每次调用都会新的创建对象
+        function fn2(a = obj2) {              // 唐僧 唐僧
+            console.log("a=" , a);
+            a.name = "唐僧"
+            console.log("a=" , a);
+        }
+        fn2() // 沙僧 唐僧
+        fn2() // 沙僧 唐僧 or 唐僧 唐僧
+    </script>
+</body>
+</html>

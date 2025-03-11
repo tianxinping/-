@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .logo {
+            width: 100%;
+        }
+
+        .logo1,
+        .logo2,
+        .logo3 {
+            background-color: hsl(100, 3%, 58%);
+            height: 50px;
+            width: 400px;
+            margin: 10px;
+            float: left;
+            line-height: 50px;
+        }
+
+        .logo::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .menu {
+            width: 98%;
+            height: 30px;
+            margin: 10px;
+            background-color: hsl(100, 3%, 58%);
+        }
+
+        .project {
+            width: 940px;
+            border: 1px solid black;
+            float: left;
+        }
+
+        .project::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .project1,
+        .project2 {
+            width: 455px;
+            height: 200px;
+            background-color: aquamarine;
+            float: left;
+            margin: 5px;
+        }
+
+        .project3,
+        .project4,
+        .project5,
+        .project6 {
+            width: 220px;
+            height: 200px;
+            margin: 5px;
+            background-color: aquamarine;
+            float: left;
+        }
+
+        .nav {
+            width: 310px;
+            border: 1px solid black;
+            float: right;
+        }
+        .nav::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .pr::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .project7,
+        .project8,
+        .project9 {
+            width: 97%;
+            height: 130px;
+            margin: 5px;
+            background-color: aquamarine;
+            float: right;
+        }
+        .fotter{
+            width: 98%;
+            height: 30px;
+            margin: 10px;
+            background-color: hsl(100, 3%, 58%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <div class="logo1">logo</div>
+        <div class="logo2">banner1</div>
+        <div class="logo3">banner2</div>
+    </div>
+    <div class="menu">菜单</div>
+    <div class="pr">
+    <div class="project">
+        <div class="pro project1">项目一</div>
+        <div class="pro project2">项目二</div>
+        <div class="pro project3">项目三</div>
+        <div class="pro project4">项目四</div>
+        <div class="pro project5">项目五</div>
+        <div class="pro project6">项目六</div>
+    </div>
+    <div class="nav">
+        <div class="pro project7">项目七</div>
+        <div class="pro project8">项目八</div>
+        <div class="pro project9">项目九</div>
+    </div></div>
+    <div class="fotter">页脚</div>
+</body>
+
+</html>

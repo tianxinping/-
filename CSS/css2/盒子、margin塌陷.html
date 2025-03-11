@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 300px;
+				height: 300px;
+				background-color: aqua;
+				padding: 50px;/* 内边距，一般看不出来，在字体靠左上角 */
+				border: 5px solid black;/* 边框，比较明显 */
+				margin: 50px 50px;/*外边距，可以有两个值或者分开写*/
+				/* margin-top: auto;
+				margin-left: auto; 左右居中-只对块有效*/
+				/* 
+					解决margin塌陷，在子元素使用 margin-top: auto;/margin-left: auto;  会自动给父元素 
+					overflow: hidden;
+					加border可以解决
+					开启BFC可以解决
+					*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>这是盒子</div>
+		<img src="./img/盒子.png" style="position: absolute; right: 6%;">
+		<pre><h2>
+		content > paddingn内边距 > border > margin
+		min-width: px; 最小宽度，浏览器默认有限制
+		min-height: ; 最小高度
+		四个值为顺时针 上右下左 
+		注意点
+		给盒子加padding值和border会算在盒子总高度或宽度里，要在高宽里面减去
+		margin影响自身盒子位置
+		给盒子定位后会自动忽略padding, 所以宽度记得减去/加上padding的值。
+		c3中会提出怪异盒模型  box-sizing: border-box; 可以无视，压缩内容区
+	</body>
+</html>

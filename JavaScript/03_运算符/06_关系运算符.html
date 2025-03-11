@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关系运算符</title>
+</head>
+<body>
+    <pre>
+        关系运算符用于比较两个值之间的关系，返回一个布尔值
+            成立true，不成立false
+            包含 >  >=  <  <==
+            
+            对非数值进行关系运算时，会自动转为数值比较
+            两个数值都是字符串，不会转为数值。会逐位比较Unicode编码
+
+        小练习
+            //检查num是否在5和10之间
+    </pre>
+    <script>
+        let result = 5 < '10' //true
+        result = '1' < true //false
+        result = 'a' < 'b' //true 两个数值都是字符串，会比较Unicode编码
+        result = 'abc' < 'b' //true 逐位比较Unicode编码,先比较a和b，a比b小，所以直接返回true 
+        // console.log(result);
+
+        //检查num是否在5和10之间
+        let num = 20
+        result = num >5 && num < 10
+        console.log(result);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            clear: both;
+        }
+        .background,
+        .radius {
+            float: right;
+            text-align: center;
+            line-height: 350px;
+            width: 350px;
+            height: 350px;
+            border: 1px solid black;
+        }
+        .background {
+            margin-top: -450px;
+            background: url('../CSS3/images/bg-lt.png') no-repeat left top,
+                        url('../CSS3/images/bg-rt.png') no-repeat right top,
+                        url('../CSS3/images/bg-lb.png') no-repeat left bottom,
+                        url('../CSS3/images/bg-rb.png') no-repeat right bottom;
+        }
+        .radius {
+            margin-top: -250px;
+            border-radius: 20px 30px 40px 50px;
+        }
+        .text-shadow {
+            color: black;
+            font-size: 20px;
+            text-shadow: 0px 0px 20px red;
+        }
+        .text-overflow {
+            border: 1px solid black;
+            width: 400px;
+            height: 400px;
+            float: right;
+            margin-top: -250px;
+        }
+        .text-overflow ul {
+            list-style: none;
+            font-size: 20px;
+            padding-left: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .text-overflow ul li {
+            text-overflow: ellipsis; /*文本溢出时将溢出部分替换为...*/
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <pre><h2>
+    CSS3会以模块化发展--有新特性会加入CSS3
+    私有前缀
+        新特性用来测试CSS特性
+        www.caniuse.com能查看新特性兼容性。
+        常见的私有前缀
+            Chrome 浏览器: -webkit-
+            Safar 浏览器: -webkit-
+            Firefox 浏览器： -moz-
+            edge 浏览器： -webkit-
+            旧Opera 浏览器： -o-
+            旧IE 浏览器：-ms-
+        可以借助webpack等构建工具帮助我们添加私有前缀。
+    CSS3新特性:
+        新增长度单位：以下单位宽高都能使用
+            rem: 根元素字体大小的倍数
+            vw: 视口宽度百分比  width: 20vw; 注意 height: 20vw; 也是视口宽度百分比
+            vh: 视口高度50%  height: 50vh: 
+            vmax: 在宽和高中选择大的一方 / vmin 同理
+        新增颜色方式
+            rgba、hsl、hsla
+        新增选择器--css2笔记已写
+            动态伪类、目标伪类、语言伪类、UI伪类、结构伪类、否定伪类、伪元素
+
+        新增盒子属性
+            box-sizing: ;
+                content-box  (默认值)
+                border-box---怪异盒模型。如果添加了padding,border,压缩内容区,总宽高不变。
+            resize: both;  此属性能让用户手动调整盒子大小。必须搭配overflow使用。可选horizontal可调宽度、vertical可调高度
+            box-shadow: ; 盒子阴影
+                复合属性值：水平位置 垂直位置 模糊程度 外延值 阴影颜色 内阴影
+                box-shadow: 10px 10px 20px 10px red inset;
+            opacity: 0-1;  盒子整体不透明度, 0 完全透明, 1 完全不透明。
+
+        背景相关属性
+            background-repeat: no-repeat; 关闭重复，当图片填不满盒子，属性会自动重复。
+            color: transparent;  字体透明色
+            新增
+            background-origin: ; 设置背景图原点
+                paddign-box: 从padding区域开始显示图像--默认
+                border-box:  从border区域开始显示图像
+                content-box: 从content区域开始显示图像 
+
+            background-clip: ;  裁剪
+                border-box:  从border区域开始向外裁剪图像--默认
+                paddign-box: 从padding区域开始向外裁剪图像
+                content-box: 从content区域开始向外裁剪图像
+                text:  背景图只显示在文字上，需要给字体透明色。建议加前缀 -webkit-
+
+            background-size: ;  调整背景大小
+                background-size: 300px 300px; 用长度值设置图片大小，不允许负值
+                background-size: 100% 100%;  用百分比设置图片大小，不允许负值
+                auto:  真实大小---默认
+                contain:  将图片等比缩放，让宽或高与容器相等，再把完整背景图片包含在容器内，但是可能会造成部分区域没有图片
+                cover:  将图片等比缩放，直到完全覆盖容器，图片会尽可能全的显示在元素上，但背景图有可能显示不完整。---相对最优的方法
+                
+            background复合属性---基本不用
+                background: 背景颜色 背景url 是否重复 位置 / 大小 原点 裁剪方式;
+                
+            多背景图
+                <div class="background">多背景图</div>
+                background: url('../CSS3/images/bg-lt.png') no-repeat left top,
+                        url('../CSS3/images/bg-rt.png') no-repeat right top,
+                        url('../CSS3/images/bg-lb.png') no-repeat left bottom,
+                        url('../CSS3/images/bg-rb.png') no-repeat right bottom;
+        边框圆角
+            border-radius: ;
+                50%是圆
+                border-radius: 20px 30px 40px 50px; 左上 、右上 、右下 、左下
+            <div class="radius"></div>
+
+        边框外轮廓--盒子模型未曾提到的一页
+            outline: 20px solid black;  不占位、不影响盒子大小
+            outline-offset: ;  外轮廓与边框距离、可正可负、不能加入复合属性。
+
+
+        新增文本属性
+            <div class="text-shadow">
+            文本阴影</div>
+                text-shadow: 0px 0px 20px black:  前两个值为必填
+            文本换行
+                white-space: ;
+                    normal    文本超出边界自动换行，文本中的换行被识别为一个空格---默认
+                    pre       按原文显示、和pre标签效果相同
+                    pre-wrap  在pre的基础上、超出元素边界自动换行，可以将pre标签换行
+                    pre-line  在pew的基础上、超出元素边界自动换行、且只识别文中的换行、空格会忽略。
+                    nowrap    强制不换行
+            文本溢出
+                <div class="text-overflow">
+                    <ul><li>【原神】林尼：T0天花板对单，瞬秒一切BOSS！0命~6+5详细对比评测，优缺点解说</li>
+                        <li>前端项目部署：让全世界看到你的作品</li>
+                        <li>文案再度超神！审判和生命之间的抉择，何为真正的正义！【原神】</li>
+                        <li>【九边】国家为啥不派军警把缅北的人救回来</li>
+                        <li>尚硅谷前端html+css零基础教程，2023最新前端开发html5+css3视频</li>
+                    </ul>
+                </div>
+                text-overflow: ellipsis;   文本溢出时将溢出部分替换为...
+                要使得text-overflow 属性生效、块容器必须定义overflow为非visible值、white-space 为 nowrap 值。
+
+            文本修饰
+                text-decoration: ; 将此属性变为了复合属性，css2有写笔记
+            文本描边
+                 仅有 webkit 内核浏览器支持
+                 -webkit-text-stroke: width color;
+            背景渐变
+                线性渐变
+                background-image: ; 可以搭配background-clip: text; 使用
+                    linear-gradient(red,yello,green)  默认样式，从上到下
+                    linear-gradient(to right top,red,yello,green)  关键词改变渐变的方向
+                    linear-gradient(20deg,red,yello,green)  角度改变渐变的方向
+                    linear-gradient(red 50px,yello 100px,green 150px)  像素值调整开始渐变的位置
+                径向渐变
+                background-image: ;
+                    radial-gradient(red,yello,green); 默认圆心四散
+                    radial-gradient(at right top,red,yello,green)  关键词改变渐变圆的圆心位置
+                    radial-gradient(at 100px 50px,red,yello,green)  像素值调整渐变圆的圆心位置
+                    radial-gradient(circle,red,yello,green)  调整渐变形状为正圆
+                    radial-gradient(100px,red,yello,green)  调整形状的半径，能写俩值
+                    radial-gradient(red 50px,yello 100px,green 150px)  像素值调整开始渐变的位置
+
+                重复渐变
+                    在未发生渐变的纯色区域渐变
+                    background-image: repaeting-linear-gradient;
+                    background-image: repaeting-radial-gradient;
+
+
+
+        </pre></h2>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //在JavaScript中，事件监听器是一种用于在特定事件发生时执行特定代码的技术。
+        //事件通常与HTML元素（如按钮、链接等）相关联。当事件发生时，可以触发一个事件处理函数，该函数执行相应的操作。
+
+        //事件监听器通常使用addEventListener方法来添加。该方法接受三个参数：要监听的事件类型、事件处理函数和一个布尔值，
+        //表示是否使用事件捕获模式。
+
+        //下面是一个简单的例子，演示如何为按钮添加点击事件监听器：
+
+        //获取按钮元素
+        var button = document.getElementById("myButton");
+
+        //为按钮添加点击事件监听器
+        button.addEventListener("click", function () {
+            在这里编写按钮点击时的操作代码
+            alert("按钮被点击了！");
+        });
+
+        //除了click事件，还可以监听其他事件类型，如keydown（键盘按键事件）、mousemove（鼠标移动事件）等。
+        //此外，还可以通过设置useCapture参数为true来使用事件捕获模式。
+
+        //需要注意的是，事件监听器可以被多次添加，但它们具有相同的优先级。
+        //如果事件处理函数有相同的优先级，那么它们将被按添加顺序依次执行。如果需要更改事件处理函数的优先级，
+        //可以使用setTimeout或setInterval方法。
+
+        //此外，还可以使用removeEventListener方法来移除事件监听器。例如，要移除上面示例中的点击事件监听器，可以使用以下代码：
+
+        button.removeEventListener("click", function () {
+            // 在这里编写按钮点击时的操作代码
+            alert("按钮被点击了！");
+        });
+    </script>
+</body>
+
+</html>

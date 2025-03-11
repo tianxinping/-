@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://www.baidu.com/s">
+        <!-- /s的作用是直接呈现search结果而不是主页 -->
+        <input type="text" name="wd">
+        <!-- wd是百度的名，固定 -->
+        <button>百度搜索</button>
+    </form>
+    <form action="https://search.jd.com/search" target="_blank">
+        <!-- 在新页面打开 -->
+        <input type="text" name="keyword">
+        <button>京东搜索</button>
+    </form>
+    <pre>作用：收集用户数据</pre>
+    <hr>
+    <form action="https://search.jd.com/search">
+        <!-- lable让相关联的获取焦点，也可以直接用lable包裹 -->
+        <label for="zhanghu">账户：</label><input id="zhanghu" name="account" value="zhangsan" maxlength="10">        
+        <br><!-- 输入文本；名字account；默认输入zhangsan；最大位数10 -->
+
+        密码：<input type="password" name="pwd" maxlength="6"><br>
+
+        性别: 
+        <input type="radio" name="gender" value="male">男
+        <input type="radio" name="gender" value="female">女<br>
+        <!-- 单选框：gender性别的意思，将两个按钮组合，二选一。男女选择想要提交数据必须添加value -->
+
+        爱好：
+        <input type="checkbox" name="hobby" value="sing" checked>唱歌
+        <input type="checkbox" name="hobby" value="dance">跳舞
+        <input type="checkbox" name="hobby" value="chess">象棋<br>
+        <!-- checkbox为多选框，checked为默认选中 -->
+        
+        其他:
+        <textarea name="other" id="" cols="23" rows="3"></textarea><br>
+
+        籍贯：
+        <select name="place" id="">
+            <option value="川">四川</option>
+            <option value="渝">重庆</option>
+            <option value="京" selected>北京</option><!-- 表示首选此项 -->
+        </select>
+
+        
+        <button>确认</button><br>
+
+        disabled禁用表单属性，不能选择
+    </form>
+</body>
+</html>

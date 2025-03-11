@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            height: 3000px;
+        }
+        .page-header{
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: hsl(288, 71%, 58%);
+            font-size: 20px;
+        }
+        .item{
+            background-color: blue;
+        }
+        .first{
+            background-color: pink;
+            font-size: 40px;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">头部</div>
+    <div class="content">
+        <div class="item">
+            <div class="first">A</div>
+            <h2>A1</h2>
+            <h2>A2</h2>
+            <h2>A3</h2>
+            <h2>A4</h2>
+            <h2>A5</h2>
+            <h2>A6</h2>
+            <h2>A7</h2>
+        </div>
+        <div class="item">
+            <div class="first">B</div>
+            <h2>B1</h2>
+            <h2>B2</h2>
+            <h2>B3</h2>
+            <h2>B4</h2>
+            <h2>B5</h2>
+            <h2>B6</h2>
+            <h2>B7</h2>
+        </div>
+        <div class="item">
+            <div class="first">C</div>
+            <h2>C1</h2>
+            <h2>C2</h2>
+            <h2>C3</h2>
+            <h2>C4</h2>
+            <h2>C5</h2>
+            <h2>C6</h2>
+            <h2>C7</h2>
+        </div>
+    </div>
+    <pre>
+        定位之后层级变高,定位可以越过padding,
+        z-index: ;改变层级
+
+        相对定位
+            相对于自己之前位置发生了位移，未脱离文档流。通常配合绝对定位使用。不推荐和浮动使用
+        绝对定位
+            脱离文档流，子绝父相。包含块。不和浮动使用。可以给浮动辅助。 
+        固定定位
+            position: fixed; 对视口生效，不和浮动使用。
+        粘性定位 
+            position: sticky; 和相对定位类似，不过可以在某些位置黏住
+            离他最近可滚动的祖先元素。可以使用left/right/top/bottom调整位置,top: 0;表示距离顶部黏住，在底边缘经过顶部失效。不推荐和浮动，未脱离文档流。
+        
+        定位特殊应用
+        居中方法: 
+            方法1:  left: 0;right: 0; top: 0;bottom: 0;margin: auto;
+            方法2:  left: 50%; top: 50%; margin-left: 负的宽度一半;margin-top: 负的高度一半;
+        被定位元素撑满父容器方法: left: 0;right: 0; top: 0;bottom: 0;
+        定位添加border和padding后要超出属性,添加left: 0;right: 0;
+    </pre>
+    
+</body>
+</html>

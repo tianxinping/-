@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>兼容性处理</title>
+    <!-- 判断是不是小于ie9的版本，如果是就打开js引入 -->
+    <!--[if lt ie 9] >
+        <script src="./html5shiv.js"></script>
+    <![endif]-->
+    
+    <!-- 设置IE总是使用最新的文档模式进行渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- 优先使用 webkit ( Chromium ) 内核进行渲染，针对360等壳浏览器 -->
+    <meta name="renderer" content="webkit">
+</head>
+<body>
+    <span>html5shiv.js是为ie8写的适配，处理不了高端媒体样式。</span>
+    <span>方法2：添加元信息，让浏览器处于最优渲染模式</span>
+</body>
+</html>

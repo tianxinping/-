@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            border: 1px solid black;
+        }
+        #container{
+            font-size: 0;
+        }
+        #container span{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>人之初</span>
+        <span>性本善</span>
+        <span>性相近</span>
+    </div>
+    <pre>
+        方法一：删掉换行（不推荐）
+        方法二: 为父元素设置font-size: 0;
+    </pre>
+    <div id="container">
+        <span>人之初</span>
+        <span>性本善</span>
+        <span>性相近</span>
+    </div>
+</body>
+</html>

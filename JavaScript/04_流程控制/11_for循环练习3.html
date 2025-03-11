@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //判断用户输入的数字是否为质数
+        // 质数：一个大于1的自然数，除了1和它本身以外不再有其他因数的自然数 
+       // 使用prompt函数提示用户输入一个大于1的整数，并将输入的字符串转换为数字类型
+       let num = +prompt("请输入一个大于1的整数：");
+
+       // 初始化一个标志变量flag，用于判断num是否为质数，初始值为true，表示num是质数
+       let flag = true
+
+       // 使用for循环从2开始遍历到num-1，检查num是否能被这些数整除
+       for(let i = 2; i < num; i++){
+           // 如果num能被i整除，说明num不是质数，将flag设置为false
+           if(num % i === 0){
+               flag = false
+               console.log(i);
+               
+           }
+       }
+
+       // 根据flag的值判断num是否为质数
+       if(flag){
+           // 如果flag为true，说明num是质数，弹出提示信息
+           alert(num + "是质数")
+       }else{
+           // 如果flag为false，说明num不是质数，弹出提示信息
+           alert(num + "不是质数")
+       }
+    </script>
+</body>
+
+</html>

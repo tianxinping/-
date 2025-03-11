@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    变量是在内存中开辟一个空间存储数据
+        变量名严格区分大小写
+    <script>
+        let myname = "田新平"
+        let address = "成都",
+            age = 18,
+            email = "123456789@qq.com",
+            gz = 2000; //声明多个变量
+        console.log(myname,address,age,email,gz)
+
+        // 交换两个变量值
+        // 1.需要临时变量 
+        // 2.把apple1 给临时变量 temp
+        // 3.把apple2 给apple1
+        // 4.把临时变量 temp 给apple2
+        let temp // 声明一个临时变量
+        let apple1 = "苹果1"
+        let apple2 = "苹果2"
+        temp = apple1 // 把apple1 给临时变量 temp
+        apple1 = apple2 // 把apple2 给apple1
+        apple2 = temp // 把临时变量 temp 给apple2
+        console.log(apple1,apple2)
+    </script>
+</body>
+</html>
