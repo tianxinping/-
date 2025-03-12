@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Window 对象
+                在浏览器中，浏览器为我们提供了一个window对象，可以直接访问、
+                window对象代表的是浏览器窗口，通过该对象可以对浏览器窗口进行各种操作
+                    除此之外window对象还负责存储JS中的内置对象和浏览器的宿主对象
+                window对象的属性可以通过window对象访问，也可以直接访问
+                函数就可以认为时window对象的方法
+        */
+        // alert(window)
+        // window.alert('hello')
+        // window.console.log('hello')
+        window.a = 10 // 向window对象中添加的属性会自动变成全局变量
+        // console.log(a)
+
+        /* 
+            var 用来声明变量，和let相比不具备块作用域
+                在全局中使用var声明的变量，都会作为window对象的属性保存
+                使用function声明的函数，都会作为window对象的方法保存
+            let
+                let声明的变量不会存储在window，而存在一个秘密的小地方（无法访问）
+                为了增加安全性引入let
+         */
+        var b = 20 // window.b = 20
+        // console.log(b);
+
+        function fn() {
+            alert('hello')
+        }
+        // window.fn()
+
+        let c = 33
+        // console.log(window.c); // undefined,let声明的变量不会存储在window中
+        
+        window.c = 44
+        // console.log(c); // 33,同时使用let和var声明变量，会优先找let，比较安全
+
+        function fn2() {
+            var i = 10 // 无论是let还是var都不能从函数外部的log打印，因为var虽没有块作用域，函数有作用域
+            i = 10 // 老师讲这样写系统会自动将i变成全局变量，外部能打印到，但是我报错了。当然不能这样写，会造成混乱
+        }
+        fn2()
+        console.log(i);
+        
+    </script>
+</body>
+</html>

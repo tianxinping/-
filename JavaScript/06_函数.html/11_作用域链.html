@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            作用域链
+                当我们使用一个变量时
+                    JS解释器会优先在当前作用域中寻找变量
+                        如果找到了则直接使用
+                        如果没找到则去上一层作用域中寻找，以此类推
+                        如果一直到全局作用域都没找到，则直接保错 xxx is not defined
+
+        */
+        // let a = 10;
+        {
+            //  let a = '第一个代码块中的a'
+             {
+                // let a = '第二个代码块里的a'
+                // console.log(a);
+             }
+        }
+
+        let b = 33
+        function fn() {
+            let b = 44
+            console.log("第一个函数体的b=",b);
+            
+            function f1(){
+                let b = 55
+                console.log("第二个函数体的b=",b)
+            }
+            f1()
+        }
+        fn() //这里有个小插曲，刚开始没加fn()，运行半天f1()不打印，原来是外层的函数没有调用
+    </script>
+</body>
+</html>

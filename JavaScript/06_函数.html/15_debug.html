@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        /* 
+            debugger //调试工具,也可以在调试台--源代码中直接点击某一行的序号左侧会出现红点
+            例如要监视a，右键源代码的a双击右键选择“将文本添加到监视”或者在右侧监视那一排点击加号输入a
+            想一行一行的调试可以按F9或者点击监视上方的“步骤”按钮，如下例，某些行会提升，点下一步会直接跳过
+        */
+
+        console.log(a); //a? 输出函数a
+        
+        var a = 1 //提升
+        console.log(a); // a?  1
+
+        function a() {
+            alert(2)
+        }
+        console.log(a);// a?   1
+
+        var a = 3
+        console.log(a);// a?  3
+
+        var a = function () { 
+            alert(4) 
+        }
+        console.log(a);// a?   function () { alert(4) }
+
+        var a
+        console.log(a);// a?   function () { alert(4) }
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        补充内容
+        方法（method）
+            当一个对象的属性指向一个函数
+                 那么我们就称这个函数是这个对象的方法
+                 调用函数就称为调用对象的方法
+    -->
+    
+    <script>
+        let obj = {}
+        obj.name = "孙悟空"
+        obj.age = 18
+
+        // 函数也可以成为一个对象的属性
+        obj.sayHello = function(){ // obj的sayHello方法
+            alert("hello")
+        }
+
+        console.log(obj);
+        obj.sayHello() // 通过.调用的叫调用obj的sayHello方法
+        // String() //直接调用叫调用String()函数
+    </script>
+</body>
+</html>

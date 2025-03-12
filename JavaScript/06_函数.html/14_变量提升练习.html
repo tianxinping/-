@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 练习1
+        var a = 1
+        function fn1() {
+            a = 2
+            console.log(a); // a?
+        }
+        fn1()
+        console.log(a);// a?
+
+        //练习2--变量和函数提升同样适用于函数作用域
+        var a = 1
+        function fn2() {
+            console.log(a); //a?
+            var a = 2
+            console.log(a); // a?
+        }
+        fn2()
+        console.log(a);// a?
+
+        // 练习3
+        var a = 1
+        function fn3(a) {
+            console.log(a); //a?
+            a = 2
+            console.log(a); // a?
+        }
+        fn3()
+        console.log(a);// a?
+
+        // 练习4
+        var a = 1
+        function fn4(a) {
+            console.log(a); //a?
+            var a = 2
+            console.log(a); // a?
+        }
+        fn4(a)
+        console.log(a);// a?
+
+
+        // 练习5
+        console.log(a); //a?  此时输出的是函数a，因为函数声明会被完整提升，且优先级高于变量声明。
+        
+        var a = 1 //提升
+        console.log(a); // a?  1
+
+        function a() {
+            alert(2)
+        }
+        console.log(a);// a?   1
+
+        var a = 3
+        console.log(a);// a?  3
+
+        var a = function () {  //变量a被赋值为一个函数表达式。
+            alert(4) 
+        }
+        console.log(a);// a?   function () { alert(4) }
+
+        var a
+        console.log(a);// a?   function () { alert(4) }
+
+
+    </script>
+</body>
+
+</html>
