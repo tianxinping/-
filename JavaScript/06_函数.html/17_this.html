@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this
+                函数在执行时，JS解析器每次都会传递一个隐含的参数
+                这个参数就叫this
+                this是一个特殊的关键字，它指向当前代码执行的上下文对象。
+                理解this的行为是掌握JavaScript的重要部分，因为它的值会根据不同的执行环境而变化。
+                this会指向一个对象
+                    this所指向的对象会根据函数调用方式的不同而不同
+                        1.以函数的形式调用时，this指向window
+                        2.以方法的形式调用时，this指向的是调用方法的对象
+                        。。。
+
+                    通过this可以在方法中引用调用方法的对象
+        */
+        // 以函数形式去调用
+        function fn() {
+            console.log(this);
+            console.log(this === window);
+            // console.log(this === obj);
+            // console.log(this === obj2);
+        }
+        // fn()
+        // 
+        const obj = { name: '孙悟空' }
+        obj.test = fn
+
+        const obj2 = { name: '猪八戒', test:fn } //test:fn和上一行的obj.test是一样的
+
+        // obj.test() // 含义等于fn，结果{ name: '孙悟空' }
+        // obj2.test() //结果{ name: '猪八戒', test:fn }
+
+
+        //this的使用案例（通过this可以在方法中引用调用方法的对象）
+        const obj3 = {
+            name: '沙僧',
+            sayHello: function () {
+                console.log(this);
+            }
+        }
+        const obj4 = {
+            name: '唐僧',
+            sayHello: function (){
+                console.log(this.name);
+            }
+        }
+        obj3.sayHello()
+        obj4.sayHello()
+        
+    </script>
+</body>
+
+</html>

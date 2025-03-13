@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        /* 
+            在开发中尽量减少直接在全局作用域中编写代码！
+
+            所以我们的代码要尽量编写到局部作用域中
+
+            如果使用let可以用{}来创建块作用域
+                例如{let a = 10}
+        */
+        // 如果我们希望可以创建一个只执行一次的匿名函数，不会对其他的代码产生影响
+        /* 
+             立即执行函数（IIFE)
+                 立即执行函数是一个匿名的函数，并且只会调用一次
+                 在匿名函数的基础上添加了一个括号，并且直接在结尾添加()执行该函数
+                 可以利用IIFE来创建一个一次性的函数作用域，避免变量冲突的问题
+                 注意加分号
+        */
+        // 开发者1
+        (function () {
+            let a = 10
+            console.log(111);
+        }()); //之间必须添加分号，因为js解析的时候不加分号会解析为（xxx）（xxx）报错
+        // 开发者2
+        (function () {
+            let a = 20
+            console.log(222);
+        })();//括号可以在内部也可以在外部
+
+        // console.log(a);// undefined 在外部无法访问
+
+
+        // 带参数的立即执行函数
+        (function (name) {
+            console.log("Hello, " + name);
+        })("张三");  // 输出: Hello, 张三
+
+        // 返回值的立即执行函数
+        let result = (function () {
+            return '计算结果'
+        }())
+        console.log(result);
+
+
+    </script>
 </body>
+
 </html>
