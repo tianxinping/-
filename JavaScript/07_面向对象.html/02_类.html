@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            使用Object创建对象的问题
+                无法区分不同类型的对象：比如创建一个狗和一个人，无法区分
+                不方便批量创建对象
+            在JS中可以通过类（class）来解决这个问题
+                1.类是对象模板，可以将对象中的属性和方法直接定义在类中
+                    定义后，就可以直接通过类来创建对象
+                2.通过同一个类创建的对象，我们成为同类对象
+                    可以使用instanceof来检查一个对象是否由某个类创建
+                    如果某个对象由某个类创建，称该对象是这个类的实例
+            语法：
+                class 类名 {} // 类名要驼峰命名，这种语法比较方便
+                const 类名 = class {}
+
+            通过类创建对象
+                new 类()
+        */
+        // person类专门用来创建人的对象
+        class Person {
+
+        }
+        // dog类专门用来创建狗的对象
+        class Dog {
+
+        }
+        // 在面向对象编程中，class dog { } 定义了一个狗类，而 const d1 = new Dog() 则是创建这个类的实例（对象）。
+        const p1 = new Person() // 调用构造函数创建对象
+        const p2 = new Person()
+
+        const d1 = new Dog()
+        const d2 = new Dog()
+
+        console.log(p1 instanceof Person); // true,检查p1是否为Person的实例
+        console.log(d1 instanceof Person); // false
+        
+    </script>
+</body>
+</html>

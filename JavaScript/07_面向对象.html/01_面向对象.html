@@ -15,27 +15,36 @@
                     一个事物抽象到程序中就成了对象
                     在程序的世界中，一切都是对象
 
+                3.面向对象的编程
+                    面向对象编程指，程序中所有操作都是通过对象来完成
+                    做任何事之前都需要先找到它的对象，然后通过对象来完成各种操作
+
         */
        /* 
             一个事物也算是两部分组成：数据和功能
                 事物的数据到了对象中就是属性
                 事物的功能到了对象中就是方法
             一个对象由两部分组成：属性和方法
+        
+            数据：
+                姓名、年龄、身高、体重
+            功能：
+                吃饭、睡觉       
        */
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        /*
-        */
+      const person = {
+          // 添加属性
+          name: "张三",
+          age: 18,
+          height: 1.88,
+          weight: 75,
+          // 添加方法
+          eat: function() {
+              console.log(this.name + "吃饭");
+          },
+          sleep() {
+              console.log(this.name + "睡觉");
+          },
+      }
     </script>
 </body>
 </html>

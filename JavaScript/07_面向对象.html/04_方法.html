@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        
+        */
+       class Person{
+            name = "孙悟空"
+            // sayHello = function () { }// 添加方法的一种方式，不推荐
+            sayHello(){
+                console.log('大家好，我是'+this.name);
+            } // 添加方法（实例方法），其中的this就是当前实例
+
+            static test(){
+                console.log('我是静态方法', this);
+            }// 静态方法（类方法）通过类调用,其中的this指向当前类
+       }
+       const p1 = new Person()
+       console.log(p1)
+       p1.sayHello() // 谁调用，this就指向谁，所以指向实例p1
+       Person.test()//不能通过实例调用，只能用类调用静态方法；Person调用this指向Person
+    </script>
+</body>
+</html>
