@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            面向对象的特点
+                封装、继承、多态
+            1、封装
+                对象就是一个用来存储不同属性的容器
+                对象不仅负责属性，还要负责数据的安全
+                直接添加到数据中的属性并不安全，因为可以被任意的修改
+                如何确保数据的安全
+                    1.私有化数据
+                        将需要保护的数据设置为私有，只能在类内部使用
+                    2.提供setter何getter方法来开放对数据的操作
+                        属性设置私有，提供getter和setter方法来操作属性带来的好处
+                        （1）、可以控制属性读取权限（想让别人读就加getter方法，不想就不写）
+                        （2）、可以在方法中对属性的值进行验证
+                封装主要保证数据的安全性
+
+                实现封装的方式：
+                    1.属性私有化
+                    2.提供getter和setter方法来操作属性
+                        get 属性名(){
+                            return this.#属性
+                        }
+                        set 属性名(参数){
+                                this.#属性 = 参数
+                        }
+        */
+        class Person {
+
+            // #address = '花果山' // 实例使用#开头就变成了私有属性，私有属性只能在类内部访问
+
+            #name
+            #age
+            #gender
+
+            constructor(name, age,gender) {
+                this.#name = name
+                this.#age = age
+                this.#gender = gender
+            }
+            sayHello() {
+                console.log(this.#name)
+            }
+            // （1）getter方法用来读取属性
+            getName() { return this.#name }
+            // setter方法用来设置属性
+            setName(name) { 
+                if(typeof name === 'string'){
+                    this.#name = name 
+                }
+            } // （2）在setter或者getter中能加判断，对传入的参数进行判断，不合法不修改
+
+            get gender() { return this.gender }
+        }
+        const p1 = new Person('张三', 100,'男')
+        //    p1.#name = 11 不能被访问，因为在外部不能直接访问私有属性（1）
+
+        // p1.setName(123)//不会生效，因为设置了判断非字符串不修改（2）
+        console.log(p1);
+
+    </script>
+</body>
+
+</html>
