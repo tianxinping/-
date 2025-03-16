@@ -12,31 +12,35 @@
         /* 
 
         */
-        class Person {
-            consturctor(name) {
+        class Person{
+            constructor(name){
                 this.name = name;
             }
         }
-        class Dog {
-            consturctor(name) {
+        class Dog{
+            constructor(name){
                 this.name = name;
             }
         }
-        const person = new Person('张三');
-        const dog = new Dog('旺财');
-
-        //    console.log(person);
-        //    console.log(dog);
+        class test{ } // 创建一个空的test类
+        const person = new Person("张三")
+        const dog = new Dog("旺财")
+        // console.log(person);
+        // console.log(dog);
         /* 
-             定义一个函数，这个函数将接收一个对象作为参数，他可以输出hello并打印对象的name属性
+            定义一个函数，这个函数将接收一个对象作为参数，他可以输出hello并打印对象的name属性 
 
-             多态
-                在JS中不会检查参数的类型，所以这就意味任何数据都可以作为参数传递
+            多态--为代码提供灵活性
+                在JS中不会检查参数的类型，所以这就意味着任何数据都可以作为参数传递
+                要调用某个函数，无需指定的类型，只要对象满足某些条件即可
+                程序中判断是否鸭子：如果一个东西走路像鸭子，叫起来像鸭子，那么他就是鸭子
         */
-        function sayHello(obj) {
-            console.log('hello' + obj.name);
+        function sayHello(obj){ //obj可以是任何对象，形参
+            console.log("hello",obj.name); 
         }
+        sayHello(dog) // 调用前提是必须有name属性
         sayHello(person)
+        sayHello(new test()) // 没有name属性，所以不会输出
     </script>
 </body>
 

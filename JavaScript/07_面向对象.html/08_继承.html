@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            如果我们需要写很多动物，但是每个动物都有相同的属性和方法，那么我们就可以使用继承
+        */
+        // class Dog {
+        //     constructor(name){
+        //         console.log('汪汪汪');
+                
+        //     }
+        // }
+        // class Cat {
+        //     constructor(name){
+        //         console.log('喵喵喵');
+        //     }
+        // }
+        // const dog = new Dog('旺财');
+        // const cat = new Cat('咪咪');
+
+        /* 
+            继承
+                可以通过extends关键字，让子类继承父类
+                当一个类继承另一个类时，就相当于将另一个类中的代码复制到了当前类中（简单理解）
+        */
+        class Animal {
+            constructor(name){
+                this.name = name;
+            }
+            sayHello(){
+                console.log('动物在叫');
+                
+            }
+        }
+        class Dog extends Animal{
+
+        }
+        class Cat extends Animal{
+
+        }
+        const dog = new Dog('旺财');
+        dog.sayHello();
+        console.log(dog);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
