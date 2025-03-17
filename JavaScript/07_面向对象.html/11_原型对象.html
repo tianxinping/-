@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+</head>
+
+<body>
+    <script>
+
+        /* 
+         访问一个对象的原型对象
+             对象.__proto__  一般特殊符号开头的是不希望被访问的属性，这样写不正规不安全
+             也可以用console.log(Object.getPrototypeOf(对象));  
+             实际开发中，Object.getPrototypeOf()是最推荐的方法，因为它是标准方法且跨浏览器兼容性好。
+ 
+             第一种可以被直接复制所以不安全
+ 
+         原型对象的数据：
+             1.对象中的数据（属性、方法等） 
+             2.对象的构造函数constructor
+         
+         注意：
+             原型对象也有原型，这样就构成了一条原型链，根据对象的复杂程度不同，原型链的长度也不同
+                person对象的原型链：person对象 - 原型 - 原型 - null
+                obj的原型链: obj对象 - 原型 - null
+ 
+         原型链:
+            读取对象的属性时, 会优先对象自身属性
+                如果对象中有, 则使用, 没有则去对象的原型中寻找
+                如果原型中有, 则使用, 没有则去原型的原型中寻找
+                直到找到Object对象的原型（Object的原型没有原型（为null））
+                    如果依然没有找到, 则返回undefined
+            
+            作用域链，是找变量的链，找不到会报错
+            原型链，是找属性的链，找不到会返回undefined
+        
+            */
+ 
+         class Person {
+             name = "孙悟空"
+             age = 18
+ 
+             sayHello() {
+                 console.log("是我", this.name);
+ 
+             }
+         }
+         const person = new Person()
+         console.log(person);
+ 
+         console.log(person.__proto__); // 查看原型对象
+         console.log(person.__proto__.__proto__);//原型之上也有原型，构成原型链
+ 
+         console.log(person.constructor); // 在原型对象中包含构造函数
+ 
+         console.log(Object.getPrototypeOf(person));  // 比较正确的写法，相比于__proto__更安全
+ 
+ 
+     </script>
+</body>
+
+</html>

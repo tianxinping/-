@@ -14,7 +14,7 @@
                 通过继承可以在不修改一个类的情况下进行拓展。
                     a创建了类但功能不够或者不能修改，b继承了a，b可以修改a，b也可以创建自己的方法
                 OCP 开闭原则
-                    程序应该对修改关闭，对扩展开放
+                    程序应该对公开的代码修改关闭，对扩展开放
         */
         class Animal {
             constructor(name) {
@@ -35,11 +35,11 @@
             constructor(name , age){
                 // 重写构造函数时，构造函数第一行代码必须调用super()
                 super(name) // 调用父类的构造函数，且需用super传入参数（）
-                // this.name = name; 当然可以重写name，并不在super（）括号里加name但继承就没有了意义
+                // this.name = name; 当然可以这样重写name，并且不在super（）括号里加name，但继承就没有了意义
                 this.age = age // 给猫新传入age
             }
             sayHello(){
-                super.sayHello(); // 调用父类方法,调用了父类的方法
+                super.sayHello(); // 调用父类方法
                 console.log('喵喵喵');
             }
         }   

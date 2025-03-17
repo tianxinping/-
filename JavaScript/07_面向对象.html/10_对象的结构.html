@@ -6,6 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    <script> </script>
+    <script> 
+    /* 
+        对象中存储属性的区域实际有两个
+            1.对象自身
+                对象自身有内存空间
+                直接通过对象所添加的属性，位对象自身中
+                在类中通过 x = y 的
+
+            2.神秘位置？-- 原型对象（prototype）
+                对象中还有一些内容会存在其他对象里（原型对象）
+                在对象中总会有一个属性，用来存储原型对象：_proto_
+                原型对象也负责为对象存储
+                    当我们访问对象中属性时，会优先访问自身的属性，
+                    对象自身并不包含该属性时，才回去原型对象寻找
+            会添加到原型对象中的情况
+                1.在类中通过xxx(){} 添加的方法，会自动添加到原型对象中
+                2.主动向原型中添加的属性或方法
+    */
+        class Person {
+            name = "张三";
+            age = 18
+
+            // constructor(){this.gender = '男'} 这个也是存储在对象自身
+            sayHello() {
+                console.log("你好",this.name);
+            }
+        }
+        const p = new Person()
+        // p.sayHello = 'hello' // 这个字符串是存储到对象自身中,因为是通过 x = y 
+        // p.address = '成都' 直接存储到对象自身中
+        console.log(p);
+        
+    </script>
 </body>
 </html>

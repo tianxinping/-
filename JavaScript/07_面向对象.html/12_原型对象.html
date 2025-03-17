@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            name="孙悟空"
+            age=18
+
+            sayHello(){
+                console.log("大家好，我是"+this.name)
+            }
+        }
+        class Cat {}
+        const p = new Person()
+        const p1 = new Person()
+
+        const c = new Cat()
+
+        console.log(p.__proto__ === p1.__proto__) // true;
+        console.log(p.__proto__ === c.__proco__); // false
+        /* 
+            所有的同类型对象他们的原型对象都是同一个 
+                也就意味着，同类型对象的原型链是一样的
+
+            原型的作用：
+                原型相当于一个公共的区域，可以被所有该类实例访问
+                    可以将该类实例中，所有的公共属性和方法统一存储到原型中
+                    这样我们只需要创建一个属性，即可被所有实例访问
+                JS中的继承就是通过原型来实现的，
+                    当继承时，子类的原型就是一个父类的实例
+            在对象中有些值是对象独有的，像（name，age，gender）每个对象都应该有自己的值，
+                但是有一些值对于每个对象来说都是一样的，像各种方法，对于一样的值没必要重复的创建
+
+            尝试
+                函数中的原型链
+                    实例对象 --- 构造函数.prototype --- Object.prototype --- null
+                Object的原型链是什么样子的
+                    Object构造函数 --- Function.prototype --- Object.prototype --- null
+        */
+        
+        class Animal{
+
+        }
+        class Dog extends Animal{
+            
+        }
+        class Snake extends Dog{
+            
+        } 
+        const dog = new Dog();
+        const snake = new Snake();
+        // console.log(animal.__proto__.__proto__.__proto__);
+
+        console.log(dog.__proto__.__proto__.__proto__.__proto__);// Dog --> Dog.prototype --> Animal.prototype --> Object.prototype --> null
+        console.log(snake.__proto__.__proto__);// snake实例本身 -> dog.prototype -> Animal.prototype --> Object.prototype --> null
+        
+        function fn() {
+
+        }
+        fn()
+        console.log(fn.prototype);// fn --> Object.prototype --> null
+    </script>
+</body>
+</html>
