@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            早期JS中，直接通过函数来定义类
+                    一个函数如果调用 xxx() 那么这个函数就是一个普通函数
+                    一个函数如果通过new调用 new xxx() 那么这个函数就是一个 构造函数
+                    缺点代码分散，一般放在立即执行函数里
+
+            后期变严格，由于function是普通函数也是构造函数，判断起来混乱和复杂
+        */
+
+        // 用立即执行函数隔离起来（闭包）
+        var Person = (function () {
+            function Person(name, age) { // 等价于class Person,class是ES6语法,必须用new调用
+                // 1.往内部添加属性：在构造函数中，this表示新建的对象
+                this.name = name
+                this.age = age
+            }
+
+            Person.prototype.sayHello = function () {
+                console.log('大家好，我是' + this.name)
+            } // 2.向原型中添加属性（方法），和class写法往内部写sayHello是一样的
+
+            // 3.添加静态属性
+            Person.staticProperty = '静态属性'
+            // 静态方法
+            Person.staticMethod = function () { }
+
+            return Person // 4.返回构造函数
+        })()
+
+        const p = new Person('孙悟空', 18)
+        console.log(p);
+
+
+        /* 继承 */
+        var Animal = (function () {
+            function Animal() {
+
+            }
+            return Animal
+        })()
+        var Cat = (function () {
+            function Cat() {
+
+            }
+            // 继承Animal
+            Cat.prototype = new Animal() // 将Cat的原型指向Animal的实例
+            return Cat
+        })()
+        var cat = new Cat()
+
+        console.log(cat);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

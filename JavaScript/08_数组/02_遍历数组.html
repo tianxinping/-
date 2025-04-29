@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 任何类型的值都可以成为数组中的元素
+        let arr = [1, 'hello', true, { name: '张三' }, () => { }]
+
+        // 创建数组时尽量确保存储的 数据类型一致
+        arr = [1, 2, 3, 4, 5] // 数字数组
+        arr = ['hello', 'world'] // 字符串数组
+        console.log(arr);
+
+        /* 
+            遍历数组
+                就是获取到数组中 每一个元素
+        */
+        arr = ['用户1', '用户2', '用户3', '用户4', '用户5']
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+        console.log('\n');
+
+        // 还有倒序遍历,好理解，先打印i=4，就是数组最后一位，arr.length表示数组长度为5
+        for (let i = arr.length - 1; i >= 0; i--) {
+            console.log(arr[i]);
+        }
+
+        /* 
+            小练习
+                定义一个Person类，类中有两个属性name和age
+                然后创建几个Person对象，放到数组中
+                遍历数组，打印未成年人的信息
+        */
+       class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+       }
+       const PersonArr = [
+            new Person('张三', 18),
+            new Person('李四', 17),
+            new Person('王五', 10),
+            new Person('赵六', 7)
+       ]
+       for (let i = 0; i < PersonArr.length; i++){
+            if(PersonArr[i].age < 18){
+                console.log(PersonArr[i]);
+            }
+       }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

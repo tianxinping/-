@@ -19,20 +19,21 @@
                     如果某个对象由某个类创建，称该对象是这个类的实例
             语法：
                 class 类名 {} // 类名要驼峰命名，这种语法比较方便
-                const 类名 = class {}
+                const 类名 = class {} //这样写麻烦，一般不这么写
 
             通过类创建对象
                 new 类()
         */
-        // person类声明专门用来创建人的对象
+        // person类声明专门用来创建人的对象模版
         class Person {
 
         }
-        // dog类专门用来创建狗的对象
+        // dog类专门用来创建狗的对象模版
         class Dog {
 
         }
         // 在面向对象编程中，class dog { } 定义了一个狗类，而 const d1 = new Dog() 则是创建这个类的实例（对象）。
+        // 通过new 构造函数创建了一个对象并保存
         const p1 = new Person() // 实例
         const p2 = new Person()
 

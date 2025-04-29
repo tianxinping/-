@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,19 @@
         /* 
             如果我们需要写很多动物，但是每个动物都有相同的属性和方法，那么我们就可以使用继承
         */
-        // class Dog {
-        //     constructor(name){
-        //         console.log('汪汪汪');
-                
-        //     }
-        // }
-        // class Cat {
-        //     constructor(name){
-        //         console.log('喵喵喵');
-        //     }
-        // }
-        // const dog = new Dog('旺财');
-        // const cat = new Cat('咪咪');
+        /*         
+            class Dog {
+                constructor(name){
+                    console.log('汪汪汪');  
+                }
+            }
+            class Cat {
+                constructor(name){
+                    console.log('喵喵喵');
+                }
+            }
+            const dog = new Dog('旺财');
+            const cat = new Cat('咪咪'); */
 
         /* 
             继承
@@ -35,29 +36,30 @@
                     多态 -- 灵活性
         */
         class Animal {
-            constructor(name){
+            constructor(name) {
                 this.name = name;
             }
-            sayHello(){
+            sayHello() {
                 console.log('动物在叫');
             }
         }
-        class Dog extends Animal{
-
+        class Dog extends Animal {
         }
-        class Cat extends Animal{
+        class Cat extends Animal {
         }
-        class Snake extends Animal{}
+        class Snake extends Animal { }
         const dog = new Dog('旺财');
         const cat = new Cat('汤姆');
         dog.sayHello();
         console.log(dog);
         console.log(cat);
-        
-        
+
+
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

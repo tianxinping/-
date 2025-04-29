@@ -26,6 +26,17 @@
         }
         for(let proName in obj){
             console.log(proName,obj[proName]);//proName是属性名，obj[proName]是属性值,属性值要用中括号获取
+            //在 JavaScript 中，若要通过变量动态访问对象的属性，必须使用 中括号语法 obj[变量]。
+            //如果直接用点号（.），如 obj.proName，会被解析为访问 obj 的 proName 属性（而非变量值对应的属性）。
+        }
+        let obj1 = {
+            name: '田',
+            age: 23,
+            gender: '女',
+        }
+        for(let tian in obj1){
+            console.log(tian,obj1[tian]);
+            
         }
     </script>
 </body>

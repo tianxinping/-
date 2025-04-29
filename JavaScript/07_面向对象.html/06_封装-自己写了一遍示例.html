@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            #age
+            #name
+            #gender
+            constructor(name,age,gender){
+                this.#age = age
+                this.#name = name
+                this.#gender = gender
+            }
+            getName(){
+                return this.#name
+            }
+            setName(name){
+                this.#name = name
+            }
+
+            get age(){
+                return this.#age
+            }
+            set age(age){
+                if(typeof age === 'numbei' && age > 0){
+                    this.#age = age
+                }else{
+                    console.log('请输入正确的年龄');
+                }
+            }
+        }
+        const user1 = new Person('张三',18,'男')
+        console.log(user1);
+        console.log(user1.getName()); //通过getter方法获取到了私有属性
+
+        user1.setName = '李四' 
+        console.log(user1);//通过setter方法实现了修改私有属性
+
+        console.log(user1.age);//通过getter方法获取到了私有属性
+        user1.age = 20
+        console.log(user1);//通过setter方法实现了修改私有属性
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

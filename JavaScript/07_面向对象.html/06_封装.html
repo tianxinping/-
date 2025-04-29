@@ -19,9 +19,9 @@
                 如何确保数据的安全
                     1.私有化数据
                         将需要保护的数据设置为私有，只能在类内部使用
-                    2.提供setter何getter方法来开放对数据的操作
+                    2.提供setter和getter方法来开放对数据的操作
                         属性设置私有，提供getter和setter方法来操作属性带来的好处
-                        （1）、可以控制属性读取权限（想让别人读就加getter方法，不想就不写）
+                        （1）、可以控制属性读取权限（想让别人读就加getter方法，实现只读）
                         （2）、可以在方法中对属性的值进行验证
                 封装主要保证数据的安全性
 
@@ -39,7 +39,7 @@
 
             // #address = '花果山' // 实例使用#开头就变成了私有属性，私有属性只能在类内部访问
 
-            #name
+            #name // 私有属性必须先声明，不能直接用构造函数赋值
             #age
             #gender
 
@@ -51,23 +51,35 @@
             sayHello() {
                 console.log(this.#name)
             }
-            // （1）getter方法用来读取属性
+            // （1）通过getter方法间接来读取属性
             getName() { return this.#name }
+
             // setter方法用来设置属性
-            setName(name) { 
+            setName(name) { // 传入新name替换原来的旧name
                 if(typeof name === 'string'){ 
                     this.#name = name 
                 }
             } // （2）在setter或者getter中能加判断，对传入的参数进行判断，不合法不修改
 
-            get gender() { return this.gender }
+            getAge() { return this.#age} // 设置年龄只读
+
+            // 有两种写法，一种是getName()，一种是get name()，两者都可以
+            // 但是get name()是ES6的语法，getName()是ES5的语法
+            get gender() { 
+                return this.#gender 
+            } 
+            set gender(gender){
+                this.#gender = gender
+            }
         }
         const p1 = new Person('张三', 100,'男')
         //    p1.#name = 11 不能被访问，因为在外部不能直接访问私有属性（1）
 
         // p1.setName(123)//不会生效，因为设置了判断非字符串不修改（2）
         console.log(p1);
-
+        p1.gender = '女' // 虽然设置了似有属性，但是可以用p1.gender修改的原因是在类内部设置了方法
+        console.log(p1.gender);
+        
 
         /* 
             封装在以下几种情况下会被使用到：

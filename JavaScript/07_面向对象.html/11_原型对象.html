@@ -17,7 +17,7 @@
              也可以用console.log(Object.getPrototypeOf(对象));  
              实际开发中，Object.getPrototypeOf()是最推荐的方法，因为它是标准方法且跨浏览器兼容性好。
  
-             第一种可以被直接复制所以不安全
+             第一种可以被直接赋值所以不安全
  
          原型对象的数据：
              1.对象中的数据（属性、方法等） 
@@ -58,8 +58,7 @@
          console.log(person.constructor); // 在原型对象中包含构造函数
  
          console.log(Object.getPrototypeOf(person));  // 比较正确的写法，相比于__proto__更安全
- 
- 
+
      </script>
 </body>
 

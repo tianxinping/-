@@ -22,7 +22,7 @@
                     1.一修改就是修改所有实例的原型
                     2.无需创建实例即可完成对类的修改
             原则：
-                1.原则尽量不要手动改
+                1.原型尽量不要手动改
                 2.要改也不要通过实例对象去改
                 3.如果一定要改，通过 类.prototype 属性去改
                 4.最好不要直接给prototype去赋值
@@ -46,15 +46,15 @@
     //    }
 
     //    p.__proto__ = new Dog(); //直接为对象赋值了一个新的原型，没有意义，更加拒绝使用
-    //    console.log(p);
+    //    console.log(p.__proto__.__proto__.__proto__);
     //    console.log(p1);
        
        
     //    p.run()
     //    p1.run()
  
-    console.log(Person.prototype); //通过Person实例的原型对象
-    Person.prototype.fly = () => {
+    console.log(Person.prototype); //通过Person实例的原型对象  Person.prototype === p.__proto__
+    Person.prototype.fly = () => {  // 一般在类定义完了就改
         console.log('我在飞');
         
     }

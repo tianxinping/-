@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            indexOf()
+                获取元素在数组中第一次出现的索引
+                参数：
+                    1.要查询的元素
+                    2.开始查找的位置（可选，加数字表示从某位置开始查询）
+            lastIndexOf()
+                获取元素在数组中最后一次出现的索引
+
+                返回值
+                    找到了就返回索引   
+                    没找到返回-1
+            
+            join()
+                将数组中的元素连接成字符串
+                    1.默认用逗号连接
+                    2.可以传入参数，指定连接符号
+                    3.返回值是字符串
+
+            slice()
+                截取数组中的元素(介绍的都是非破坏性方法)
+                    1.参数：
+                        开始位置和结束位置（不包含结束位置）
+                        结束位置不写会截到最后
+                        都不写会对数组进行浅复制（浅拷贝）
+                    2.返回值是新数组
+                    3.原数组不变（非破坏性）
+                    4.可以接收负数，表示从后往前截取
+        */
+        const arr = ['孙悟空', '猪八戒', '沙僧', '唐僧', '孙悟空'];
+        let result = arr.indexOf('孙悟空') // 0,表示在索引为0时第一次出现
+        //    let result = arr.indexOf('孙悟空',3) // 4,表示从索引3开始查询，在索引为4时第一次出现
+
+        // result = arr.lastIndexOf('孙悟空') // 4,表示在索引为4时最后一次出现
+
+        result = arr.join() // '孙悟空,猪八戒,沙僧,唐僧,孙悟空'
+        // result = arr.join('') // '孙悟空猪八戒沙僧唐僧孙悟空'
+        // result = arr.join('-') // '孙悟空-猪八戒-沙僧-唐僧-孙悟空'
+        // result = arr.join(' ') // '孙悟空 猪八戒 沙僧 唐僧 孙悟空'
+
+        // result = arr.slice(0, 2) // ['孙悟空', '猪八戒']
+        result = arr.slice(2) // 【'沙僧', '唐僧', '孙悟空']
+        result = arr.slice(-2) // ['唐僧', '孙悟空']
+        result = arr.slice()
+        console.log(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
