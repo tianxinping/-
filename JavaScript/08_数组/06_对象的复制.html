@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 图形参考dio文件
+        const arr = ['孙悟空','猪八戒','沙和尚'];
+        const arr1 = arr // 虽然显示一样，但只是内存地址指向同一个数组，修改一个，另一个也会改变
+        console.log(arr); // ['孙悟空','猪八戒','沙和尚']
+        console.log(arr1); // ['孙悟空','猪八戒','沙和尚']
+        console.log(arr === arr1); // true
+
+        const arr2 = arr.slice(); // 复制了一个新的数组
+        console.log(arr2); // ['孙悟空','猪八戒','沙和尚']
+        console.log(arr === arr2); // false
+        
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

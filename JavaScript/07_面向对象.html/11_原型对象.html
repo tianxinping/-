@@ -5,13 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
- 
+
 </head>
 
 <body>
     <script>
 
         /* 
+
+        1. 原型（prototype）
+            每个 JavaScript 函数都有一个 prototype 属性，这个属性指向一个对象，称为原型对象。
+            当这个函数被用作构造函数来创建实例时，这些实例会自动关联到函数的 prototype 属性所指向的对象。
+        2. __proto__ 属性
+            每个 JavaScript 对象（除了 null）都有一个特殊的内部属性 [[Prototype]]，
+            在浏览器环境中通常可以通过 __proto__ 属性访问。这个属性指向该对象的原型。
+            console.log(person1.__proto__ === Person.prototype); // true
+        3. 原型链
+            当你试图访问一个对象的属性时，JavaScript 引擎会先检查该对象本身是否有这个属性。
+            如果没有找到，它会继续在对象的原型上查找，
+            如果还没有找到，它会继续查找原型的原型，这样一层一层向上查找，形成了所谓的"原型链"。
+        4. 原型链相关的常用方法
+            Object.create(proto)：创建一个新对象，使用现有的对象作为新创建对象的原型
+            Object.getPrototypeOf(obj)：获取一个对象的原型
+            Object.setPrototypeOf(obj, prototype)：设置一个对象的原型（不推荐使用，影响性能）
+            instanceof 运算符：测试一个对象是否在另一个对象的原型链上
+        理解 JavaScript 的原型对象对于深入掌握这门语言至关重要，它是 JavaScript 对象和继承系统的核心机制。
+        
          访问一个对象的原型对象
              对象.__proto__  一般特殊符号开头的是不希望被访问的属性，这样写不正规不安全
              也可以用console.log(Object.getPrototypeOf(对象));  
@@ -39,27 +58,27 @@
             原型链，是找属性的链，找不到会返回undefined
         
             */
- 
-         class Person {
-             name = "孙悟空"
-             age = 18
- 
-             sayHello() {
-                 console.log("是我", this.name);
- 
-             }
-         }
-         const person = new Person()
-         console.log(person);
- 
-         console.log(person.__proto__); // 查看原型对象
-         console.log(person.__proto__.__proto__);//原型之上也有原型，构成原型链
- 
-         console.log(person.constructor); // 在原型对象中包含构造函数
- 
-         console.log(Object.getPrototypeOf(person));  // 比较正确的写法，相比于__proto__更安全
 
-     </script>
+        class Person {
+            name = "孙悟空"
+            age = 18
+
+            sayHello() {
+                console.log("是我", this.name);
+
+            }
+        }
+        const person = new Person()
+        console.log(person);
+
+        console.log(person.__proto__); // 查看原型对象
+        console.log(person.__proto__.__proto__);//原型之上也有原型，构成原型链
+
+        console.log(person.constructor); // 在原型对象中包含构造函数
+
+        console.log(Object.getPrototypeOf(person));  // 比较正确的写法，相比于__proto__更安全
+
+    </script>
 </body>
 
 </html>

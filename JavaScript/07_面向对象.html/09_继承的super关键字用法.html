@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            constructor(name, age){
+                this.name = name
+                this.age = age
+            }
+            sayHello(){
+                console.log('你好，我是' + this.name);
+                
+            }
+        }
+
+        class Student extends Person {
+            constructor(studentId,name,age){
+                super(name,age) // 调用父类的构造函数
+                this.studentId = studentId
+            }
+        }
+        const person = new Person('张三', 18)
+        const student = new Student('202504', '李四', 20)
+        console.log(person);
+        console.log(student);
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
