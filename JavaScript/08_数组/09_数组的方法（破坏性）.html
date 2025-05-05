@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const arr = ['a', 'b', 'c', 'd', 'e'];
+        /* 
+            push()
+                在数组末尾添加元素，返回数组长度
+            pop()
+                删除并返回数组最后一个元素(删什么返回什么)
+            unshift()
+                在数组开头添加元素，返回数组长度
+            shift()
+                删除并返回数组第一个元素(删什么返回什么)
+
+            splice()
+                可以删除，插入，替换数组中的元素
+                参数
+                    1.删除的起始位置
+                    2.删除的个数
+                    3.插入的元素
+                返回值
+                    返回被删除的元素
+
+            reverse()
+                翻转数组
+                    
+        */
+        let PushResult = arr.push('f'); // 在数组末尾添加一个或多个元素,返回数组长度
+        console.log(PushResult); // 6 数组为['a', 'b', 'c', 'd', 'e', 'f']
+
+        let PopResult = arr.pop() // 删除并返回数组最后一个元素
+        console.log(PopResult); // f 数组为['a', 'b', 'c', 'd', 'e']
+        
+        let UnshiftResult = arr.unshift('g'); // 在数组开头添加一个或多个元素,返回数组长度
+        console.log(UnshiftResult); // 6 数组为['g', 'a', 'b', 'c', 'd', 'e']
+
+        let ShiftResult = arr.shift() // 删除并返回数组第一个元素
+        console.log(ShiftResult); // g 数组为['a', 'b', 'c', 'd', 'e']
+
+        // splice()的删除和替换功能
+        let SpliceResult = arr.splice(2, 1, 'splice替换') // 索引为2的位置开始删除，删除1个元素，即删除c并替换
+        console.log(arr);
+        console.log(SpliceResult); // ['c']
+        // splicce()的插入功能
+        let SpliceResult2 = arr.splice(2, 0, 'splice插入') // 索引为2的位置开始删除，删除0个元素，即不删除任何元素，在索引为2的位置插入一个元素
+        console.log(arr);
+
+        // reverse()翻转数组
+        arr2 = [1,2,3,4,5]
+        arr2.reverse() 
+        console.log(arr2); // [5, 4, 3, 2, 1]
+        
+        /* 
+            
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

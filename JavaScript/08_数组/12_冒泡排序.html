@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            思路1：
+                9, 4, 6, 2, 6, 1, 7, 8, 2, 3
+                比价相邻的两个元素，根据大小比较判断是否交换位置
+                执行步骤
+                    第一次排序：4，6，2，6，1，7，8，2，3，9
+                    第二次排序：4，2，6，1，6，7，2，3，8，9
+                    
+            这种排序方式称为冒泡排序,这是最慢的排序方式
+                数据量小无所谓，数据量不适用
+            
+            思路2:
+                9, 4, 6, 2, 6, 1, 7, 8, 2, 3
+                  取出一个元素，然后将其他元素和该元素进行比较，
+                  如果其他元素比该元素小，则将该元素放到前面，再用前面的元素与剩下的比较
+
+                  1，9，6，4，6，2，7，8，2，3
+                  1，2，9，6，6，4，7，8，2，3
+
+            这种排序是选择排序,和冒泡排序一样慢
+                    
+        */
+
+        /*      const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
+        
+                for (let j = 0; j < arr.length - 1; j++) { // 7.因为内部的for只会进行一次判断，如果复制很多次判断是不现实的，因此添加外部循环
+                                                            // 8.其次，当10个元素中9个元素位置都对了时，最后一个元素也一定是对的，因此只需要判断length-1次
+                    for (let i = 0; i < arr.length - 1; i++) { // 6.因为i+1,需要取到length-1
+                        // 1.arr[i]和arr[i+1]，表示相邻的两个数
+                        if (arr[i] > arr[i + 1]) { //9.>升序，<降序
+                            // 2.大数在前，小数在后，则需要交换两个元素的位置
+                            const temp = arr[i] // 3.创建一个临时变量存储arr[i]的值
+                            arr[i] = arr[i + 1] // 4.将arr[i+1]的值赋值给arr[i]
+                            arr[i + 1] = temp // 5.将临时变量temp的值赋值给arr[i+1]
+                        }
+                    }
+                }
+                console.log(arr); */
+
+        // 冒泡排序优化1
+        const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
+
+        for (let j = 0; j < arr.length - 1; j++) {
+            let swapped = false; // 标记本轮是否交换
+            for (let i = 0; i < arr.length - 1 - j; i++) {  //最大元素沉到末尾，无需比较已排序部分，减少内层遍历范围
+                if (arr[i] > arr[i + 1]) {
+                    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]; // 使用解构赋值简化交换逻辑
+                    swapped = true
+                }
+            }
+            if (!swapped) break; // 如果没有发生交换，说明数组已经有序，提前结束排序
+        }
+        console.log(arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

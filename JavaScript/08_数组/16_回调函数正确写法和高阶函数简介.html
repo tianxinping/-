@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+        }
+        const personArr = [
+            new Person('张三', 18),
+            new Person('李四', 17),
+            new Person('王五', 10),
+            new Person('赵六', 7)
+        ]
+        /* 
+            高阶函数：
+                如果一个函数的参数或返回值是函数，那就是高阶函数（filter）
+                为什么要将函数作为参数传递（回调函数有什么作用）？
+                    将函数作为参数，以为可以对另一个函数动态传递代码
+        */
+
+        // 定义一个形参cb，传参传入了函数
+        function filter(arr, cb) {
+            const newArr = []
+            // console.log('--->',cb);
+            // cb()
+
+            for (let i = 0; i < arr.length; i++) {
+                if (cb(arr[i])) { // 我们希望不改变括号内部的代码且动态更改:ocp原则
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+        // 这种定义回调函数的形式比较少见，通常回调函数都是匿名函数
+        // function fn(a) {
+        //     return a.name === '张三'
+        // }
+        result = filter(personArr, a => a.name === '张三')
+        result = filter(personArr, a => a.age >= 18)
+
+        // 新建一个数组，也可以用filter函数
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        result = filter(arr, a => a % 2 === 0)
+        console.log(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

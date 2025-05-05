@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+             思路2:
+                9, 4, 6, 2, 6, 1, 7, 8, 2, 3
+                  取出一个元素，然后将其他元素和该元素进行比较，
+                  如果其他元素比该元素小，则将该元素放到前面，再用前面的元素与剩下的比较
+
+                  1，9，6，4，6，2，7，8，2，3
+                  1，2，9，6，6，4，7，8，2，3
+
+            这种排序是选择排序,和冒泡排序一样慢,但比冒泡简洁，它先找前面的，冒泡是先排后面的
+
+        */
+        const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3];
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {  // 内部的j是一直循环的，因此例如第一次循环，i一直是第一个元素，j一直自增，因此能将最小的放到arr[i]
+                if (arr[i] > arr[j]) {
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        console.log(arr);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

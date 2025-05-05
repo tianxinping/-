@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let a = '全局a'
+        /* 
+            函数在作用域，在函数创建时就已经确定，和调用的位置无关(词法作用域)
+
+            闭包利用的就是词法作用域
+        */
+        function fn() {
+            console.log(a);
+
+        }
+        function fn2() {
+            let a = 'fn2的a'
+            // 函数在作用域，在函数创建时就已经确定，和调用的位置无关(词法作用域)
+            fn()
+        }
+        fn2() // 全局a
+
+        function fn3() {
+            let a = 'fn3的a'
+            function fn4() {
+                console.log(a);
+            }
+            return fn4
+
+            // 返回函数加不加括号的区别：
+            // 不加括号：返回函数对象，用于 延迟执行 或 保留闭包状态。
+            // 加括号：立即执行函数并返回结果，用于 一次性初始化 或 直接获取值。
+
+
+        }
+        let result = fn3()
+        result() // fn3的a
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

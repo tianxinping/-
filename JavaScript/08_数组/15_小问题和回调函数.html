@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+        }
+        const personArr = [
+            new Person('张三', 18),
+            new Person('李四', 17),
+            new Person('王五', 10),
+            new Person('赵六', 7)
+        ]
+        /* 02小节里的判断是否18
+                问题是，目前的函数只能过滤出数组中的age属性小于18的对象
+                    我们希望更加灵活，例如过滤数组中age大于18的对象
+                                               age大于60的对象
+                                               age大于n的对象
+                                       过滤数组中的name为xxx的对象
+                                       过滤数组中的偶数
+                一个函数的参数也可以是函数
+                    如果将函数作为参数传递，那么我们就称这个函数为 回调函数(callback)
+                    
+                    将外部函数作为实参传入函数形参，在通过cb(arr[i])调用,就可以实现动态更改
+                    
+        */
+
+        // 定义一个形参cb，传参传入了函数fn的实参
+        function filter(arr, cb) {
+            const newArr = []
+            // console.log('--->',cb);
+            // cb()
+
+            for (let i = 0; i < arr.length; i++) {
+                if (cb(arr[i])) { // 我们希望括号内部的代码动态更改，给内部传入true或者flase。cb(arr[i]) = fn(a)
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+        function fn(a) {
+            return a.name === '张三' 
+        }
+        result = filter(personArr, fn) // fn传进去，作为参数cb，cb = fn，也就是cb(arr[i]) = fn(a)，再在函数内部调用（回调函数）
+        console.log(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

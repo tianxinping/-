@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            一对兔子出生2个月可以生一对兔子，成熟的兔子每个月都能生
+                编写函数， 用来计算n个月兔子数量
+
+                月份：1 2 3 4 5 6 7 8 9 10
+                对数：1 1 2 3 5 8 13
+                一个月：1（新1）
+                二个月：1（新2）
+                三个月：1（老生）+ 1（新1）
+                四个月：1（老生）+ 1（新2）+ 1（新1）
+                五个月：1（老生）+ 1（老生）+ 1（新2）+ 1（新1）+ 1（新1）
+                六个月：1（老生）+ 1（老生）+ 1（老生）+ 1（新2）+ 1（新2）+ 1（新1）+ 1（新1）+ 1（新1）
+                七个月：5（老生）+ 5（新生1）+3（新生2）
+                规律：num = (num-2) + (num-1)  （斐波那契数列）
+        */
+        // 递归实现（效率低）
+        function getRabbit(num) {
+            // 基线条件 n<3也可以
+            if (num === 1 || num === 2) {
+                return 1;
+            }
+            // 递归条件
+            return getRabbit(num - 2) + getRabbit(num - 1)
+        }
+        let result = getRabbit(7) //但输入数字过大非常卡顿
+        console.log(result);
+
+        // 用循环实现（效率高）
+        function fibonacciRabbits(n) {
+            if (n <= 0) { return 0 }
+            if (n === 1 || n === 2) { return 1 }
+            // 初始化前两个月的兔子
+            let prev1 = 1
+            let prev2 = 1
+            let current = 0
+            //利用循环实现3个月后到n个月的兔子对数
+            for (let i = 3; i <= n; i++) {
+                current = prev1 + prev2 // 当前月份兔子书等于前两个月和
+                prev1 = prev2 // 更新前一个月的值
+                prev2 = current // 更新前两个月的值
+            }
+            return prev2
+        }
+        let result2 = fibonacciRabbits(7)
+        console.log(result2);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

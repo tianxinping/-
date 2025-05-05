@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        有如下数组
+        要求去除数组中重复的元素，得到如下结果
+            [1, 2, 3, 4, 5]
+    -->
+    <script>
+        const arr = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 5];
+        // console.log(arr.length); // 10
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+            // 判断两个数是否相等，获取后一位的所有元素
+            for (let j = i + 1; j < arr.length; j++) {
+                console.log('--->', arr[j]);
+                // 删除重复的元素
+                /* 
+                    当遇到连续的重复元素时，代码会出错，会漏比较，原理如下
+                    当arr[i]和arr[j]相等时，它会自动删除j位置的元素，然后j+1位置的元素，会变成j位置的元素
+                    而j位置以及已经比较过了，不会重复比较，所以会出现漏比较的情况
+
+                    解决办法：当删除一个元素后，再比较一次该位置的元素，j--
+                */
+                if (arr[i] === arr[j]) {
+                    arr.splice(j, 1)
+                    j--
+                }
+                
+            }
+        }
+        console.log(arr);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

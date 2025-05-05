@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            浅拷贝（shallow copy）
+                通常对对象的拷贝都是浅拷贝
+                浅拷贝顾名思义，只对对象的浅层进行复制（只复制一层）
+                如果对象中存储的数据是原始值，那么拷贝的深浅不重要
+                浅拷贝只会对对象本身进行复制，不会复制对象中的属性（或元素）
+                    好比于直接把别人购物袋的对象放到自己购物袋，东西还是一样的
+            深拷贝（deep copy)
+                不仅复制对象本身，还会复制对象中的属性（或元素）
+                    好比于跟着别人购物，他拿什么我拿什么
+                通常情况不太适用，因为深拷贝会消耗更多的内存
+
+        */
+        const arr = [{ name: '孙悟空' }, { name: '猪八戒' }];
+
+        const arr2 = arr.slice(); // 浅拷贝
+
+        const arr3 = structuredClone(arr) // 深拷贝
+
+        console.log(arr);
+        console.log(arr2);
+        console.log(arr3);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

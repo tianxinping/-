@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            创建一个函数，第一次调用打印1，第二次打印2，以此类推
+
+            可以利用函数来隐藏不希望被外部访问的代码
+
+            以下函数就叫闭包
+                闭包就是能访问到外部函数作用域变量的函数
+            使用场景：
+                需要隐藏一些内容，不希望被外部访问
+            构成闭包的条件：
+                1. 函数嵌套
+                2. 内部函数引用了外部函数的变量
+                3. 内部函数要作为返回值返回（return()=>{}）
+        */
+
+        function outer(){
+            let num = 0 // 位于函数作用域，外部不能进行修改
+            return () => {
+                num++
+                console.log(num);
+                
+            }
+        }
+        const newFn = outer()
+        console.log(newFn);
+        newFn()
+        newFn()
+        newFn()
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
