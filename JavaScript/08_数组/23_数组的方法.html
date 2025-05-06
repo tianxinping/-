@@ -19,7 +19,7 @@
                         (a, b) => a - b 升续排序
                         (a, b) => b - a 降续排序
                         此方法性能是好于很多排序算法的
-                        
+
             forEach() 
                 方法用于遍历数组
                 他需要一个回调函数作为参数，这个回调函数会被调用多次
@@ -49,31 +49,33 @@
 
 
         */
-        // sort()
+        // sort() -- 排序
         console.log('用sort之前的原数组', arr);
         arr.sort() // 默认写法,默认写法可能会出错，一般都是加上回调函数
         arr.sort((a, b) => a - b) // 升续排序
         arr.sort((a, b) => b - a) // 降续排序
         console.log('sort的降序排列', arr); // 
 
-        // forEach()
-        // arr = ['孙悟空', '猪八戒', '沙僧', '唐僧', '白骨精']
+        // forEach() -- 遍历
+        arr = ['孙悟空', '猪八戒', '沙僧', '唐僧', '白骨精']
         // arr.forEach((element, index, array) => {
         //     console.log(element, index, array);
         // })
         // 获取数组中所有元素
         arr.forEach(element => console.log('forEach遍历所有元素', element))
+        // 获取数组中索引和数组
+        arr.forEach((index,array) => console.log(index, array))
 
-        // filter()
+        // filter() -- 过滤
         // 获取数组中所有偶数
         arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         let result = arr.filter(element => element % 2 === 0) // 返回true/false
         console.log('filter获取数组中所有偶数', result) // [2, 4, 6, 8, 10]
 
-        // map()
-        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        // map() -- 映射
+        arr = [1, 2, 3, 4, 5]
         result = arr.map(element => 'hello')
-        console.log('return hello', result) // ['hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello'];
+        console.log('return hello', result) // 这样写会返回原数组长度的新数组：['hello', 'hello', 'hello', 'hello', 'hello'];
         result = arr.map(element => element * 2) // 关键点在于根据原数组返回特定新数组
         console.log('map获取数组中所有元素乘以2', result) // [2, 4, 6, 8, 10];
         // 使用场景：为数组的元素添加li标签
@@ -81,7 +83,7 @@
         result = arr.map(element => '<li>' + element + '</li>')
         console.log(result);
 
-        // reduce()
+        // reduce() -- 汇总
         arr = [1, 2, 3, 4, 5, 6, 7, 8]
         // result = arr.reduce((a, b) => a + b) // 展开如下
         result = arr.reduce((a, b) => {

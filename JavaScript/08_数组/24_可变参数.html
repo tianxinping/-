@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn() {
+            /* 
+                arguments: 
+                    是函数定义中一个隐含参数
+                    是一个类数组对象（伪数组--和数组操作类似，但不是真正的数组）
+                        和数组相似，可以通过索引来读取元素，也可以通过for循环变量，但是它不是一个数组对象，不能调用数组的方法
+                    用来存储函数的实参
+                        无论用户是否定义形参，实参都会储存到arguments对象中
+                        可以通过该对象直接访问实参
+            */
+
+            // console.log(arguments.length); // 3，读取实参个数
+
+            console.log(arguments[0]); // 1,读取第一个实参
+
+            console.log(Array.isArray(arguments)); // false,arguments不是数组
+
+            // 遍历数组
+            // for (let i = 0; i < arguments.length; i++){
+            //     console.log(arguments[i]);}
+            // for (let v of arguments){
+            //     console.log(v);}
+            // 而forEach是数组的方法，arguments不是数组，所以不能直接调用
+            // arguments.forEach(ele => console.log(ele)) // 报错
+        }
+        fn(1, 10, 33)
+
+        // 定义一个函数，可以求 任意个 数值的和
+        // 怎么实现 任意个 是关键，sum()内部写几个形参都不对，所以可以直接不接收，
+        // 用arguments可以不受参数的数量限制，更加灵活创建函数
+        function sum() {
+            let result = 0
+            // for (let i = 0; i < arguments.length; i++) {
+            //     result += arguments[i]
+            // } // 方法1
+            // for (let num of arguments){
+            //     result += num
+            // } // 方法2
+            let arr = [...arguments]
+            result = arr.reduce((a, b,) => a + b, 0)// 方法3
+            return result
+
+        }
+        console.log(sum(1, 2, 3)); // 6
+
+
+        /* 
+            可变参数：在定义函数时，可以将函数的参数指定为可变参数
+                可变参数可以接收任意 数量实参，并将他们同意存储到一个数组中返回
+                作用和arguments基本一样的，但是也具有一些不同点
+                    1.可变参数名字可以自己指定
+                    2.可变参数是一个真正的数组，可以直接调用数组的方法
+                    3.可变参数可以配合其他参数使用：arguments存储实参，形参什么样子都对他无影响，
+                    4.可变参数必须在所有参数的最后一个位置（也可以理解为剩余参数）
+        */
+       // 可变参数:
+        function fn2(...args) {
+            console.log(args); 
+            return num.reduce((a, b) => a + b, 0)
+        }
+
+        // 不用可变参数并传入形参，观察arguments
+        // function fn4(a , b) {
+        //     console.log(arguments);
+        // }
+        // fn4(123, 456, 'hello', true, '1111') 
+        //结论：用arguments，123, 456, 'hello', true, '1111'都存储到arguments中
+
+        // 用可变参数并配合其他参数，观察args
+        function fn3(a, b, ...args) {
+            console.log(args);
+        }
+        fn3(123,456,'hello',true,'1111') 
+        // 结论：用可变参数，a接收到123，b接收到456，...args接收到后续值
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

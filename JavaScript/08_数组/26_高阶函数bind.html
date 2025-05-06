@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+
+            根据 函数 调用方式的不同，this值也不同
+                1.以函数的形式调用时，this指向window
+                2.以方法的形式调用时，this指向调用方法的对象
+                3.以构造函数的形式调用时，this指向新创建的对象
+                4.箭头函数中没有this，它会从上层作用域中继承this
+                5.通过call和apply调用函数时，this指向第一个参数
+                6.通过bind返回的函数，this由bind第一个参数决定（无法修改）
+
+            bind() 是函数的方法，可以来创建一个新的函数
+                bind可以为我们的新函数绑定this（无法修改）
+                bind可以为新函数绑定参数（无法修改）
+
+            箭头函数没有自身的this。因为他的this由外层作用域决定，本身没有this
+                也无法通过call、apply、bind来修改this的值
+                箭头函数中没有arguments
+        */
+        function fn(a,b,c) {
+            console.log('fn执行', this);
+            console.log(a,b,c);
+            
+        }
+        const obj = { name: '孙悟空ß' }
+        const newfn = fn.bind(obj,10,20,30)// 写死参数
+        newfn();
+
+        const arrowFn = () => {
+            console.log('arrowFn执行', this);
+            
+        }
+        arrowFn();
+        // arrowFn.call(obj); // 无法修改箭头函数中this的值
+        // arrowFn.apply(obj);
+        // const newArrowFn = arrowFn.bind(obj);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

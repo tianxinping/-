@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            根据 函数 调用方式的不同，this值也不同
+                1.以函数的形式调用时，this指向window
+                2.以方法的形式调用时，this指向调用方法的对象
+                3.以构造函数的形式调用时，this指向新创建的对象
+                4.箭头函数中没有this，它会从上层作用域中继承this
+                5.通过call和apply调用函数时，this指向第一个参数
+                6.通过bind返回的函数，this由bind第一个参数决定（无法修改）
+        */
+        function fn() {
+            console.log('函数执行',this); // window
+        }
+        fn();
+
+        const obj = { name: '孙悟空',fn }
+        obj.fn(); // obj
+        
+
+        /* 
+            调用函数除了 函数() 的方式，还有其他方式。
+                1.函数名.call()
+                2.函数名.apply()
+                    他们除了调用函数外，还可以指定函数内部的this值
+                    他们的第一个参数将会成为函数的 this
+                    注意区别：
+                        通过call调用函数，函数的实参必须一个一个的传递
+                        通过apply调用函数，函数的实参必须放到一个数组中传递
+                            实际开发中如果一个个的传参用call，有现成的数组用apply
+        */
+       fn.call(obj) 
+       fn.apply(obj) //this都指向obj
+
+       function fn2(a , b){
+        console.log('a =',a,'b =',b,this); // 
+       }
+       fn2.call(obj,1,2) // this指向obj，a=1,b=2
+       fn2.apply(obj,[1,2]) // this指向obj，a=1,b=2
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
