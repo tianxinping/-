@@ -21,16 +21,18 @@
         }
         console.log(arr); */
 
-        // for-of方法
-        const newArr = []
+        // for-of方法 
+        // 遍历数组 arr 的每一个元素 ele
+        const newArr = []; // 1. 创建一个空数组，用于存放去重后的结果
 
-        for (let ele of arr){
-            if (newArr.indexOf(ele) === -1){
-                newArr.push(ele)
+        for (let ele of arr) { // 2. 遍历原数组 arr 的每一个元素
+            if (newArr.indexOf(ele) === -1) { // 3. 检查当前元素是否已经存在于 newArr
+                newArr.push(ele); // 4. 如果不存在（indexOf 返回 -1），则添加到 newArr
             }
         }
-        console.log(newArr);
-        
+
+        console.log(newArr); // 5. 打印去重后的数组
+
     </script>
 </head>
 

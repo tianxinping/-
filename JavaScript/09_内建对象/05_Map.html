@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            Map
+                Map用来储存键值对结构的数据（key-value)
+                Object中存储的数据就可以认为是一种键值对结构
+                Map和Object主要区别
+                    1.Object的键只能是字符串或者Symbol（符号），
+                        如果传了其他类型会自动转换为字符串。例如：let obj = { 1: '孙悟空' } // 1会被转换为字符串'1'
+                    2.Map中任何类型的值都可以称为数据的key
+
+                当需要对象作为key使用，可以使用map
+
+                创建：
+                    new Map()
+
+                属性和方法：
+                    map.size // 获取Map中数据的个数
+                    map.set(key, value) // 向Map中添加数据
+                        key: 数据的key
+                        value: 数据的值
+                    map.get(key) // 获取Map中数据的值
+                        key: 数据的key
+                    map.delete(key) // 删除Map中指定key的数据
+                        key: 数据的key
+                    map.has(key) // 检查Map中是否存在某个key的数据
+                        key: 数据的key
+                    map.clear() // 清空Map中的数据
+        */
+        const obj2 = {}
+
+        // 1.创建Map对象
+        const map = new Map()
+
+        // 2.向Map中添加数据
+        map.set("name", "孙悟空") // 添加一个键值对
+        map.set(obj2, "猪八戒") // 添加一个键值对，key是对象
+        map.set(NaN, "唐僧") // 添加一个键值对，key是NaN
+
+        console.log(map); // Map(0) {}
+        console.log(map.size); // 3
+
+        // 3.获取Map中的数据
+        console.log(map.get("name")); // 取key为name的值 孙悟空
+        console.log(map.get(obj2)); // 取key为obj2对象的值 猪八戒
+        console.log(map.get(NaN)); // 取key为NaN的值 唐僧
+
+        // 4.删除Map中的数据
+        map.delete(NaN) // 删除key为name的数据
+
+        // 5.检查Map中是否存在某个key的数据
+        console.log(map.has("name")); // true
+        console.log(map.has(NaN)); // false
+
+        // 6.清空Map中的数据
+        map.clear() // Map(0) {}
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

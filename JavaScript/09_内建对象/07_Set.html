@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            Set
+                Set用来创建一个集合
+                和数组类似，不同点是Set不能存储重复的数据
+                本质和map一样，都是键值对结构。Set的key和value是相同的
+            使用方式
+                创建：
+                    new Set()
+                    new Set([...])
+                方法：
+                    size 获取Set的大小
+                    add() 添加元素
+                    has() 判断元素是否存在
+                    delete() 删除元素
+                    clear() 清空元素
+                    forEach() 遍历元素
+                    keys() 获取Set的所有key
+                    values() 获取Set的所有value  
+                    entries() 获取Set的所有键值对 
+        */
+        // 创建一个Set
+        const set = new Set()
+        // 向Set中添加数据
+        set.add(1)
+        set.add("孙悟空")
+        console.log(set); // Set(2) { 1, '孙悟空' }
+
+        // 向Set中添加重复的数据
+        set.add(1)
+        console.log(set); // Set(2) { 1, '孙悟空' } 不能添加
+
+        // 遍历Set中的数据
+        for (const item of set){
+            console.log(item); // 1 \n '孙悟空'
+        }
+
+        // 转换为数组来单独获取数据
+        const arr = [...set] // 将Set转换为数组
+        arr[1] // '孙悟空'
+        console.log(arr); // [ 1, '孙悟空' ]
+
+        // 删除Set中的数据
+        set.delete("孙悟空")
+
+        // 数组去重
+        const arr2 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+        const set2 = new Set(arr2) // Set(5) { 1, 2, 3, 4, 5 }
+        const arr3 = [...set2] // [ 1, 2, 3, 4, 5 ]
+
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

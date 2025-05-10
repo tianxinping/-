@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const obj = {
+            name: '孙悟空',
+            age: 18,
+            friend: {
+                name: '猪八戒',
+                age: 20
+            }
+        }
+        // 浅拷贝
+        const obj2 = Object.assign({}, obj) // friend是引用类型，obj1.friend和obj.friend指向同一块内存
+
+        // 深拷贝
+        const obj3 = structuredClone(obj)
+
+        // 利用JSON.stringify()和JSON.parse()进行深拷贝
+        const str = JSON.stringify(obj)
+        const obj4 = JSON.parse(str)
+
+        const obj5 = JSON.parse(JSON.stringify(obj)) // 写在一起
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

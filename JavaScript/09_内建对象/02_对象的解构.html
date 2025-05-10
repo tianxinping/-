@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            对象的解构赋值
+                从一个对象中提取数据，并赋值给变量
+                对象是加[]，数组加{}
+                    对象在[ 前加 ; 数组在包含{}语句外面加 ()
+
+                在对象解构赋值时，变量名必须和对象的属性名严格匹配
+                除非在解构时重命名（将属性名映射到自定义变量）
+
+        */
+        const obj = { name: '孙悟空', age: 18, gender: '男' }
+        // 要求：将obj中的name、age、gender分别赋值给变量name、age、gender
+
+        // 1.传统方法
+        /* let name = obj.name
+        let age = obj.age
+        let gender = obj.gender */
+
+        // 2.解构赋值
+        // 2.1声明变量同时解构对象
+        // let { name, age, gender } = obj 
+
+        // 2.2先声明再解构对象
+        let name, age, gender
+        ({ name, age, gender } = obj) // 
+        // 注意：{}会误认为代码块，所以需要用小括号包裹起来
+        console.log(name, age, gender)
+
+        // 3.注意：在对象解构赋值时，变量名必须和对象的属性名严格匹配，除非使用冒号指定属性名
+        let { address } = obj
+        console.log(address) // 不匹配返回undefined;
+        let { name: a ,age: b,gender: c } = obj
+        console.log(a, b, c) // 使用冒号指定属性名，正常返回
+
+        //4.解构赋值的默认值
+        let { name: a1 ,age: b1,gender: c1, address: d = '花果山' } = obj
+        console.log(a1, b1, c1, d) // 取别名顺便赋值默认值
+         
+        // 5.解构赋值的嵌套
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

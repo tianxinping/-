@@ -33,7 +33,7 @@
         }
         fn(1, 10, 33)
 
-        // 定义一个函数，可以求 任意个 数值的和
+    // 定义一个函数，可以求 任意个 数值的和
         // 怎么实现 任意个 是关键，sum()内部写几个形参都不对，所以可以直接不接收，
         // 用arguments可以不受参数的数量限制，更加灵活创建函数
         function sum() {
@@ -61,12 +61,13 @@
                     3.可变参数可以配合其他参数使用：arguments存储实参，形参什么样子都对他无影响，
                     4.可变参数必须在所有参数的最后一个位置（也可以理解为剩余参数）
         */
-       // 可变参数:
+       // 可变参数实现求任意个数之和:
         function fn2(...args) {
             console.log(args); 
-            return num.reduce((a, b) => a + b, 0)
+            return args.reduce((a, b) => a + b, 0)
         }
-
+        console.log(fn2(1,2,2)); // 5
+        
         // 不用可变参数并传入形参，观察arguments
         // function fn4(a , b) {
         //     console.log(arguments);
@@ -76,7 +77,7 @@
 
         // 用可变参数并配合其他参数，观察args
         function fn3(a, b, ...args) {
-            console.log(args);
+            console.log(args); // [ 'hello', true, '1111' ]
         }
         fn3(123,456,'hello',true,'1111') 
         // 结论：用可变参数，a接收到123，b接收到456，...args接收到后续值

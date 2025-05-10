@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            解构赋值
+        */
+        //需求：把一个数组中的属性值以此赋值给变量
+        const arr = ['孙悟空', '猪八戒', '沙僧'];
+        let a, b, c
+            //方法1:这样写就是麻烦一点，也没什么问题
+            // a = arr[0]
+            // b = arr[1]
+            // c = arr[2]
+            // console.log(a, b, c); 
+
+            // 方法2:使用解构赋值
+            // ;[a, b, c] = ['孙悟空', '猪八戒', '沙僧']
+            ;[a, b, c] = arr // 这样写最简便
+        console.log(a, b, c);
+
+        //注意：
+        // 这样写一般要报错，可以在 [ ( 这两个符号前面加 ; ,代表这句话是独立的
+
+        // 解构赋值的默认值
+        let [aa, bb, cc, dd] = ['唐僧', '白龙马', '小白龙', '红孩儿'] //声明同时解构
+            // 解构时赋默认值
+            // ;[aa, bb, cc, dd = 10] = ['张三', '李四', '王五'] //张三 李四 王五 10
+
+            // 表示默认值使用之前已存在的元素，红孩儿
+            ;[aa, bb, cc, dd = dd] = ['张三', '李四', '王五']  //张三 李四 王五 红孩儿
+        console.log(aa, bb, cc, dd);
+
+        // 解构数组时，可以使用...获取多余的元素
+        let [n1, n2, ...n3] = [1, 2, 3, 4, 5] // 1 2 [3, 4, 5]
+        console.log(n1, n2, n3);
+
+        // 解构函数返回值
+        function fn() {
+            return ['孙悟空', '猪八戒', '沙僧']
+        }
+        let [name1, name2, name3] = fn()
+        console.log(name1, name2, name3) // 孙悟空 猪八戒 沙僧
+
+        // 通过解构赋值快速交换两个变量的值（包括数组）
+        let x = 1, y = 2
+        /* let temp = x
+        x = y
+        y = temp // 传统方法交换 */
+
+        ;[x, y] = [y, x] // 等好左边变量，右边值 ，交换值
+
+        console.log('x=', x, 'y=', y);
+
+    /* 
+        数组中什么都可以存，包括数组
+            如果数组中的元素还是数组就是 二维数组
+                构造表格
+    */
+        const arr2 = [['孙悟空',18,'男'],['嫦娥',20,'女']]
+        console.log(arr2[0][0]); // 孙悟空
+        // 遍历二维数组需要用到循环嵌套
+        /* for(let stu of arr2){
+            console.log('外',stu[0],stu[1],stu[2]);
+            for(let v of stu){
+                console.log('内',v);
+            }
+        } */
+        // 二维数组的解构
+        //1.解构孙悟空的信息
+        let [[name,age,sex],obj] = arr2
+        console.log(name,age,sex);
+        console.log(obj);
+        
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

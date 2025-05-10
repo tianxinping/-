@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 了解
+        const map = new Map()
+
+        map.set('name', '孙悟空')
+        map.set("age", 18)
+
+        // 将Map转换为数组，通过...展开的方式更简单
+        const arr = Array.from(map) // [[key, value], [key, value]] 二维数组
+        const arr2 = [...map]
+        console.log(arr);
+        console.log(arr2);
+
+        // 通过二维数组构建Map
+        const map2 = new Map([["name", "孙悟空"], ["age", 18], [{}, () => { }]])
+        console.log(map2); // Map(3) { 'name' => '孙悟空', age => 18, {...} => f }
+
+        // 遍历Map -- 了解
+        for (const entry of map) {
+            const [key, value] = entry // 解构赋值
+            console.log(entry, key, value); // [ 'name', '孙悟空' ] [ 'age', 18 ]
+        }
+
+        for (const [key, value] of map) {
+            console.log(key, value); // name 孙悟空 \n age 18
+        }
+
+        map.forEach((value, key, c) => {
+            console.log(key, value, c) // name 孙悟空 \n age 18 Map(2) { 'name' => '孙悟空', 'age' => 18 }
+        })
+        /* 
+            map.keys() // 获取Map中所有的key
+            map.values() // 获取Map中所有的value
+            map.entries() // 获取Map中所有的键值对 就是map()
+        */
+        // 根据需要遍历所有的key或者value
+        for (const key of map.keys()) {
+            console.log(key); // name \n age
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
