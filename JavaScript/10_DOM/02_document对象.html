@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            document对象
+                document对象表示的是整个网页
+                document对象的原型链
+                    HTMLDocument -> Document -> Node -> EventTarget -> Object.prototype -> null
+                    原型链上存在的对象的属性方法document都能使用
+                部分属性：
+                    document.documentElement 获取HTML根元素
+                    document.head 获取head
+                    document.title 获取title
+                    document.body 获取body
+                    document.links 获取页面所有超链接
+                    ...
+        */
+       console.log(document.body); // 获取body
+       console.log(document.documentElement); //获取HTML根元素
+       console.log(document.title); // 获取title
+       document.title = "修改后的标题"
+
+       
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            split()
+              可以结合正则表达式来对字符串拆分
+            search()
+              可以结合正则表达式来查找字符串第一次出现的位置，没有返回-1，和indexOf类似
+            replace()
+              根据正则表达式替换字符串中的内容
+            match()
+              根据正则表达式匹配符合要求的内容
+                和exec方法相比，比较简单，但少了些东西，例如分组功能没有
+            matchAll()
+              和match类似，但是返回的是一个迭代器，可以遍历所有匹配的内容
+              必须加g修饰符
+              遇到迭代器用for of循环遍历
+              该方法可以分组，和exec方法一样
+        */
+       //前面讲字符串方法时介绍了split方法
+       let str = "a@b@d@d"
+       let result = str.split("@")
+       console.log(result); // [ 'a', 'b', 'd', 'd' ]
+       // 但是有局限性，例如
+       str = "孙悟空abc猪八戒ccc沙和尚"
+       result = str.split(/\w\wc/)
+       console.log(result); // ['孙悟空', '猪八戒', '沙和尚']
+       
+       // search方法
+         str = "孙悟空abc猪八戒ccc沙和尚"
+         result = str.search("猪八戒")
+         console.log(result); // 6
+         // search方法结合正则表达式，查找手机号第一次出现的位置
+         str = "askjdhflak17727319043aihfhlsdjnva13899994344akjhsdlv13334755789"
+         result = str.search(/1[3-9]\d{9}/)
+         console.log(result); // 10
+         
+        // replace() 把手机号全部替换为哈哈哈
+        result = str.replace(/1[3-9]\d{9}/g, "哈哈哈")
+        console.log(result); // askjdhflak哈哈哈aihfhlsdjnva哈哈哈akjhsdlv哈哈哈
+
+        // match() 查找所有符合要求的内容
+        result = str.match(/1[3-9]\d{9}/g)
+        console.log(result); // [ '17727319043', '13899994344', '13334755789' ]
+
+        // matchAll() 查找所有符合要求的内容，返回一个迭代器
+        result = str.matchAll(/1[3-9]\d{9}/g)
+        for(let item of result){
+          console.log(item);
+        }
+        // matchAll()分组功能
+        result = str.matchAll(/1[3-9](\d{9})/g)
+        for(let item of result){
+          console.log(item);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

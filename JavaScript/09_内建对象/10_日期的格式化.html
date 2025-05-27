@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const date = new Date()
+
+        let result = date.toLocaleDateString() // 获取本地化日期字符串 2025/5/11
+        result = date.toLocaleTimeString() // 获取本地化时间字符串 02:50:28
+        /* 
+            toLocalString()
+                可以将日期转换为本地化的字符串
+                参数：
+                    1.描述语言和国家信息的字符串
+                        zh-CN 中文简体
+                        zh-TW 中文繁体
+                        zh-HK 中文香港
+                        en-US 英文美国
+                        en-GB 英文英国
+                    2.需要一个对象作为参数，在对象中可以通过对象的属性来对日期配置
+                        dateStyle: 'full' // 日期格式
+                        timeStyle: 'full' // 时间格式
+                            full: 完整的日期格式
+                            long: 较长的日期格式
+                            medium: 中等长度的日期格式
+                            short: 短的日期格式(默认)
+                        hour12 是否使用12小时制
+                        weekday: 'long' // 星期几的格式
+                            long: 星期一
+                            short: 周一
+                            narrow: 一
+                        year: 'numeric' // 年份格式
+                            numeric: 2025
+                            2-digit: 25
+                        month: 'numeric' // 月份格式
+                        day: 'numeric' // 日期格式
+                        
+        */
+        result = date.toLocaleString("zh-CN", {
+            // dateStyle: "full",
+            // timeStyle: "full",
+            hour12: true,
+            weekday: "long",
+            year: "2-digit"
+        }) // 获取本地化日期和时间字符串 2025/5/11 02:50:28
+        console.log(result)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

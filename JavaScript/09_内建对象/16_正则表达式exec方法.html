@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            re.test()
+                检测字符串是否匹配正则表达式，返回 true 或 false
+            re.exec()
+            作用：在字符串中执行一个搜索匹配
+            参数：要匹配的字符串
+            返回值：
+                如果匹配成功，则返回一个数组
+                    数组中存放了与正则表达式匹配的内容
+                    数组中第0个元素是整个正则表达式匹配的内容
+         */
+
+        let str = "abcaecafcacc"
+
+        // 要求：提取str中符合a?c格式的内容
+
+        // let re = /a[a-z]c/ig  // g表示全局匹配,每调用一次exec方法，就会从上次匹配结束的位置开始匹配
+        // let re = /a([a-z])c/ig //给[a-z]加个()，意思是可以将[a-z]匹配的内容单独 分组 提取出来
+        let re = /a(([a-z])c)/ig
+        
+        let result = re.exec(str)
+        console.log(result);//(3) ['abc', 'bc', 'b', index: 0, input: 'abcaecafcacc', groups: undefined]
+        
+        // while循环，每次调用exec方法，都会返回一个数组，如果数组为null，则表示匹配结束
+        while (result) {
+            console.log(result[0], result[1], result[2]);
+            result = re.exec(str)
+        }
+        // 输出内容:
+        // abc bc b
+        // aec ec e
+        // afc fc f
+        // acc cc c
+
+        // 练习
+        // 有一个字符串，获取到其中的手机号
+        // askjdhflak17727319043aihfhlsdjnva13899994344akjhsdlv12334755789
+
+        
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

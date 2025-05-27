@@ -15,7 +15,7 @@
             }
         }
         // 浅拷贝
-        const obj2 = Object.assign({}, obj) // friend是引用类型，obj1.friend和obj.friend指向同一块内存
+        const obj2 = Object.assign({}, obj) // friend是引用类型，obj2.friend和obj.friend指向同一块内存
 
         // 深拷贝
         const obj3 = structuredClone(obj)

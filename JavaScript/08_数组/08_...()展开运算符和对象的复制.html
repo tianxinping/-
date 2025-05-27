@@ -43,8 +43,8 @@
         */
         const obj = { name: '孙悟空', age: 18 }
         //    const obj2 = Object.assign({},obj) // 将obj复制到{}中，并返回,拆开就是下列
-        const obj2 = {}
-        Object.assign(obj2, obj)
+        const obj2 = { name: '111' }
+        Object.assign(obj, obj2) // {name: '111', age: 18}
 
         const obj3 = { ...obj } // 将 obj中的属性 在 新对象中展开并返回
 

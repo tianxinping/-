@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            垃圾回收(Garbage Collection)
+                是指自动释放不再使用的内存空间的过程。
+                在程序的世界中，什么事垃圾？
+                    如果一个对象不再被引用，那么这个对象就是垃圾。
+                    垃圾对象的存在会严重影响程序的性能和内存使用。
+                    在Js中，垃圾回收是自动进行的，开发者不需要手动释放内存。
+                    对于垃圾回收来说，唯一能做的事情是将不再使用的变量设置为null
+        */
+
+        let obj = {"name": "张三"}; // 没有被引用的对象，成为垃圾
+        obj = null
+
+        let obj1 = {"name": "李四"};  // 不是垃圾
+        let obj2 = obj1; // 
+        obj1 = null;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

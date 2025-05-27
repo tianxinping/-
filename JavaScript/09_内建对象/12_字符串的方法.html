@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            字符串
+                字符串本质就是一个字符数组
+                "hello" -- ["h","e","l","l","o"]
+                字符串的很多方法都和数组是非常类似的
+                属性和方法
+                    length 获取字符串长度(只读)
+                    字符串[索引] 获取指定位置的字符
+                    str.at() 
+                        根据索引获取指位置字符，可以负索引
+                    str.chatAt()
+                        根据索引获取字符
+
+                    str.concat()
+                        连接字符串，相当于+，但是 + 更常用
+                    str.includes()
+                        检查是否包含某个内容，返回布尔值
+                    str.indexOf()
+                    str.lastIndexOf()
+                        查询字符串是否包含某个内容
+                            有返回索引
+                            无返回-1
+                    str.endsWith("")
+                    str.startsWith("")
+                        检查一个字符串是否以指定内容 结尾/开头
+                    str.padStart()
+                        在前面补充指定内容，让字符串保持某个长度
+                    str.padEnd()
+                        在后面添加指定内容，让字符串保持某个长度
+                    str.replace()
+                        替换字符串内容，返回新的字符串
+                    str.replaceAll()
+                        替换所有匹配的内容，返回新的字符串
+                    str.slice()
+                        对字符串切片
+                    str.substring()
+                        截取字符串
+                    str.split()
+                        将字符串拆分位数组 -- 和数组的join()方法相反
+                    str.toUpperCase()
+                        将字符串转换为小写
+                    str.toLowerCase()
+                        将字符串转换为大写
+                    str.trim()
+                        去除字符串两边的空格
+                    str.trimStart()
+                    str.trimEnd()
+                        去除字符串开头/结尾的空格
+        
+
+        */
+        let str = "hello"
+        console.log(str.length); // 5
+        console.log(str[0]); // h
+
+
+        for (let i of str) {
+            console.log(i);
+        }
+
+        let result = str.charAt(0)
+
+        result = str.includes("ll",0) // 从索引0开始查找，返回true
+
+        result = str.indexOf('o') // 4 从前往后查找
+        result = str.lastIndexOf('h') // 0 从后往前查找
+
+        result = str.startsWith("h") // true 检查是否以h开头
+
+
+        str = "100"
+        result = str.padStart(7,"0") // 0000100 7位，前面补0
+        result = str.padEnd(7,"0") // 1000000 7位，后面补0
+
+        str = "hello world"
+        let result1 = str.replace("world","JavaScript") // 替换字符串,返回新的字符串
+        console.log(result1); 
+
+        result = str.slice(0,5) // 从索引0开始，截取到索引5之前，不包含5
+        result = str.substring(6,11) // 从索引6开始，截取到索引11之前，不包含11
+        
+        str = "abc@def@ghi"
+        result = str.split("@") // 将字符串按照@拆分成数组
+
+        result = str.toUpperCase() // 将字符串转换为大写
+
+        console.log(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

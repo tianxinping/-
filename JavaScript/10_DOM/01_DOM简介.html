@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        DOM(Document Object Model) 文档 对象 模型
+            Web API的核心部分，用于操作HTML和XML文档。
+            文档指整个网页，DOM就是用来操作网页的
+            对象指网页的每一个元素，每一个部分都转换为对象
+            模型指对象之间的关系，例如父子元素，兄弟元素等
+
+        节点(node)
+            节点是DOM的基本组成部分，所有的元素、属性和文本都被视为节点。
+            节点分为几种类型：
+                文档节点：document对象，代表整个HTML文档。
+                元素节点：代表HTML元素，例如标签<div>、<p>等。
+                属性节点：代表HTML元素的属性，例如class、id等。
+                文本节点：代表HTML元素中的文本内容。
+                ...（常用的前两个）
+            node是网页中所有对象的一个共同的父类
+        关系
+            祖先：包含后代
+            后代：被祖先包含
+            父：直接包含子元素
+            子：被父元素直接包含
+            兄弟：同一个父元素下的其他元素
+        */
+       /* 
+       
+       */
+    </script>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <script>
+        /* 
+            要使用DOM操作网页，我们需要浏览器至少得先给我一个对象
+                才能进行操作
+
+            所以浏览器已经为我们提供了一个全局对象document来直接使用
+                document对象代表整个网页
+        */
+       console.log(document); //（window代表整个窗口，包含document对象）
+
+       // 获取btn对象
+       const btn = document.getElementById('btn'); // 获取id为btn的元素
+
+       console.log(btn); // <button id="btn">点我</button> 打印的是对象
+       // 通过btn对象可以操作这个按钮，例如修改文字
+        btn.innerText = "Click Me" // 修改的按钮对象
+       
+        // 开启无限可能
+    </script>
+</body>
+
+</html>

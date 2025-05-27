@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            量词
+                {m}正好m次
+                {m,}至少m个
+                {m,n}至少m个，最多n个
+                + 表示1个及以上，相当于{1,}
+                * 任意数量个,相当于{0,}
+                ? 0个或1个，相当于{0,1}
+        */
+        let re = /a{3}/ // 表示a要出现3次
+        let result = re.test("aaa") // 只要有3个a了就返回true
+
+        re = /^a{3}$/ // 必须正好3个a
+        result = re.test("aaa") // 才返回true
+
+        re = /^ab{3}$/ // 必须abbb
+        result = re.test("abbb") // 才返回true
+
+        re = /^(ab){3}$/ // 必须ababab，用()对量词分组
+        result = re.test("ababab") // 才返回true
+
+        re = /^[a-z]{3}$/ // 必须3个字母
+        result = re.test("abc") // 才返回true
+
+        re = /^[a-z]{1,}/ // 一个以上的字母
+
+        re = /^[a-z]{1,3}$/ // 1到3个字母
+        result = re.test("abc") // 才返回true
+
+        console.log(result)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
