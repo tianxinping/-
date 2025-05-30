@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td,
+        th {
+            border: 1px black solid;
+            padding: 10px 0;
+        }
+
+        form div {
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            /* 
+                点击删除超链接后，删除当前员工信息
+            */
+
+            function delEmpHandler() {
+
+                // 不让a跳转，事件中可以通过取消默认行为来阻止超链接的跳转,可以通过将跳转路径为javascript:;
+                // return false // 也可以使用return false来取消默认行为，只在xxx.xxx = function(){}中有效
+
+                // 删除当前员工，删除当前超链接所在的tr
+                // console.log(this); this表示当前点击的超链接
+                // 但我们需要删除的不是超链接,而是tr
+
+                const tr = this.parentNode.parentNode//父亲的父亲
+
+                // 弹出一个提示框,confirm会弹出两个选项的提示框，返回布尔值
+                // let flag = confirm("确定删除吗？")
+
+                // 获取要删除员工姓名
+                // const empName = tr.getElementsByTagName("td")[0].textContent
+                const empName = tr.firstElementChild.textContent
+
+                // 删除tr
+                if (confirm("确认要删除[" + empName + "]吗")) {
+                    tr.remove()
+                }
+            }
+
+            // 获取到所有的超链接
+            const links = document.links
+            // 为他们绑定单击响应函数
+            for (let i = 0; i < links.length; i++) {
+                links[i].onclick = delEmpHandler // 函数写到了外部，避免在循环内部多次创建，把函数对象赋值给onclick属性，所以不加括号
+                // 为什么我们常在监听器中不加括号？
+                // 因为你是传递函数引用给事件系统，浏览器会在点击时调用它，而不是立刻运行
+            }
+
+
+            /* 
+                点击按钮后，将用户的信息插入到表格中
+            */
+            const tbody = document.querySelector("tbody")
+            const btn = document.getElementById("btn")
+            btn.onclick = function () {
+                const name = document.getElementById("name").value//.value获取文本框的值
+                const email = document.getElementById("email").value//.value获取文本框的值
+                const salary = document.getElementById("salary").value//.value获取文本框的值
+
+                // 将获取到的数据设置为DOM对象
+                // 这种写法容易被xss攻击
+                tbody.insertAdjacentHTML("beforeend",
+                    `
+                    <tr>
+                        <td>${name}</td>
+                        <td>${email}</td>
+                        <td>${salary}</td>
+                        <td><a href="javascript:;">删除</a></td>
+                    </tr>
+                    `
+                )
+                // 由于上面的超链接是新添加的，所以并没有绑定单击响应函数，无法删除
+                // 解决方法：在添加完之后，重新绑定单击响应函数
+                links[links.length -1].onclick = delEmpHandler
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div class="outer">
+        <table>
+            <tbody>
+                <tr>
+                    <th>姓名</th>
+                    <th>邮件</th>
+                    <th>薪资</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>孙悟空</td>
+                    <td>swkswk@hgs.com</td>
+                    <td>10000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>猪八戒</td>
+                    <td>zbjzbj@hgs.com</td>
+                    <td>8000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>沙僧</td>
+                    <td>ssss@hgs.com</td>
+                    <td>7000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>唐僧</td>
+                    <td>tss@hgs.com</td>
+                    <td>9000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="#">
+            <div>
+                <label for="name">姓名：</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email">邮件：</label>
+                <input type="email" id="email">
+            </div>
+            <div>
+                <label for="salary">薪资：</label>
+                <input type="salary" id="salary">
+            </div>
+            <button id="btn" type="button">添加</button>
+        </form>
+    </div>
+</body>
+
+</html>

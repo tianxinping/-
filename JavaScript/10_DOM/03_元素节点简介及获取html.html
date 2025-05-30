@@ -32,8 +32,8 @@
                     1.通过document对象获取元素节点
                     2.通过document对象创建元素节点
                 通过document对象获取已有元素节点
-                    1.document.getElementById()
-                        通过id属性获取 一个 元素节点对象
+                    1.document.getElementById() （非常常用）
+                        通过id属性获取 一个 元素节点对象（唯一）
                     2.document.getElementsByClassName()
                         根据元素的class属性值获取一组元素节点对象
                         返回的是类数组对象，可以当作数组使用，但不能使用数组的方法
@@ -47,32 +47,45 @@
                         根据元素的name属性值获取一组元素节点对象
                         返回的是实时更新的集合
                         不常用,用于表单项
-                    5.document.querySelectorAll()
+                    5.document.querySelectorAll() (推荐使用)
                         根据选择器去页面查询元素
                         .id #btn等等
                         返回一个类数组,但不会实时更新
-                    6.document.querySelector()
+                    6.document.querySelector() (推荐使用)
                         根据选择器去页面查询第一个符合的元素
+                        CSS属性选择器的语法是：[属性名="属性值"]
+                    
+                通过document对象创建元素节点
+                    1.document.createElement()
+                        创建一个元素节点对象
+                        参数为标签名
                         
         */
+        //1
         const btn = document.getElementById('btn');
         console.log(btn); // <button id="btn">按钮</button>
-
+        //2
         const spans = document.getElementsByClassName("s1")
         console.log(spans);
         for (let i = 0; i < spans.length; i++) {
             console.log(spans[i]);
             spans[i].innerText = "我是span" + i;
         }
-
+        //3
         const divs = document.getElementsByTagName("div")
         console.log(divs);
-        
+        //4
         const genderInput = document.getElementsByName("gender")
         console.log(genderInput);
-        
+        //5
         const divs2 = document.querySelectorAll("div")
         console.log(divs2);
+        //6
+        const div3 = document.querySelector("div")
+
+        //创建元素节点
+        const h2 = document.createElement("h2")
+        console.log(h2);
         
     </script>
 </body>
