@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #box2{
+            width: 150px;
+            height: 150px;
+            background-color: white;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            在DOM中存在着多种不同类型的事件对象
+                多种的事件对象有一个共同的祖先Event
+                    event.target // 触发事件的对象
+                    event.stopPropagation(); // 阻止事件冒泡
+                    event.currentTarget); // 绑定事件的对象（同this，箭头函数内可使用，了解）
+                    event.preventDefault(); // 阻止默认行为,如a标签的跳转（最推荐）
+
+                事件的冒泡(bubble)
+                    事件的冒泡指事件的向上传导
+                    当元素的某个事件被触发后，其祖先元素也会触发该事件
+                    冒泡的存在简化了代码编写，但是也会带来一些问题
+                        可以通过事件对象来阻止事件的冒泡
+                        event.stopPropagation(); // 阻止事件冒泡
+        */
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+        const box3 = document.getElementById('box3');
+
+        box1.addEventListener("click", function(event) {
+            /* 
+                在事件响应函数中
+                    event.target 表示的是触发事件的对象
+                    this 绑定事件的对象
+                    由于冒泡存在，所以this和event.target可能不是同一个对象
+            */
+            console.log("box1");
+            console.log("event.target",event.target); // 触发事件的对象
+            console.log("this:",this); // 绑定事件的对象(由于冒泡存在，不推荐使用this)
+            console.log("同this:",event.currentTarget); // 绑定事件的对象（同this）
+            
+            
+        })
+        box2.addEventListener("click",function(event){
+            console.log("box2");
+        })
+        box3.addEventListener("click",function(event){
+            event.stopPropagation(); // 从当前位置阻止事件冒泡
+            console.log("box3");
+        })
+    </script>
+</body>
+</html>

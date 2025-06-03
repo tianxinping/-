@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;/* 加了权重 !important就不能通过js改样式，所以一般不建议加 */
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <hr />
+    <div class="box1"></div>
+    <script>
+        const btn = document.getElementById("btn")
+        const box1 = document.querySelector(".box1")
+        btn.onclick = function(){
+            //修改box1的样式
+            // 方法：元素.style.样式名 = 样式值
+                // 注意，如果样式名含有 - ，则需要修改为驼峰命名法:background-clolr = backgroundColor
+            box1.style.width = "300px"
+            box1.style.height = "300px"
+            box1.style.backgroundColor = "pink"
+        }
+    </script>
+</body>
+</html>

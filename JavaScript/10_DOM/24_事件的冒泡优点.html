@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        #box2 {
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        /* 
+            让小球跟随鼠标移动
+                鼠标在box2里移动，小球依旧跟随
+                如果没有冒泡，需要为所有可能触发事件的元素都绑定事件，有只需要为document绑定事件即可
+
+                事件的冒泡与样式无关，只和结构相关
+        */
+        const box1 = document.getElementById('box1');
+        document.addEventListener("mousemove", function (event) {
+            box1.style.left = event.x -50 + "px"
+            box1.style.top = event.y -50 + "px"
+        }) // 如果把事件绑定了box1，只有在box1移动时才会触发事件
+
+        // 模拟关闭事件冒泡
+        // const box2 = document.getElementById('box2');
+        // box2.addEventListener("mousemove",function (event){
+        //     event.stopPropagation() // 阻止事件冒泡
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 加了权重 !important就不能通过js改样式，所以一般不建议加 */
+        }
+
+        .box1::before {
+            content: "我是伪元素";
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <hr />
+    <div class="box1"></div>
+    <script>
+        const btn = document.getElementById("btn")
+        const box1 = document.querySelector(".box1")
+        btn.onclick = function () {
+            /* 
+                getComputedStyle()
+                    返回的是一个对象，对象里是所有生效的样式,不会读取内联样式或者样式表的样式
+                        参数：
+                            1.要读取样式的元素;
+                            2.要获取的伪元素(较少使用)
+                        返回值：
+                            返回的一个对象，对象中存储了当前元素的样式
+                        注意：
+                            样式对象中返回的样式值，不一定能拿来直接计算
+                            例如：如果没有设置宽度，会得到经过计算的实际值xxxpx，而不是默认值auto。 
+            */
+            // 读取box1的样式
+            const styleObj = getComputedStyle(box1)
+            console.log(styleObj.width);
+
+            // 计算，要注意获取的值能不能计算
+            box1.style.width = parseInt(styleObj.width) + 100 + "px"
+
+            // 读取伪元素
+            const beforeStyle = getComputedStyle(box1, "::before")
+            console.log(beforeStyle.content);
+
+            // 
+
+
+        }
+    </script>
+</body>
+
+</html>

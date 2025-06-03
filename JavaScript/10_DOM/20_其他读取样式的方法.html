@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 50px;
+            margin: 50px;
+            border: 10px green solid;
+            overflow: auto;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 500px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <hr>
+    <div id="box1" style="position: relative;">
+        <div id="box2"></div>
+    </div>
+    <script>
+        const btn = document.getElementById('btn');
+        const box1 = document.getElementById('box1');
+        btn.onclick = function () {
+            /* 
+            只读且没有单位，可以直接计算
+                元素.clientWidth
+                元素.clientHeight
+                    获取元素内部的宽度和高度（包含内容区和内边距）
+
+                元素.offsetWidth
+                元素.offsetHeight
+                    获取元素可见的宽度和高度（包含内容区和内边距和边框）
+
+                元素.scrollWidth
+                元素.scrollHeight
+                    获取元素滚动区域的宽度和高度（包含内容区和内边距和滚动条）
+
+                元素.offsetParent（不是很常用）
+                    获取元素的定位父元素
+                    定位父元素：离当前元素最近的开启了定位的祖先元素,
+                        如果所有的元素都没有开启定位,则返回body
+            
+                元素.offsetTop
+                元素.offsetLeft
+                    获取元素相对于其定位父元素的偏移量
+
+                元素.scrollTop
+                元素.scrollLeft
+                    获取或设置元素滚动条的偏移量
+            */
+            console.log(box1.clientWidth, box1.clientHeight); // 300 300
+            console.log(box1.offsetHeight, box1.offsetWidth); // 320 320
+            console.log(box1.scrollWidth, box1.scrollHeight); // 300 600
+            console.log(box2.offsetParent); // <div id="box1" style="position: relative;">...</div>
+            console.log(box1.offsetTop, box1.offsetLeft); // 93 58(body自带外边距8px)
+            console.log(box1.scrollTop, box1.scrollLeft); // 0 0
+            
+
+        }
+    </script>
+</body>
+
+</html>
