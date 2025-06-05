@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            vertical-align: top;
+            width: 500px;
+            height: 700px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            height: 700px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .img-list li {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        li.current {
+            z-index: 1;
+            opacity: 1;
+        }
+
+        .prev-next a {
+            font-size: 60px;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            position: absolute;
+            height: 60px;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        #next {
+            right: 0;
+
+        }
+
+        /* 导航点的样式 */
+        .dot {
+            width: 150px;
+            height: 20px;
+            z-index: 3;
+            opacity: 1;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dot a {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 5px;
+            opacity: 0.5;
+        }
+
+        .dot a:hover,
+        .dot .active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <ul class="img-list">
+            <li class="current">
+                <a href="#"><img src="../images/1.jpeg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="../images/2.jpeg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="../images/3.jpeg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="../images/4.jpeg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="../images/5.jpeg" alt=""></a>
+            </li>
+        </ul>
+        <!-- 
+            添加切换按钮
+        -->
+        <div class="prev-next">
+            <a id="prev" href="javascript:;">&lt;</a>
+            <a id="next" href="javascript:;">&gt;</a>
+        </div>
+        <!-- 
+            导航点
+        -->
+        <div class="dot">
+            <a class="active" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            已完成
+                自动切换图片
+                按钮控制前后切换
+            需解决
+                代码优化✅
+                控制图片自动切换的关闭和开启
+                    把自动切换的代码放到toggleChange()函数中
+            
+        */
+        const toggleChange = (function () {
+
+            let timer = null
+            return () => {
+
+                // 判断timer是不是null
+                if (timer === null) {
+                    timer = setTimeout(function auto() {
+                        changeImg("next")
+                        //自动切换
+                        timer = setTimeout(auto, 2000)
+                    }, 2000)
+                } else {
+                    clearTimeout(timer)
+                    timer = null
+                }
+            }
+        })(); // 将timer放在闭包，避免被外部访问，立即执行函数，设置返回值，并在外部接收
+        toggleChange() // 第一次调用timer为null,启动自动切换
+
+        // 获取outer
+        const outer = document.querySelector(".outer")
+        outer.onmouseover = () => {
+            toggleChange()
+        }
+        outer.onmouseleave = () => {
+            toggleChange()
+        }
+
+        prev.onclick = () => {
+            changeImg("prev")
+        }
+
+        next.onclick = () => {
+            changeImg("next")
+        }
+
+        /* 
+            代码整合
+            changeImg() 用来切换图片
+                参数
+                    dir 切换图片的方向
+                        next
+                        prev
+        */
+
+        function changeImg(dir) {
+            //获取当前显示的图片
+            const current = document.querySelector(".img-list .current")
+            const imgArr = Array.from(document.querySelectorAll(".img-list li"))
+
+           
+            //获取下一张要显示的图片
+            let next
+            if (dir === "next") {
+                next =
+                    current.nextElementSibling ||
+                    imgArr[0] // 或运算，第一个值为真返回第一个值，第一个值为假返回第二个值
+            } else if (dir === "prev") {
+                next =
+                    current.previousElementSibling ||
+                    imgArr.at(-1) // 获取最后一个元素
+            } else if (typeof dir === "number") {
+                next = imgArr[dir]
+            }
+
+             // 获取要显示图片的索引
+            const index = imgArr.indexOf(next)
+
+            //切换显示状态
+            current.classList.remove("current")
+            next.classList.add("current")
+
+            // 切换active
+            const currentActive = document.querySelector(".dot .active")
+            currentActive.classList.remove("active") // 移除当前active
+
+            dots[index].classList.add("active") // 添加active
+        }
+
+        //切换导航点
+        const dots = Array.from(document.querySelectorAll(".dot a"))
+        const imgArr = Array.from(document.querySelectorAll(".img-list li"))
+
+        document.addEventListener("click", (event) => {
+            const index = dots.indexOf(event.target)
+
+            if (index !== -1) {
+
+                // // 切换图片
+                // const current = document.querySelector(".img-list .current")
+
+                // const next = document.querySelectorAll(".img-list li")[index]
+
+                // current.classList.remove("current")
+                // next.classList.add("current")
+                changeImg(index)
+
+            }
+        })
+    </script>
+</body>
+
+</html>

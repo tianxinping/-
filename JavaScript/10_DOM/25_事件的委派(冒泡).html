@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我添加li</button>
+    <hr>
+    <ul id="list">
+        <li><a href="javascript:;">超链接1</a></li>
+        <li><a href="javascript:;">超链接2</a></li>
+        <li><a href="javascript:;">超链接3</a></li>
+        <li><a href="javascript:;">超链接4</a></li>
+    </ul>
+    <script>
+        /* 
+            要求1:
+                点击链接后显示文字
+
+        */
+        const links = document.querySelectorAll("ul a")
+        // for (let i = 0; i < links.length; i++) {
+        //     links[i].addEventListener("click", event => {
+        //         alert(event.target.textContent) // event.target表示事件源,触发事件的对象
+        //     })
+        // }
+
+        /*
+            要求2：点击按钮添加新的li
+        */
+        const list = document.getElementById("list")
+        const btn = document.getElementById("btn")
+        btn.addEventListener("click", () => {
+            list.insertAdjacentHTML("beforeend", "<li><a href='javascript:;'>新超链接</a></li>")
+        }) // 添加后的超链接没有绑定事件
+        /* 
+            我们希望
+                只绑定一次事件就可以让所有超链接（包括未来新创建的）都具有这些事件。
+                思路：
+                    因此不用for循环，而是给ul甚至document绑定事件，
+                    由于事件的冒泡，会导致document上的点击事件被触发
+
+
+        */
+        document.addEventListener("click", event => {
+            alert(event.target.textContent)
+        })// 出现了新的问题，网页所有都具有此事件，范围太大了，下节课提供处理方法。
+    </script>
+</body>
+
+</html>

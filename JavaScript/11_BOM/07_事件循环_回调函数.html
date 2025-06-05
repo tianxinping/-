@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <script>
+         /* 
+            事件循环(event loop)
+                函数在每次执行时，都会产生一个 执行环境
+                执行环境负责储存函数执行时产生的一切数据，包括变量、函数、参数、this等
+                问题：函数的执行环境要存储到哪里呢？
+                    函数的执行环境存储到了一个叫做 调用栈（调用堆栈）的地方
+                    栈，是一种数据结构，特点 后进先出（弹夹）
+                    队列，是一种数据结构，特点 先进先出
+
+                调用栈（call stack）
+                    调用栈负责存储函数的执行环境
+                    当一个函数调用时，他的执行环境会作为一个 栈帧 插入到调用栈的栈顶
+                    函数执行完毕其栈帧会自动从调用栈中移除
+                    当调用栈为空时，表示程序执行完毕
+                
+                消息队列
+                    消息队列负责存储要执行的函数
+                    当我们触发一个事件时，其响应函数并不是直接就添加到调用栈中的
+                        以为调用栈中有可能会存在一些还没执行完的代码
+                    事件触发后，JS引擎会将响应函数添加到消息队列中排队
+                    
+
+                
+        */
+        function fn() {
+            function fn2(){}
+            console.log("fn~");
+        }
+        fn()
+
+        btn.onclick = function(){
+            console.log('点击了按钮');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td,
+        th {
+            border: 1px black solid;
+            padding: 10px 0;
+        }
+
+        form div {
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            /* 
+                新增员工信息
+                    获取tbody,添加按钮，输入框的值
+                    为按钮添加点击事件
+            */
+            const tbody = document.querySelector("tbody")
+            const btn = document.getElementById("btn")
+
+            btn.addEventListener("click", function () {
+                const name = document.getElementById("name").value
+                const email = document.getElementById("email").value
+                const salary = document.getElementById("salary").value
+
+                const tr = document.createElement("tr")
+                const nameTd = document.createElement("td")
+                const emailTd = document.createElement("td")
+                const salaryTd = document.createElement("td")
+
+                nameTd.textContent = name
+                emailTd.textContent = email
+                salaryTd.textContent = salary
+
+                tr.appendChild(nameTd)
+                tr.appendChild(emailTd)
+                tr.appendChild(salaryTd)
+                tr.insertAdjacentHTML(
+                    "beforeend",
+                    `<td><a href="javascript:;">删除</a></td>`
+                )
+                tbody.appendChild(tr)
+            })
+
+            /* 
+                点击超链接后删除对应行
+                    利用委派实现
+                    获取所有a标签links
+                    检查event.target 是否在links中存在
+                    
+            */
+            const links = document.links
+            document.addEventListener("click", event => {
+                if ([...links].includes(event.target)) {
+                    const empName = event.target.parentNode.parentNode.children[0].textContent
+                    if (confirm("确认要删除[" + empName + "]吗?")) {
+                        event.target.parentNode.parentNode.remove()
+                    }
+                }
+            })
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="outer">
+        <table>
+            <tbody>
+                <tr>
+                    <th>姓名</th>
+                    <th>邮件</th>
+                    <th>薪资</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>孙悟空</td>
+                    <td>swkswk@hgs.com</td>
+                    <td>10000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>猪八戒</td>
+                    <td>zbjzbj@hgs.com</td>
+                    <td>8000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>沙僧</td>
+                    <td>ssss@hgs.com</td>
+                    <td>7000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>唐僧</td>
+                    <td>tss@hgs.com</td>
+                    <td>9000</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="#">
+            <div>
+                <label for="name">姓名：</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email">邮件：</label>
+                <input type="email" id="email">
+            </div>
+            <div>
+                <label for="salary">薪资：</label>
+                <input type="salary" id="salary">
+            </div>
+            <button id="btn" type="button">添加</button>
+        </form>
+    </div>
+</body>
+
+</html>

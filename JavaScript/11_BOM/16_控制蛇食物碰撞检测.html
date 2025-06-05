@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #main {
+            height: 420px;
+            width: 360px;
+            box-sizing: border-box;
+            border: 10px #000 solid;
+            background-color: #b7d4a8;
+            border-radius: 20px;
+            margin: 50px auto;
+        }
+
+        #stage {
+            width: 304px;
+            height: 304px;
+            border: 2px #000 solid;
+            margin: 20px auto;
+            position: relative;
+
+        }
+
+        /* 蛇 */
+        #snake>div {
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            position: absolute;
+        }
+
+        /* 优化食物样式 */
+        #food {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 100px;
+            left: 120px;
+            display: flex;
+            flex-flow: row wrap;
+            /* 两个小方块一行排列，自动换行 */
+        }
+
+        #food>div {
+            width: 5px;
+            height: 5px;
+            background-color: #000;
+            transform: rotate(45deg);
+            /* 写了四个小的div，为他们分别设置旋转 */
+        }
+
+        #info {
+            width: 304px;
+            margin: 25px auto;
+            display: flex;
+            justify-content: space-between;
+            font: bold 20px courier;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="stage">
+
+            <!-- 蛇 -->
+            <div id="snake">
+                <div></div>
+            </div>
+            <!-- 食物 -->
+            <div id="food">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+        </div>
+        <div id="info">
+            <div>SCORE:<span id="score">100</span></div>
+            <div>LEVEL:<span id="level">1</span></div>
+        </div>
+    </div>
+    <script>
+        // 获取蛇的容器
+        const snake = document.querySelector("#snake")
+        // 获取蛇的各个部位
+        const snakes = snake.getElementsByTagName("div")
+        // 获取蛇头
+        const head = snakes[0]
+
+        // 获取食物
+        const food = document.querySelector("#food")
+
+        /* 
+            食物的出现坐标应该在0-290之间
+                且是十的倍数
+                随机生成坐标
+        */
+
+        function changeFood() {
+            // 生成0-29的随机数
+            const x = Math.floor(Math.random() * 30) * 10
+            const y = Math.floor(Math.random() * 30) * 10
+
+            // 设置食物坐标
+            food.style.left = x + "px"
+            food.style.top = y + "px"
+        }
+        changeFood()
+
+        // 定义一个变量来存储蛇的移动 
+        let dir
+
+        const keyArr = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight",]
+        /* 
+            让蛇动起来
+                绑定按键事件ketdown keyup
+                    键盘事件只能绑定给可以获取焦点的元素或者document
+        */
+        document.addEventListener("keydown", (event) => {
+
+            // 判断按下的键是否在数组中
+            if (keyArr.includes(event.key)) {
+                // 设置方向
+                dir = event.key
+            }
+
+
+        })
+        // 控制蛇的流畅移动
+        setTimeout(function move() {
+            switch (dir) {
+                case "ArrowUp":
+                    // 向上移动蛇
+                    head.style.top = head.offsetTop - 10 + "px"
+                    break
+                case "ArrowDown":
+                    // 向下移动蛇
+                    head.style.top = head.offsetTop + 10 + "px"
+                    break
+                case "ArrowLeft":
+                    // 向左移动蛇
+                    head.style.left = head.offsetLeft - 10 + "px"
+                    break
+                case "ArrowRight":
+                    // 向右移动蛇
+                    head.style.left = head.offsetLeft + 10 + "px"
+                    break
+            }
+
+            // 控制蛇食物碰撞检测
+            if (head.offsetTop === food.offsetTop &&
+                head.offsetLeft === food.offsetLeft
+            ) {
+                // 1.改变食物位置
+                changeFood()
+                // 2.增加蛇的身体
+                snake.insertAdjacentHTML("beforeend", "<div></div>")
+            }
+
+            setTimeout(move, 100)
+        }, 100)
+
+
+    </script>
+</body>
+
+</html>

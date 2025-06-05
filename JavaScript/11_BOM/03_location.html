@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">
+        点我
+    </button>
+    <script>
+        /* 
+            Location - 浏览器地址栏对象
+                location.href 获取当前地址，地址的每个部分都有特定的获取方法，见mdn
+
+                可以直接将Location的值修改为新的地址，使网页跳转
+                location.assign() 跳转到指定地址，可以回退
+                location.reolace 替换地址，无法回退
+
+                location.reload() 刷新页面
+                    location.reload(true) 强制刷新(例如表单的缓存)
+
+        */
+
+        const btn = document.getElementById("btn")
+        btn.addEventListener("click", () => {
+            console.log(location.href);
+
+            // location = "https://www.baidu.com" // 网页跳转
+
+            // location.assign("https://www.baidu.com") // 网页跳转
+
+            location.reload()
+        })
+    </script>
+</body>
+
+</html>
