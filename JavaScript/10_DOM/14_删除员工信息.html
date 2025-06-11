@@ -38,8 +38,14 @@
 
             function delEmpHandler() {
 
-                // 不让a跳转，事件中可以通过取消默认行为来阻止超链接的跳转,可以通过将跳转路径为javascript:;
-                // return false // 也可以使用return false来取消默认行为，只在xxx.xxx = function(){}中有效
+                /* 
+                取消a标签的默认行为
+                    方法1: href="javascript:;"
+                    方法2: return false	仅适用于 onclick="..." 或 DOM0 级事件 
+                    方法3: event.preventDefault() 所有事件绑定方式，语义明确 推荐 
+                        示例：onclick="event.preventDefault();
+                    方法4: CSS的pointer-events: none; 纯视觉禁用，不影响 JS 触发
+                */
 
                 // 删除当前员工，删除当前超链接所在的tr
                 // console.log(this); this表示当前点击的超链接
@@ -47,14 +53,17 @@
 
                 const tr = this.parentNode.parentNode//父亲的父亲
 
-                // 弹出一个提示框,confirm会弹出两个选项的提示框，返回布尔值
-                // let flag = confirm("确定删除吗？")
-
                 // 获取要删除员工姓名
                 // const empName = tr.getElementsByTagName("td")[0].textContent
                 const empName = tr.firstElementChild.textContent
 
-                // 删除tr
+                /* 
+                    confirm()
+                        弹出一个提示框,confirm会弹出两个选项的提示框，返回布尔值
+                        let flag = confirm("确定删除吗？") 
+                */
+               
+                // 询问是否删除tr
                 if (confirm("确认要删除[" + empName + "]吗")) {
                     tr.remove()
                 }
@@ -64,7 +73,8 @@
             const links = document.links
             // 为他们绑定单击响应函数
             for (let i = 0; i < links.length; i++) {
-                links[i].onclick = delEmpHandler // 函数写到了外部，避免在循环内部多次创建，把函数对象赋值给onclick属性，所以不加括号
+                links[i].onclick = delEmpHandler 
+                // 函数写到了外部，避免在循环内部多次创建，把函数对象赋值给onclick属性，所以不加括号
                 // 为什么我们常在监听器中不加括号？
                 // 因为你是传递函数引用给事件系统，浏览器会在点击时调用它，而不是立刻运行
             }

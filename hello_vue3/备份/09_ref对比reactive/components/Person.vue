@@ -26,10 +26,12 @@ function changePrice() {
   car.value.prive += 10
 }
 function changeCar() {
+
   // reavtive整体修改
   // car = { brand: '宝马', prive: 200 } // reactive不能直接重新分配一个对象，会成普通数据,页面不更新
   // car = reactive({ brand: '宝马', prive: 200 }) 也不能这样写，car不是同一个数据，链接断开了，页面不更新
-  // Object.assign(car, { brand: '宝马', prive: 200 }) // 可以这样写，reactive可以重新分配一个对象，页面更新
+
+  // Object.assign(car, { brand: '宝马', prive: 200 }) // 只可以这样写，reactive可以重新分配一个对象，页面更新
 
   //ref整体修改
   car.value = { brand: '宝马', prive: 200 } // 动了value就是响应式数据

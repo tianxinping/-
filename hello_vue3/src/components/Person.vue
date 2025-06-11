@@ -1,70 +1,63 @@
 <template>
   <div class="person">
-    姓：<input type="text" v-model="firstName"> <br>
-    <!-- v-bind 渲染，简写: ;v-model 双向绑定 -->
-    名：<input type="text" v-model="lastName"> <br>
-    <button @click="changeFullName">将全名改为li-si</button> <br>
-    全名：<span>{{ fullName }}</span> <br>
-    全名：<span>{{ fullName }}</span> <br>
-    全名：<span>{{ fullName }}</span>
+    <h2>当前求和为：{{ sum }}</h2>
+    <button @click="add">点我sum+1</button>
+    <hr>
+    <img v-for="(dog, index) in dogList" :src="dog" :key="index">
+    <br>
+    <button @click="getDog">再来一只小狗</button>
   </div>
 </template>
 
-
 <script lang="ts" setup>
-defineOptions({ name: 'Person' })
+  defineOptions({ name: 'Person' })
+  /* 
+    安装： npm i axios
+  */
+  import { ref, reactive } from 'vue'
+  import axios from 'axios'
 
-import { ref, computed } from 'vue'
-
-// 数据
-let firstName = ref('张')
-let lastName = ref('三')
-
-// 方法
-// 这么定义的fullName是一个计算属性，且只读
-// let fullName = computed(() => {
-//   return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
-//   // 截取第一个字母变成大写
-// })
-
-// 这么定义的fullName是一个计算属性，可读可写
-let fullName = computed({
-  get() {
-    return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
-  },
-  set(val) {
-    const [str1, str2] = val.split('-')
-    firstName.value = str1
-    lastName.value = str2
+  let sum = ref(0)
+  let dogList = reactive([
+    'https://images.dog.ceo/breeds/pembroke/n02113023_4373.jpg'
+  ])
+  function add() {
+    sum.value++
   }
-})
 
-function changeFullName() {
-  fullName.value = 'li-si'
-}
+  async function getDog() {
+    try {
+      let result = await axios.get('https://dog.ceo/api/breed/pembroke/images/random')
+      console.log(result.data); // 拿到了
+      dogList.push(result.data.message)
+    }
+    // try{} catch (error) {}处理异常
+    catch (error) {
+      console.log(error);
 
+    }
 
-
-/* 
-  computed计算属性是有缓存的，只有当它依赖的属性发生变化时才会重新计算
-  方法没有缓存，用几次调用几次
-*/
-
+  }
 </script>
-
+<!-- scoped 局部样式，这里的样式只有本页面能用， -->
 <style scoped>
-.person {
-  background-color: skyblue;
-  box-shadow: 0 0 1px;
-  border-radius: 10px;
-  padding: 20px;
-}
+  .person {
+    background-color: skyblue;
+    box-shadow: 0 0 1px;
+    border-radius: 10px;
+    padding: 20px;
+  }
 
-button {
-  margin: 0 5px;
-}
+  button {
+    margin: 0 5px;
+  }
 
-li {
-  font-size: 20px;
-}
+  li {
+    font-size: 20px;
+  }
+
+  img {
+    height: 100px;
+    margin-right: 10px;
+  }
 </style>

@@ -14,7 +14,7 @@
                 4.提交
                 5.小checkbox和大checkbox同步
             */
-            // 全选功能
+            // 1.全选功能的实现
 
             // 获取四个多选框
             const hobbies = document.getElementsByName("hobby")
@@ -30,7 +30,7 @@
 
             }
 
-            // 取消功能
+            // 2.取消功能的实现
 
             // 获取取消按钮
             const AllNo = document.getElementById("no")
@@ -54,6 +54,7 @@
 
                 // 如果是全选状态同步按钮
                 // 获取所有选中的checkbox数量
+                    // input[name="hobby"]：选择所有name属性为hobby的input元素
                     const checkedBox = document.querySelectorAll("[name=hobby]:checked")
                     // 判断四个小多选框是否全被选中
                     if (hobbies.length === checkedBox.length) {
@@ -78,14 +79,16 @@
             // 小多选框和大多选框同步
             // 点击全选checkbox后，将四个小的checkbox同步
             const checkAllBox = document.getElementById("check-all")
-            checkAllBox.onchange = function () { // 改变状态事件
+            // 改变状态事件：onchange
+            checkAllBox.onchange = function (event) { 
 
                 // console.log(this)
 // 在事件的响应函数中，响应函数绑定给谁，this就是谁,箭头函数除外
 
                 for (let i = 0; i < hobbies.length; i++) {
                     // hobbies[i].checked = checkAllBox.checked
-                    hobbies[i].checked = this.checked // 不建议这样用，后续有更好的方式代替
+                    // hobbies[i].checked = this.checked // 不建议这样用，后续有更好的方式代替 ⬇️
+                    hobbies[i].checked = event.target.checked // event.target.checked：事件目标元素的checked属性值
                 }
             }
 

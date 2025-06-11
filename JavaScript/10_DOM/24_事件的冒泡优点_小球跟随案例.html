@@ -34,6 +34,7 @@
         */
         const box1 = document.getElementById('box1');
         document.addEventListener("mousemove", function (event) {
+            // event.x/y 获取鼠标在页面中的位置
             box1.style.left = event.x -50 + "px"
             box1.style.top = event.y -50 + "px"
         }) // 如果把事件绑定了box1，只有在box1移动时才会触发事件

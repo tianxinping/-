@@ -1,15 +1,14 @@
 <template>
   <div class="person">
-    姓：<input type="text" v-model="firstName"> <br>
-    <!-- v-bind 渲染，简写: ;v-model 双向绑定 -->
-    名：<input type="text" v-model="lastName"> <br>
-    <button @click="changeFullName">将全名改为li-si</button> <br>
-    全名：<span>{{ fullName }}</span> <br>
-    全名：<span>{{ fullName }}</span> <br>
+    姓：<input type="text" v-model="firstName" /> <br />
+    <!-- v-bind 单向渲染，简写:   ;v-model 双向绑定 -->
+    名：<input type="text" v-model="lastName" /> <br />
+    <button @click="changeFullName">将全名改为li-si</button> <br />
+    全名：<span>{{ fullName }}</span> <br />
+    全名：<span>{{ fullName }}</span> <br />
     全名：<span>{{ fullName }}</span>
   </div>
 </template>
-
 
 <script lang="ts" setup>
 defineOptions({ name: 'Person' })
@@ -30,26 +29,27 @@ let lastName = ref('三')
 // 这么定义的fullName是一个计算属性，可读可写
 let fullName = computed({
   get() {
-    return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+    return (
+      firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+    )
   },
   set(val) {
     const [str1, str2] = val.split('-')
     firstName.value = str1
     lastName.value = str2
-  }
+  },
 })
 
 function changeFullName() {
   fullName.value = 'li-si'
+  // 在 Vue 3 的组合式 API 中，computed创建的计算属性通过.value访问时，会自动调用对应的get或set方法。
+  // Vue 会自动调用computed配置中的set函数，并将赋值的右侧值（即'li-si'）作为参数传递给set。
 }
-
-
 
 /* 
   computed计算属性是有缓存的，只有当它依赖的属性发生变化时才会重新计算
   方法没有缓存，用几次调用几次
 */
-
 </script>
 
 <style scoped>

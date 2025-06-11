@@ -82,3 +82,47 @@
 #wrapper #header .headBottom .headBottomMain .search input::-webkit-input-placeholder {
   color: yellowgreen;
 }
+#navWrap {
+  border-bottom: 2px solid #e1251b;
+}
+#navWrap .navWrapMain {
+  width: 1200px;
+  margin: 0 auto;
+}
+#navWrap .navWrapMain::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+#navWrap .navWrapMain a {
+  margin: 0 22px;
+  font-size: 16px;
+  color: #333;
+  float: left;
+  text-align: center;
+  line-height: 50px;
+}
+#navWrap .navWrapMain a:first-child {
+  width: 210px;
+  height: 50px;
+  background-color: #e1251b;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+}
+#content .contentMain {
+  width: 1200px;
+  margin: 15px auto 0 auto;
+}
+#content .contentMain #navPath {
+  padding: 9px 15px 9px 0;
+  font-size: 0;
+}
+#content .contentMain #navPath a {
+  font-size: 12px;
+}
+#content .contentMain #navPath i {
+  padding: 0 5px;
+  font-size: 12px;
+}

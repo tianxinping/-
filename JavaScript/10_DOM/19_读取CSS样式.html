@@ -10,7 +10,6 @@
             width: 200px;
             height: 200px;
             background-color: red;
-            /* 加了权重 !important就不能通过js改样式，所以一般不建议加 */
         }
 
         .box1::before {
@@ -45,6 +44,7 @@
             console.log(styleObj.width);
 
             // 计算，要注意获取的值能不能计算
+            console.log(parseInt("200px")) // 200
             box1.style.width = parseInt(styleObj.width) + 100 + "px"
 
             // 读取伪元素

@@ -32,16 +32,19 @@
             li.id = "ts"
             console.log(li);
 
-            // appendChild()用于给一个节点添加子节点
+            // 方法1: appendChild()用于给一个节点添加子节点
             list.appendChild(li)
 
-            // 可以向元素的任意位置添加子节点
-            //参数1:要添加的位置  参数2:要添加的节点
-            // 参数1:afterbegin 在元素内部的第一个子元素前添加
-            // 参数2:beforeend 在元素内部的最后一个子元素后添加
-            // 参数3:afterend 在元素外部的后面添加（兄弟元素）
-            // 参数4:beforebegin 在元素的前面插入元素（兄弟元素）
-            // list.insertAdjacentElement("afterend",li)
+            /*   
+            方法2: list.insertAdjacentElement("afterend",li) 
+                可以向元素的任意位置添加子节点,更为灵活的方法
+                    参数1:要添加的位置  
+                        afterbegin  在元素内部的第一个子元素前添加
+                        beforeend   在元素内部的最后一个子元素后添加
+                        afterend    在元素外部的后面添加（兄弟元素）
+                        beforebegin 在元素的前面插入元素（兄弟元素）
+                    参数2:要添加的节点
+            */
 
             list.insertAdjacentHTML("beforeend", "<li id='ts'>唐僧</li > ")
         }
@@ -50,7 +53,7 @@
         const btn02 = document.getElementById("btn02")
         btn02.onclick = function () {
             const li = document.createElement("li")
-            li.textContent= "蜘蛛精"
+            li.textContent = "蜘蛛精"
             li.id = "zjj"
 
             // 获取swk

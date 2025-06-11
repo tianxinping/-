@@ -15,7 +15,7 @@
 <script lang="ts">
 export default {
   name: 'Person',
-  // 就语法可以和新语法共存，能向下兼容，不能向上兼容
+  // 旧语法可以和新语法共存，能向下兼容，不能向上兼容
   // 下面是vue2,可以读取到setup的数据，因为setup()执行很早。
   data(vm) {
     return {

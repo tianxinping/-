@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>女巫的毒药 - 优化版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .game-title {
+            color: #4a5568;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(116, 185, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .timer, .round-counter, .stats {
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .difficulty-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .difficulty-btn {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .difficulty-btn.active {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            transform: scale(1.1);
+        }
+        
+        .difficulty-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .game-status {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            position: relative;
+        }
+        
+        .food-grid {
+            display: grid;
+            gap: 8px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+        
+        .food-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        .food-item:hover:not(.eaten) {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #74b9ff;
+        }
+        
+        .food-item.eaten {
+            background: linear-gradient(45deg, #b2bec3, #636e72);
+            cursor: not-allowed;
+            transform: scale(0.9);
+            opacity: 0.6;
+            animation: death-animation 0.5s ease;
+        }
+        
+        .food-item.poison {
+            background: linear-gradient(45deg, #e17055, #d63031) !important;
+            animation: poison-pulse 1s infinite;
+        }
+        
+        .food-item.selected-poison {
+            border: 3px solid #00b894;
+            box-shadow: 0 0 15px rgba(0, 184, 148, 0.5);
+            background: linear-gradient(45deg, #55efc4, #00b894);
+        }
+        
+        .food-item.last-eaten {
+            animation: eat-animation 0.6s ease;
+        }
+        
+        @keyframes poison-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes death-animation {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            75% { transform: scale(1.05) rotate(-2deg); }
+            100% { transform: scale(0.9) rotate(0deg); }
+        }
+        
+        @keyframes eat-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); background: linear-gradient(45deg, #55efc4, #00b894); }
+            100% { transform: scale(0.9); }
+        }
+        
+        .player-info {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .player {
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .player.active {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+        }
+        
+        .player.inactive {
+            background: #ddd;
+            color: #666;
+        }
+        
+        .player .wins {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.3);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn.danger {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        }
+        
+        .btn.secondary {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+        }
+        
+        .instructions {
+            background: rgba(116, 185, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .privacy-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-content {
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .privacy-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #74b9ff;
+        }
+        
+        .privacy-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .game-over {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .game-over-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            animation: popup 0.5s ease;
+        }
+        
+        .game-over-content h2 {
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+        
+        .game-over-content .final-stats {
+            background: rgba(116, 185, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        @keyframes popup {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 480px) {
+            .game-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .game-title {
+                font-size: 24px;
+            }
+            
+            .food-item {
+                font-size: 18px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🧙‍♀️ 女巫的毒药 🧙‍♀️</h1>
+            
+            <div class="game-info">
+                <div class="timer">⏱️ <span id="gameTimer">00:00</span></div>
+                <div class="round-counter">🔄 第 <span id="roundCounter">1</span> 局</div>
+                <div class="stats">
+                    🏆 玩家1: <span id="p1Wins">0</span> | 玩家2: <span id="p2Wins">0</span>
+                </div>
+            </div>
+            
+            <div class="difficulty-selector">
+                <span style="margin-right: 10px;">难度:</span>
+                <button class="difficulty-btn" data-size="3">简单 3×3</button>
+                <button class="difficulty-btn active" data-size="4">普通 4×4</button>
+                <button class="difficulty-btn" data-size="5">困难 5×5</button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <strong>🎮 游戏规则：</strong><br>
+            1. 两名玩家轮流进行，每局都会自动计时<br>
+            2. 第一阶段：每人秘密选择一个毒药位置（有隐私保护）<br>
+            3. 第二阶段：轮流选择食用食物<br>
+            4. 吃到毒药的玩家失败！可以在确认前悔棋<br>
+            5. 支持多种难度，统计胜负记录
+        </div>
+        
+        <div class="game-status" id="gameStatus">
+            玩家1 请选择你的毒药位置
+        </div>
+        
+        <div class="player-info">
+            <div class="player active" id="player1">
+                🧙‍♀️ 玩家1
+                <div class="wins">胜利: <span id="player1Wins">0</span> 次</div>
+            </div>
+            <div class="player inactive" id="player2">
+                🧙‍♂️ 玩家2
+                <div class="wins">胜利: <span id="player2Wins">0</span> 次</div>
+            </div>
+        </div>
+        
+        <div class="food-grid" id="foodGrid">
+            <!-- 食物格子将由JavaScript生成 -->
+        </div>
+        
+        <div class="controls">
+            <button class="btn secondary" id="resetBtn" onclick="resetGame()">🔄 重新开始</button>
+            <button class="btn" id="confirmBtn" onclick="confirmSelection()" style="display: none;">✅ 确认选择</button>
+            <button class="btn danger" id="undoBtn" onclick="undoSelection()" style="display: none;">↩️ 悔棋</button>
+            <button class="btn secondary" id="statsBtn" onclick="clearStats()">📊 清除统计</button>
+        </div>
+        
+        <!-- 隐私保护屏幕 -->
+        <div class="privacy-screen hidden" id="privacyScreen">
+            <div class="privacy-content">
+                <h2>🔒 隐私保护</h2>
+                <p id="privacyMessage">请玩家2暂时回避，玩家1正在选择毒药位置</p>
+                <p style="font-size: 14px; opacity: 0.8;">选择完成后点击确认按钮继续</p>
+                <button class="btn" onclick="hidePrivacyScreen()">👀 我已回避，继续游戏</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-over hidden" id="gameOverModal">
+        <div class="game-over-content">
+            <h2 id="gameOverTitle">游戏结束</h2>
+            <p id="gameOverMessage"></p>
+            <div class="final-stats" id="finalStats"></div>
+            <div style="margin-top: 20px;">
+                <button class="btn" onclick="resetGame()">🔄 再来一局</button>
+                <button class="btn secondary" onclick="closeGameOver()">📋 查看棋盘</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const FOOD_EMOJIS = ['🍎', '🍌', '🍊', '🍇', '🍓', '🥝', '🍑', '🍒', '🥭', '🍍', '🥥', '🍈', '🍉', '🍋', '🥑', '🍅', '🥦', '🥕', '🌽', '🍆', '🥬', '🥒', '🫐', '🍐'];
+        
+        class WitchPoisonGame {
+            constructor() {
+                this.gridSize = 4;
+                this.foods = [];
+                this.gamePhase = 'poison-selection';
+                this.currentPlayer = 1;
+                this.poisonLocations = { player1: null, player2: null };
+                this.selectedPoison = null;
+                this.poisonSelectionPhase = 1;
+                this.eatenFoods = new Set();
+                this.gameOver = false;
+                this.gameStartTime = null;
+                this.gameTimer = null;
+                this.roundNumber = 1;
+                this.stats = this.loadStats();
+                this.lastEatenFood = null;
+                
+                this.initializeGame();
+                this.setupEventListeners();
+            }
+            
+            loadStats() {
+                const stored = localStorage.getItem('witchPoisonStats');
+                return stored ? JSON.parse(stored) : { player1: 0, player2: 0, totalGames: 0 };
+            }
+            
+            saveStats() {
+                localStorage.setItem('witchPoisonStats', JSON.stringify(this.stats));
+            }
+            
+            setupEventListeners() {
+                // 难度选择
+                document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        if (this.gamePhase === 'poison-selection' && this.poisonSelectionPhase === 1) {
+                            this.changeDifficulty(parseInt(e.target.dataset.size));
+                        }
+                    });
+                });
+                
+                // 键盘支持
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !document.getElementById('gameOverModal').classList.contains('hidden')) {
+                        this.closeGameOver();
+                    }
+                });
+            }
+            
+            changeDifficulty(size) {
+                this.gridSize = size;
+                document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (parseInt(btn.dataset.size) === size) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                const grid = document.getElementById('foodGrid');
+                grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+                
+                this.reset();
+            }
+            
+            initializeGame() {
+                this.generateFoods();
+                this.renderGrid();
+                this.updateStatus();
+                this.updateStats();
+                this.startTimer();
+            }
+            
+            generateFoods() {
+                this.foods = [];
+                const totalCells = this.gridSize * this.gridSize;
+                for (let i = 0; i < totalCells; i++) {
+                    this.foods.push(FOOD_EMOJIS[i % FOOD_EMOJIS.length]);
+                }
+                
+                // 洗牌算法让食物分布更随机
+                for (let i = this.foods.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [this.foods[i], this.foods[j]] = [this.foods[j], this.foods[i]];
+                }
+            }
+            
+            renderGrid() {
+                const grid = document.getElementById('foodGrid');
+                grid.innerHTML = '';
+                grid.style.gridTemplateColumns = `repeat(${this.gridSize}, 1fr)`;
+                
+                for (let i = 0; i < this.foods.length; i++) {
+                    const foodItem = document.createElement('div');
+                    foodItem.className = 'food-item';
+                    foodItem.dataset.index = i;
+                    foodItem.innerHTML = this.foods[i];
+                    
+                    if (this.eatenFoods.has(i)) {
+                        foodItem.classList.add('eaten');
+                        foodItem.innerHTML = '💀';
+                        if (i === this.lastEatenFood) {
+                            foodItem.classList.add('last-eaten');
+                        }
+                    } else if (this.gamePhase === 'poison-selection' && this.selectedPoison === i) {
+                        foodItem.classList.add('selected-poison');
+                    }
+                    
+                    foodItem.addEventListener('click', () => this.handleFoodClick(i));
+                    grid.appendChild(foodItem);
+                }
+            }
+            
+            handleFoodClick(index) {
+                if (this.gameOver || this.eatenFoods.has(index)) {
+                    this.playSound('error');
+                    return;
+                }
+                
+                if (this.gamePhase === 'poison-selection') {
+                    this.selectPoison(index);
+                } else if (this.gamePhase === 'eating') {
+                    this.eatFood(index);
+                }
+            }
+            
+            selectPoison(index) {
+                this.selectedPoison = index;
+                this.renderGrid();
+                document.getElementById('confirmBtn').style.display = 'inline-block';
+                document.getElementById('undoBtn').style.display = 'inline-block';
+                this.playSound('select');
+            }
+            
+            undoSelection() {
+                if (this.gamePhase === 'poison-selection' && this.selectedPoison !== null) {
+                    this.selectedPoison = null;
+                    this.renderGrid();
+                    document.getElementById('confirmBtn').style.display = 'none';
+                    document.getElementById('undoBtn').style.display = 'none';
+                    this.playSound('undo');
+                }
+            }
+            
+            confirmSelection() {
+                if (this.selectedPoison === null) return;
+                
+                this.playSound('confirm');
+                
+                if (this.poisonSelectionPhase === 1) {
+                    this.poisonLocations.player1 = this.selectedPoison;
+                    this.poisonSelectionPhase = 2;
+                    this.selectedPoison = null;
+                    this.updatePlayerActive(2);
+                    this.showPrivacyScreen(2);
+                } else {
+                    this.poisonLocations.player2 = this.selectedPoison;
+                    this.gamePhase = 'eating';
+                    this.currentPlayer = 1;
+                    this.selectedPoison = null;
+                    this.updatePlayerActive(1);
+                    this.hidePrivacyScreen();
+                }
+                
+                document.getElementById('confirmBtn').style.display = 'none';
+                document.getElementById('undoBtn').style.display = 'none';
+                this.renderGrid();
+                this.updateStatus();
+            }
+            
+            showPrivacyScreen(player) {
+                const screen = document.getElementById('privacyScreen');
+                const message = document.getElementById('privacyMessage');
+                
+                if (player === 2) {
+                    message.textContent = '请玩家1暂时回避，玩家2正在选择毒药位置';
+                }
+                
+                screen.classList.remove('hidden');
+            }
+            
+            hidePrivacyScreen() {
+                document.getElementById('privacyScreen').classList.add('hidden');
+            }
+            
+            eatFood(index) {
+                this.lastEatenFood = index;
+                this.eatenFoods.add(index);
+                this.playSound('eat');
+                
+                // 检查是否吃到了毒药
+                if (index === this.poisonLocations.player1) {
+                    setTimeout(() => {
+                        this.endGame(2, '玩家1吃到了毒药！玩家2获胜！');
+                    }, 500);
+                    return;
+                } else if (index === this.poisonLocations.player2) {
+                    setTimeout(() => {
+                        this.endGame(1, '玩家2吃到了毒药！玩家1获胜！');
+                    }, 500);
+                    return;
+                }
+                
+                // 检查是否平局
+                const totalCells = this.gridSize * this.gridSize;
+                if (this.eatenFoods.size === totalCells - 2) {
+                    setTimeout(() => {
+                        this.endGame(0, '平局！所有安全食物都被吃完了！');
+                    }, 500);
+                    return;
+                }
+                
+                // 切换玩家
+                this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
+                this.updatePlayerActive(this.currentPlayer);
+                this.renderGrid();
+                this.updateStatus();
+            }
+            
+            endGame(winner, message) {
+                this.gameOver = true;
+                this.stopTimer();
+                
+                if (winner > 0) {
+                    this.stats[`player${winner}`]++;
+                    this.stats.totalGames++;
+                    this.saveStats();
+                    this.updateStats();
+                    this.playSound('win');
+                } else {
+                    this.stats.totalGames++;
+                    this.saveStats();
+                    this.updateStats();
+                    this.playSound('draw');
+                }
+                
+                // 显示所有毒药位置
+                const grid = document.getElementById('foodGrid');
+                const items = grid.children;
+                if (this.poisonLocations.player1 !== null) {
+                    items[this.poisonLocations.player1].classList.add('poison');
+                }
+                if (this.poisonLocations.player2 !== null) {
+                    items[this.poisonLocations.player2].classList.add('poison');
+                }
+                
+                // 显示游戏结束模态框
+                setTimeout(() => {
+                    this.showGameOverModal(winner, message);
+                }, 1000);
+            }
+            
+            showGameOverModal(winner, message) {
+                const modal = document.getElementById('gameOverModal');
+                const title = document.getElementById('gameOverTitle');
+                const messageEl = document.getElementById('gameOverMessage');
+                const statsEl = document.getElementById('finalStats');
+                
+                if (winner === 0) {
+                    title.textContent = '🤝 平局！';
+                } else {
+                    title.textContent = `🎉 玩家${winner} 获胜！`;
+                }
+                
+                messageEl.textContent = message;
+                
+                const gameTime = this.formatTime(this.getElapsedTime());
+                statsEl.innerHTML = `
+                    <div>⏱️ 游戏时间: ${gameTime}</div>
+                    <div>🔄 局数: ${this.roundNumber}</div>
+                    <div>🏆 总战绩 - 玩家1: ${this.stats.player1} | 玩家2: ${this.stats.player2}</div>
+                `;
+                
+                modal.classList.remove('hidden');
+            }
+            
+            closeGameOver() {
+                document.getElementById('gameOverModal').classList.add('hidden');
+            }
+            
+            startTimer() {
+                this.gameStartTime = Date.now();
+                this.gameTimer = setInterval(() => {
+                    if (!this.gameOver) {
+                        this.updateTimer();
+                    }
+                }, 1000);
+            }
+            
+            stopTimer() {
+                if (this.gameTimer) {
+                    clearInterval(this.gameTimer);
+                    this.gameTimer = null;
+                }
+            }
+            
+            getElapsedTime() {
+                return this.gameStartTime ? Date.now() - this.gameStartTime : 0;
+            }
+            
+            updateTimer() {
+                const elapsed = this.getElapsedTime();
+                document.getElementById('gameTimer').textContent = this.formatTime(elapsed);
+            }
+            
+            formatTime(ms) {
+                const seconds = Math.floor(ms / 1000);
+                const minutes = Math.floor(seconds / 60);
+                return `${minutes.toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
+            }
+            
+            updateStatus() {
+                const status = document.getElementById('gameStatus');
+                
+                if (this.gamePhase === 'poison-selection') {
+                    if (this.poisonSelectionPhase === 1) {
+                        status.textContent = '🧙‍♀️ 玩家1 请选择你的毒药位置';
+                        status.classList.add('pulse');
+                    } else {
+                        status.textContent = '🧙‍♂️ 玩家2 请选择你的毒药位置';
+                        status.classList.add('pulse');
+                    }
+                } else if (this.gamePhase === 'eating') {
+                    status.textContent = `🍽️ 玩家${this.currentPlayer} 的回合 - 选择食用食物`;
+                    status.classList.remove('pulse');
+                }
+                
+                // 更新剩余食物数量
+                const totalCells = this.gridSize * this.gridSize;
+                const remainingFoods = totalCells - this.eatenFoods.size - 2; // 减去两个毒药
+                if (this.gamePhase === 'eating') {
+                    status.textContent += ` (剩余 ${remainingFoods} 个安全食物)`;
+                }
+            }
+            
+            updatePlayerActive(player) {
+                const player1 = document.getElementById('player1');
+                const player2 = document.getElementById('player2');
+                
+                if (player === 1) {
+                    player1.classList.add('active');
+                    player1.classList.remove('inactive');
+                    player2.classList.add('inactive');
+                    player2.classList.remove('active');
+                } else {
+                    player2.classList.add('active');
+                    player2.classList.remove('inactive');
+                    player1.classList.add('inactive');
+                    player1.classList.remove('active');
+                }
+            }
+            
+            updateStats() {
+                document.getElementById('p1Wins').textContent = this.stats.player1;
+                document.getElementById('p2Wins').textContent = this.stats.player2;
+                document.getElementById('player1Wins').textContent = this.stats.player1;
+                document.getElementById('player2Wins').textContent = this.stats.player2;
+                document.getElementById('roundCounter').textContent = this.roundNumber;
+            }
+            
+            clearStats() {
+                if (confirm('确定要清除所有游戏统计吗？')) {
+                    this.stats = { player1: 0, player2: 0, totalGames: 0 };
+                    this.saveStats();
+                    this.updateStats();
+                    this.playSound('confirm');
+                }
+            }
+            
+            playSound(type) {
+                // 使用Web Audio API创建简单音效
+                if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    const audioCtx = new AudioCtx();
+                    
+                    const oscillator = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    
+                    let frequency, duration;
+                    
+                    switch(type) {
+                        case 'select':
+                            frequency = 800;
+                            duration = 0.1;
+                            break;
+                        case 'confirm':
+                            frequency = 1000;
+                            duration = 0.2;
+                            break;
+                        case 'eat':
+                            frequency = 600;
+                            duration = 0.15;
+                            break;
+                        case 'win':
+                            frequency = 1200;
+                            duration = 0.3;
+                            break;
+                        case 'draw':
+                            frequency = 400;
+                            duration = 0.4;
+                            break;
+                        case 'error':
+                            frequency = 300;
+                            duration = 0.2;
+                            break;
+                        case 'undo':
+                            frequency = 500;
+                            duration = 0.1;
+                            break;
+                        default:
+                            frequency = 440;
+                            duration = 0.1;
+                    }
+                    
+                    oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+                    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                    
+                    oscillator.start(audioCtx.currentTime);
+                    oscillator.stop(audioCtx.currentTime + duration);
+                }
+            }
+            
+            reset() {
+                this.gamePhase = 'poison-selection';
+                this.currentPlayer = 1;
+                this.poisonLocations = { player1: null, player2: null };
+                this.selectedPoison = null;
+                this.poisonSelectionPhase = 1;
+                this.eatenFoods = new Set();
+                this.gameOver = false;
+                this.lastEatenFood = null;
+                this.roundNumber++;
+                
+                this.stopTimer();
+                this.updatePlayerActive(1);
+                this.hidePrivacyScreen();
+                document.getElementById('confirmBtn').style.display = 'none';
+                document.getElementById('undoBtn').style.display = 'none';
+                document.getElementById('gameOverModal').classList.add('hidden');
+                
+                this.generateFoods();
+                this.renderGrid();
+                this.updateStatus();
+                this.updateStats();
+                this.startTimer();
+            }
+        }
+        
+        let game = new WitchPoisonGame();
+        
+        function resetGame() {
+            game.reset();
+        }
+        
+        function confirmSelection() {
+            game.confirmSelection();
+        }
+        
+        function undoSelection() {
+            game.undoSelection();
+        }
+        
+        function hidePrivacyScreen() {
+            game.hidePrivacyScreen();
+        }
+        
+        function clearStats() {
+            game.clearStats();
+        }
+        
+        function closeGameOver() {
+            game.closeGameOver();
+        }
+    </script>
+</body>
+</html>

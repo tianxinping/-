@@ -12,7 +12,7 @@
 <!-- 单独创建一个script，这种写法不需要return -->
 <script lang="ts" setup>
 defineOptions({
-  name: 'Person'
+  name: 'Person',
 })
 let name = '张三'
 let age = 18
