@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
             浅拷贝（shallow copy）
                 通常对对象的拷贝都是浅拷贝
                 浅拷贝顾名思义，只对对象的浅层进行复制（只复制一层）
@@ -19,22 +18,33 @@
                 通常情况不太适用，因为深拷贝会消耗更多的内存
 
         */
-        const arr = [{ name: '孙悟空' }, { name: '猪八戒' }];
+      const arr = [{ name: '孙悟空' }, { name: '猪八戒' }]
 
-        const arr2 = arr.slice(); // 浅拷贝
+      const arr2 = arr.slice() // 浅拷贝
 
-        const arr3 = structuredClone(arr) // 深拷贝
+      const arr3 = structuredClone(arr) // 深拷贝
 
-        console.log(arr);
-        console.log(arr2);
-        console.log(arr3);
+      console.log(arr)
+      console.log(arr2)
+      console.log(arr3)
 
+      // 浅拷贝的方法
+      // 1.扩展运算符（Spread Operator）
+      const arr4 = [...arr]
+      // 2.Array.slice() 方法
+      const arr5 = arr.sclice()
+      // 3.Array.concat() 方法
+      const arr6 = [].concat(arr)
+      // 4.数组特有的的浅拷贝 Object.assign() 方法。Object.assign(目标对象, 被复制的对象)
+      const obj = Object.assign([], arr)
 
+      // 深拷贝的方法
+      // 1.structuredClone() 方法
+      const arr7 = structuredClone(arr)
+      // 2.JSON.parse(JSON.stringify()) 其中JSON.stringify 递归遍历所有属性转字符串，JSON.parse 转为新的对象
+      const arr8 = JSON.parse(JSON.stringify(arr))
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
         要求：
             希望在someFn()函数执行时，可以记录一条日志,
                 要求：遵循ocp开闭原则，不修改原函数的基础上，为其增加记录日志的功能
@@ -14,36 +14,40 @@
             
                 上一小节是将函数作为参数返回，这节是将函数的返回值作为参数传入 ，同时也作为了参数传递
         */
-        function someFn() {
-            console.log('someFn执行了');
-            return 'hello'
+      /* 
+        高阶函数：
+          接受一个或多个函数作为参数。
+          返回一个函数。
+       */
+      function someFn() {
+        console.log('someFn执行了')
+        return 'hello'
+      }
+      // 需要实现someFn的所有功能，并增加记录日志的功能
+      function outer(cb) {
+        // 接收一个回调函数cb（someFn）
+        return () => {
+          //返回一个箭头函数作为参数传递
+          console.log('记录日志')
+          // cb()就是调用someFn(),但是没有接收到someFn的返回值，所以接收并保存为箭头函数的返回值返回
+          const result = cb() // 现在调用result就和调用someFn一样，相当于在someFn外面套了一层，result用来接收someFn的返回值，包装
+          return result // 返回someFn的返回值
         }
-        // 需要实现someFn的所有功能，并增加记录日志的功能
-        function outer(cb){ // 接收一个回调函数cb（someFn）
-            return() => { //返回一个箭头函数作为参数传递
-                console.log('记录日志');
-                // cb()就是调用someFn(),但是没有接收到someFn的返回值，所以接收并保存为箭头函数的返回值返回
-                const result = cb() // 现在调用result就和调用someFn一样，相当于在someFn外面套了一层，result用来接收someFn的返回值，包装 
-                return result // 返回someFn的返回值
-            }
-        }
+      }
 
-        // 把外部函数传入outer，通过outer(someFn)调用，函数返回的是一个箭头函数，箭头函数的返回值是someFn的返回值，以及多了个打印日志的副作用
+      // 把外部函数传入outer，通过outer(someFn)调用，函数返回的是一个箭头函数，箭头函数的返回值是someFn的返回值，以及多了个打印日志的副作用
 
-        // 为其他函数也能增加功能
-        // function test(){
-        //     console.log('test执行了');
-        //     return 'test'
-            
-        // }
-        // let newTest = outer(test) //利用outer对test函数进行包装
-        // newTest()
-        let result = outer(someFn) // 需要给someFn增加功能就把它作为参数，将 someFn作为参数传给outer（cb）
-        console.log(result);
-        
+      // 为其他函数也能增加功能
+      // function test(){
+      //     console.log('test执行了');
+      //     return 'test'
+
+      // }
+      // let newTest = outer(test) //利用outer对test函数进行包装
+      // newTest()
+      let result = outer(someFn) // 需要给someFn增加功能就把它作为参数，将 someFn作为参数传给outer（cb）
+      console.log(result)
     </script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
 </html>

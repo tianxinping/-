@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        input::placeholder { color: skyblue}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input::placeholder {
+      color: skyblue
+    }
+  </style>
 </head>
+
 <body>
-    <pre><strong><h2>
+  <pre><strong><h2>
     
     1.样式优先级
     行内样式>内部=外部样式（后来居上）
@@ -98,8 +102,16 @@
 
     伪元素选择器 = 伪元素：像元素，但不是元素，是元素中的一些特殊位置
 
-        ::first-letter{ }  选中的是容器中第一个文字
-        ::first-line{ }  选中的是容器中第一行
+        1.::before和::after 在元素内容的前面或后面插入生成的内容
+        2.::first-letter 选择元素的第一个字母
+        3.::first-line 选择元素的第一行
+        4.::selection 选择用户选中的文本（鼠标拖动高亮的部分）
+        5.::marker 选择列表项的标记符号（如 li 的圆点、数字）
+        6.::placeholder 选择表单输入框（如 input ）的占位符文本
+        7.::backdrop 选择全屏元素（如 <dialog> 对话框）背后的遮罩层
+        8.::file-selector-button 选择文件上传按钮（<input type="file"> 的选择按钮）
+        9.::slotted() 选择 Shadow DOM 中插槽（<slot>）内的内容
+
         ::selection{    
             background-color: green;
             color:orange; } 选中的是div中被鼠标选择的文字
@@ -136,4 +148,5 @@
 
 
 </body>
+
 </html>

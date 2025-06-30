@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
             如果新建一个arr2，代码就不能对其进行操作，不灵活，不能重复使用
         */
-        const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3];
-        const arr2 = [9, 4, 5, 2, 6, 1, 7, 8, 2, 3];
+      const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
+      const arr2 = [9, 4, 5, 2, 6, 1, 7, 8, 2, 3]
 
-        function sort(array) { // 里面的arr是行参，不用更改。数组名称和这个arr一样是巧合
+      function sort(array) {
+        // 里面的arr是行参，不用更改。数组名称和这个arr一样是巧合
 
-            const arr = [...array] // 非破坏性
+        const arr = [...array] // 非破坏性
 
-            for (let i = 0; i < arr.length; i++) {
-                for (let j = i + 1; j < arr.length; j++) {
-                    if (arr[i] > arr[j]) {
-                        let temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
-                }
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+              let temp = arr[i]
+              arr[i] = arr[j]
+              arr[j] = temp
             }
-            return arr
+          }
         }
+        return arr
+      }
 
-        let result = sort(arr2) // 这个是实参，需要谁排序传谁
-        console.log(arr2);
-        console.log(result);
+      let result = sort(arr2) // 这个是实参，需要谁排序传谁
+      console.log(arr2)
+      console.log(result)
 
-        // 02小节里的判断是否18
-        class Person {
-            constructor(name, age) {
-                this.name = name
-                this.age = age
-            }
+      // 02小节里的判断是否18
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
         }
-        const PersonArr = [
-            new Person('张三', 18),
-            new Person('李四', 17),
-            new Person('王五', 10),
-            new Person('赵六', 7)
-        ]
-        // filter()函数用来对数组进行过滤
-        function filter(arr) {
-            const newArr = []
-            for (let i = 0; i < PersonArr.length; i++) {
-                if (PersonArr[i].age < 18) {
-                    newArr.push(PersonArr[i])
-                }
-            }
-            return newArr
+      }
+      const PersonArr = [
+        new Person('张三', 18),
+        new Person('李四', 17),
+        new Person('王五', 10),
+        new Person('赵六', 7)
+      ]
+      // 自定义filter()函数用来对数组进行过滤
+      function filter(arr) {
+        const newArr = []
+        for (let i = 0; i < PersonArr.length; i++) {
+          if (PersonArr[i].age < 18) {
+            newArr.push(PersonArr[i])
+          }
         }
-        result = filter(PersonArr)
-        console.log(result);
-
+        return newArr
+      }
+      result = filter(PersonArr)
+      console.log(result)
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

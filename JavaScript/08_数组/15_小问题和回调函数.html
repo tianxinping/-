@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        class Person {
-            constructor(name, age) {
-                this.name = name
-                this.age = age
-            }
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
         }
-        const personArr = [
-            new Person('张三', 18),
-            new Person('李四', 17),
-            new Person('王五', 10),
-            new Person('赵六', 7)
-        ]
-        /* 02小节里的判断是否18
+      }
+      const personArr = [
+        new Person('张三', 18),
+        new Person('李四', 17),
+        new Person('王五', 10),
+        new Person('赵六', 7)
+      ]
+      /* 02小节里的判断是否18
                 问题是，目前的函数只能过滤出数组中的age属性小于18的对象
                     我们希望更加灵活，例如过滤数组中age大于18的对象
                                                age大于60的对象
@@ -31,31 +30,36 @@
                     将外部函数作为实参传入函数形参，在通过cb(arr[i])调用,就可以实现动态更改
                     
         */
+      /* 
+        生活类比
+          比如你点外卖：
 
-        // 定义一个形参cb，传参传入了函数fn的实参
-        function filter(arr, cb) {
-            const newArr = []
-            // console.log('--->',cb);
-            // cb()
+          你告诉骑手 “送到了给我打电话”，这里 “打电话” 就是一个回调函数。
+          骑手（外层函数）完成配送时，会调用这个 “回调” 通知你。
+      */
 
-            for (let i = 0; i < arr.length; i++) {
-                if (cb(arr[i])) { // 我们希望括号内部的代码动态更改，给内部传入true或者flase。cb(arr[i]) = fn(a)
-                    newArr.push(arr[i])
-                }
-            }
-            return newArr
+      // 定义一个形参cb，传参传入了函数fn的实参
+      function filter(arr, cb) {
+        const newArr = []
+        // console.log('--->',cb);
+        // cb()
+
+        for (let i = 0; i < arr.length; i++) {
+          if (cb(arr[i])) {
+            // 我们希望括号内部的代码动态更改，给内部传入true或者flase。cb(arr[i]) = fn(a)
+            // 在需要的时候调用外部函数fn()，将arr[i]作为参数传入，返回true或者false
+            newArr.push(arr[i])
+          }
         }
-        function fn(a) {
-            return a.name === '张三' 
-        }
-        result = filter(personArr, fn) // fn传进去，作为参数cb，cb = fn，也就是cb(arr[i]) = fn(a)，再在函数内部调用（回调函数）
-        console.log(result);
-
+        return newArr
+      }
+      function fn(a) {
+        return a.name === '张三'
+      }
+      result = filter(personArr, fn) // fn传进去，作为参数cb，cb = fn，也就是cb(arr[i]) = fn(a)，再在函数内部调用（回调函数）
+      console.log(result)
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

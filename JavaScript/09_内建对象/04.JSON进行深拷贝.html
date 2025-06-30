@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        const obj = {
-            name: '孙悟空',
-            age: 18,
-            friend: {
-                name: '猪八戒',
-                age: 20
-            }
+      const obj = {
+        name: '孙悟空',
+        age: 18,
+        friend: {
+          name: '猪八戒',
+          age: 20
         }
-        // 浅拷贝
-        const obj2 = Object.assign({}, obj) // friend是引用类型，obj2.friend和obj.friend指向同一块内存
+      }
+      // 浅拷贝
+      const obj2 = Object.assign({}, obj) // friend是引用类型，obj2.friend和obj.friend指向同一块内存
 
-        // 深拷贝
-        const obj3 = structuredClone(obj)
+      // 深拷贝
+      const obj3 = structuredClone(obj)
 
-        // 利用JSON.stringify()和JSON.parse()进行深拷贝
-        const str = JSON.stringify(obj)
-        const obj4 = JSON.parse(str)
+      // 利用JSON.stringify()和JSON.parse()进行深拷贝
+      const str = JSON.stringify(obj)
+      const obj4 = JSON.parse(str)
 
-        const obj5 = JSON.parse(JSON.stringify(obj)) // 写在一起
+      const obj5 = JSON.parse(JSON.stringify(obj)) // 写在一起
+
+      /* 核心原理
+          递归复制：JSON.stringify 会递归遍历对象的所有属性，将其转换为字符串。
+          生成新对象：JSON.parse 创建全新的对象结构，与原对象完全独立。 
+      */
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

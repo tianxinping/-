@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
             indexOf()
                 获取元素在数组中第一次出现的索引
                 参数：
@@ -36,31 +35,30 @@
                     2.返回值是新数组
                     3.原数组不变（非破坏性）
                     4.可以接收负数，表示从后往前截取
+                    5.负索引的计算：负索引 -n 等价于 length - n
+                    可以用来动态获取数组最后两位，虽然正索引也可以实现，但这样简洁
         */
-        const arr = ['孙悟空', '猪八戒', '沙僧', '唐僧', '孙悟空'];
-        let result = arr.indexOf('孙悟空') // 0,表示在索引为0时第一次出现
-        //    let result = arr.indexOf('孙悟空',3) // 4,表示从索引3开始查询，在索引为4时第一次出现
+      const arr = ['孙悟空', '猪八戒', '沙僧', '唐僧', '孙悟空']
+      let result = arr.indexOf('孙悟空') // 0,表示在索引为0时第一次出现
+      //    let result = arr.indexOf('孙悟空',3) // 4,表示从索引3开始查询，在索引为4时第一次出现
 
-        // result = arr.lastIndexOf('孙悟空') // 4,表示在索引为4时最后一次出现
+      // result = arr.lastIndexOf('孙悟空') // 4,表示在索引为4时最后一次出现
 
-        // 将数组连接成字符串join()方法
-        result = arr.join() // '孙悟空,猪八戒,沙僧,唐僧,孙悟空'
-        // result = arr.join('') // '孙悟空猪八戒沙僧唐僧孙悟空'
-        // result = arr.join('-') // '孙悟空-猪八戒-沙僧-唐僧-孙悟空'
-        // result = arr.join(' ') // '孙悟空 猪八戒 沙僧 唐僧 孙悟空'
+      // 将数组连接成字符串join()方法
+      result = arr.join() // '孙悟空,猪八戒,沙僧,唐僧,孙悟空'
+      // result = arr.join('') // '孙悟空猪八戒沙僧唐僧孙悟空'
+      // result = arr.join('-') // '孙悟空-猪八戒-沙僧-唐僧-孙悟空'
+      // result = arr.join(' ') // '孙悟空 猪八戒 沙僧 唐僧 孙悟空'
+      console.log(result) // string
 
-        // 截取数组alice()方法
-        // result = arr.slice(0, 2) // ['孙悟空', '猪八戒']
-        result = arr.slice(2) // 【'沙僧', '唐僧', '孙悟空']
-        result = arr.slice(-2) // ['唐僧', '孙悟空']
-        result = arr.slice()
-        console.log(result);
-
+      // 截取数组alice()方法
+      // result = arr.slice(0, 2) // ['孙悟空', '猪八戒']
+      result = arr.slice(2) // 【'沙僧', '唐僧', '孙悟空']
+      result = arr.slice(-2) // ['唐僧', '孙悟空'] 5-2=3，从3开始往后截取
+      // result = arr.slice()
+      console.log(result)
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /*
+      /*
             什么是递归？
                 从前有座山，山上有座庙。。。
                 调用自身的函数就是递归函数
@@ -27,40 +26,43 @@
                 1.基线条件 --- 递归的终止条件
                 2.递归条件 --- 如何对问题进行拆分
         */
-        // function fn() {
-        //     fn()
-        // }
-        // fn() 死循环
+      // function fn() {
+      //     fn()
+      // }
+      // fn() 死循环
 
-        // 创建一个函数，实现一个数的阶乘
-        /*
+      // 创建一个函数，实现一个数的阶乘
+      /*
             1! = 1
             2! = 1 * 2 = 2
             3! = 1 * 2 * 3 = 6
+            4! = 1 * 2 * 3 * 4 = 24
             ...
             10! = 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 = xxx
         */
-       // 这是使用循环来实现，如何使用递归来实现呢？ 
-        function factorial(num){
-            // 创建一个变量记录结果
-            let result = 1
-            for(let i=2 ; i <= num ; i++){
-                result *= i
-            }
-            return result
+      // 这是使用循环来实现，如何使用递归来实现呢？
+      function factorial(num) {
+        // 创建一个变量记录结果
+        let result = 1
+        for (let i = 2; i <= num; i++) {
+          result *= i
         }
-        let result = factorial(2)
-        // console.log(result);
+        return result
+      }
+      let result = factorial(4)
+      console.log(result)
 
-        function factorial2(num){
-            // 基线条件
-            if(num === 1){return 1}
-            // 递归条件
-            // num! = (num-1)! * num
-            return factorial2(num-1) * num
+      function factorial2(num) {
+        // 基线条件
+        if (num === 1) {
+          return 1
         }
-        let result2 = factorial2(5)
-        /* 执行步骤
+        // 递归条件
+        // num! = (num-1)! * num
+        return factorial2(num - 1) * num
+      }
+      let result2 = factorial2(5)
+      /* 执行步骤
             factorial2(5) 
                 return factorial2(4) * 5
                     return factorial2(3) * 4
@@ -72,12 +74,9 @@
                     return 6 * 4
                 return 24 * 5  
         */
-        console.log(result2);
+      console.log(result2)
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

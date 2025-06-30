@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        const arr = ['a', 'b', 'c'];
-        const arr2 = arr.slice()
-        // console.log(arr === arr2); // false 这是一个浅拷贝
-        /*
+      const arr = ['a', 'b', 'c']
+      const arr2 = arr.slice()
+      // console.log(arr === arr2); // false 这是一个浅拷贝
+      /*
             ...(展开运算符)
                 可以将一个数组中的元素展开到另一个数组中或者作为函数的参数传递
                 还可以加参数 const arr3 = ['a',...arr,'d']
                 通过它也可以实现浅拷贝
         */
-        // 数组的复制情景1
-        // 其实浅拷贝还有个很笨的方法
-        // const arr3 = [arr[1], arr[2], arr[3]]
-        const arr3 = [...arr]
+      // 数组的复制情景1
+      const arr3 = [...arr]
+      // 其实浅拷贝还有个很笨的方法：const arr3 = [arr[1], arr[2], arr[3]]
 
-        // console.log(arr);
-        // console.log(arr3);
+      // console.log(arr);
+      // console.log(arr3);
 
-        // 数组复制情景2-把数组传入函数
-        function sum(a, b, c) {
-            return a + b + c
-        }
-        const arr4 = [10, 20, 30]
-        // let result = sum(arr4[0], arr4[1], arr4[2]) //这句话可以实现，但有了...可以更加规范
-        let result = sum(...arr4)
-        // console.log(result);
+      // 数组复制情景2-把数组传入函数
+      function sum(a, b, c) {
+        return a + b + c
+      }
+      const arr4 = [10, 20, 30]
+      // let result = sum(arr4[0], arr4[1], arr4[2]) //这句话可以实现，但有了...可以更加规范
+      let result = sum(...arr4)
+      // console.log(result);
 
-        /* 
-            对象的复制
-                Object.assign(目标对象, 被复制的对象)
-                将 被复制对象 中的属性复制到 目标对象 里并返回目标对象
-                    如果 目标对象有和 被复制对象 同名的属性，则会被 被复制对象 中的属性覆盖
-                
-                也可以用展开运算符   
-                    如果有相同属性：后者优先 （最后传入的元素覆盖前面元素）
+      /* 
+        对象的复制
+            Object.assign(目标对象, 被复制的对象)
+            将 被复制对象 中的属性复制到 目标对象 里并返回目标对象
+                如果 目标对象有和 被复制对象 同名的属性，则会被 被复制对象 中的属性覆盖
+            
+            也可以用展开运算符   
+                如果有相同属性：后者优先 （最后传入的元素覆盖前面元素）
         */
-        const obj = { name: '孙悟空', age: 18 }
-        //    const obj2 = Object.assign({},obj) // 将obj复制到{}中，并返回,拆开就是下列
-        const obj2 = { name: '111' }
-        Object.assign(obj, obj2) // {name: '111', age: 18}
+      const obj = { name: '孙悟空', age: 18 }
+      //    const obj2 = Object.assign({},obj) // 将obj复制到{}中，并返回,拆开就是下列
+      const obj2 = { name: '111' }
+      Object.assign(obj, obj2) // {name: '111', age: 18}
 
-        const obj3 = { ...obj } // 将 obj中的属性 在 新对象中展开并返回
-
+      const obj3 = { ...obj } // 将 obj中的属性 在 新对象中展开并返回
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

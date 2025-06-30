@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h5 {
+        background-color: #dddfe2;
+        padding: 3px;
+        margin: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JS面试题：如何将一个有序数组转为乱序数组？</h2>
+    <div>
+      <h5>
+        回答：数组通过sort方法排序，sort方法接受一个函数作为参数，该函数返回一个随机数减去0.5就能实现
+      </h5>
+    </div>
+    <div>
+      <h5>
+        原理：sort方法的参数函数中接收两个参数，分别为当前比较的元素(a,
+        b)，并返回一个值，当该返回值大于0时，a排在b前面；反之，b排在a前面；返回值为0，位置不变
+      </h5>
+    </div>
+    <script>
+      const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      arr.sort((a, b) => {
+        let randNum = Math.random() - 0.5
+        console.log(randNum)
+        return randNum
+      })
+      console.log(arr)
+    </script>
+  </body>
+</html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
             思路1：
                 9, 4, 6, 2, 6, 1, 7, 8, 2, 3
                 比价相邻的两个元素，根据大小比较判断是否交换位置
@@ -29,41 +28,41 @@
                     
         */
 
-        /*      const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
-        
-                for (let j = 0; j < arr.length - 1; j++) { // 7.因为内部的for只会进行一次判断，如果复制很多次判断是不现实的，因此添加外部循环
-                                                            // 8.其次，当10个元素中9个元素位置都对了时，最后一个元素也一定是对的，因此只需要判断length-1次
-                    for (let i = 0; i < arr.length - 1; i++) { // 6.因为i+1,需要取到length-1
-                        // 1.arr[i]和arr[i+1]，表示相邻的两个数
-                        if (arr[i] > arr[i + 1]) { //9.>升序，<降序
-                            // 2.大数在前，小数在后，则需要交换两个元素的位置
-                            const temp = arr[i] // 3.创建一个临时变量存储arr[i]的值
-                            arr[i] = arr[i + 1] // 4.将arr[i+1]的值赋值给arr[i]
-                            arr[i + 1] = temp // 5.将临时变量temp的值赋值给arr[i+1]
-                        }
-                    }
-                }
-                console.log(arr); */
+      /*  
+      const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
 
-        // 冒泡排序优化1
-        const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
+      for (let j = 0; j < arr.length - 1; j++) {      // 7.因为内部的for只会进行一次判断，如果复制很多次判断是不现实的，因此添加外部循环
+                                                      // 8.其次，当10个元素中9个元素位置都对了时，最后一个元素也一定是对的，因此只需要判断length-1次
+          for (let i = 0; i < arr.length - 1; i++) {  // 6.因为i+1,需要取到length-1
+                                                      // 1.arr[i]和arr[i+1]，表示相邻的两个数
+              if (arr[i] > arr[i + 1]) {              // 9.>升序，<降序
+                                                      // 2.大数在前，小数在后，则需要交换两个元素的位置
+                  const temp = arr[i]                 // 3.创建一个临时变量存储arr[i]的值
+                  arr[i] = arr[i + 1]                 // 4.将arr[i+1]的值赋值给arr[i]
+                  arr[i + 1] = temp                   // 5.将临时变量temp的值赋值给arr[i+1]
+              }
+          }
+      }
+      console.log(arr);
+      */
 
-        for (let j = 0; j < arr.length - 1; j++) {
-            let swapped = false; // 标记本轮是否交换
-            for (let i = 0; i < arr.length - 1 - j; i++) {  //最大元素沉到末尾，无需比较已排序部分，减少内层遍历范围
-                if (arr[i] > arr[i + 1]) {
-                    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]; // 使用解构赋值简化交换逻辑
-                    swapped = true
-                }
-            }
-            if (!swapped) break; // 如果没有发生交换，说明数组已经有序，提前结束排序
+      // 冒泡排序优化1
+      const arr = [9, 4, 6, 2, 6, 1, 7, 8, 2, 3]
+
+      for (let j = 0; j < arr.length - 1; j++) {
+        let swapped = false // 标记本轮是否交换
+        for (let i = 0; i < arr.length - 1 - j; i++) {
+          //最大元素沉到末尾，无需比较已排序部分，减少内层遍历范围
+          if (arr[i] > arr[i + 1]) {
+            ;[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]] // 使用解构赋值简化交换逻辑
+            swapped = true
+          }
         }
-        console.log(arr);
+        if (!swapped) break // 如果没有发生交换，说明数组已经有序，提前结束排序
+      }
+      console.log(arr)
     </script>
-</head>
+  </head>
 
-<body>
-
-</body>
-
+  <body></body>
 </html>

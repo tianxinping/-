@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+</head>
+
+<body>
+  <!-- 
+    ECharts 是一款由 百度开源 的 数据可视化图表库，
+    主要用于在网页端高效展示交互式的图表和数据可视化效果。
+    它基于 JavaScript 开发，兼容当前绝大部分浏览器（包括移动端）
+    并提供了丰富的图表类型、灵活的配置项和强大的交互功能，是数据可视化领域应用广泛的工具之一
+
+    配置项	      作用	                    示例值
+    title	      标题组件	               {text: '图表标题'}
+    tooltip	    鼠标悬停提示框	          {trigger: 'axis'}
+    legend	    图例组件（筛选数据系列）	 {data: ['销量', '利润']}
+    xAxis/yAxis	坐标轴	                {type: 'category', data: [...]}
+    series	    数据系列（核心）	        [{type: 'bar', data: [...]}, ...]
+    color	      自定义颜色主题	          ['#37A2DA', '#67E0E3', '#9FE6B8']
+    toolbox	    工具栏（导出、缩放等工具）	{show: true}
+  -->
+  <div id="chart" style="width: 600px; height: 400px;"></div>
+  <script>
+    const myChart = echarts.init(document.getElementById('chart'));
+    const option = {
+      title: { text: '示例图表' },
+      xAxis: { data: ['一月', '二月', '三月'] },
+      yAxis: {},
+      series: [{
+        type: 'bar',
+        data: [120, 150, 130]
+      }]
+    };
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>
